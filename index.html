@@ -56,24 +56,6 @@
             margin: 40px auto; /* Centering the summary */
             max-width: 800px; /* Adjust max-width as needed */
         }
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .button {
-            background-color: #8c64d0;
-            color: white;
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-            display: inline-block;
-        }
-        .button:hover {
-            background-color: #8c64d0;
-        }
         footer {
             display: flex;
             justify-content: space-between;
@@ -115,7 +97,11 @@
         .projects-section h2 {
             margin: 0; /* Remove default margin */
         }
-        .resume-button {
+        .button-container {
+        text-align: center;
+        margin-top: 20px;
+        }
+        .button {
             background-color: #ebc0fc;
             color: #333;
             padding: 10px 20px;
@@ -126,7 +112,7 @@
             display: inline-block;
             text-align: center;
         }
-        .resume-button:hover {
+        .button:hover {
             background-color: #8c64d0;
             color: white;
         }
@@ -206,6 +192,9 @@
         <ul>
             <li>Utilized C++ to implement Bluetooth technology, enhancing the integration of a foot controller into the Biomechanical Smart Prosthetic Arm, thereby improving user interface functionality and accessibility.</li>
             <li>Implemented wireless communication protocols in C++ to establish seamless connectivity between foot controller microcontrollers, ensuring efficient data transmission and synchronization.</li>
+            <div class="button-container">
+                <a href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank" class="button">View Report</a>
+            </div>
         </ul>
 
         <h3>AES-128 Algorithm Implementation (<i>SystemVerilog</i>)</h3>
@@ -256,8 +245,7 @@
         </ul>
 
         <div class="button-container">
-            <!-- Button to open resume preview -->
-            <a href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/preview" target="_blank" class="resume-button">View Resume</a>
+            <a href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/preview" target="_blank" class="button">View Resume</a>
         </div>
     </div>
 
