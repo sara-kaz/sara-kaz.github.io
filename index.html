@@ -130,6 +130,12 @@
             width: 100%;
             margin-top: 10px; /* Space above the file input */
         }
+        .pdf-viewer {
+            margin-top: 20px; /* Space above the PDF viewer */
+            max-width: 100%; /* Ensure the viewer is responsive */
+            height: 600px; /* Adjust height as needed */
+            border: none; /* Remove border for cleaner look */
+        }
 
         /* Responsive adjustments */
     @media (max-width: 768px) {
@@ -255,16 +261,14 @@
             <li>Udacity Intro to Machine Learning with PyTorch (2021)</li>
             <li>Udacity Future Work in Digital: Data Analysis (2020)</li>
         </ul>
-    </div>
 
-    <div class="resume-section">
-        <h2>Resume</h2>
-        <div class="resume-dropdown">
-            <p>Upload your resume here:</p>
-            <input type="file" id="resume-upload" name="resume-upload" accept=".pdf, .doc, .docx">
+        <div class="resume-section">
+            <h2>Resume</h2>
+            <div class="resume-dropdown">
+                <p>Click below to view my resume:</p>
+                <iframe class="pdf-viewer" src="/Users/HP/Desktop/Work/Sara Aly Resume.pdf" type="application/pdf"></iframe>
         </div>
     </div>
-
 
     <footer>
         <div class="contact-info">
