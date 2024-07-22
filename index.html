@@ -110,6 +110,20 @@
             margin: 0; /* Remove default margin */
             color: #333; /* Adjust color as needed */
         }
+        .resume-button {
+            background-color: #ebc0fc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-block;
+            text-align: center;
+        }
+        .resume-button:hover {
+            background-color: #5e35b1;
+        }
         /* Responsive adjustments */
     @media (max-width: 768px) {
     header, footer {
@@ -234,8 +248,11 @@
             <li>Udacity Intro to Machine Learning with PyTorch (2021)</li>
             <li>Udacity Future Work in Digital: Data Analysis (2020)</li>
         </ul>
-
-        <iframe src="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/preview" width="100%" height="600" style="border: none;"></iframe>
+        
+        <div class="button-container">
+            <!-- Button to open resume preview -->
+            <a href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/preview" target="_blank" class="resume-button">View Resume</a>
+        </div>
     </div>
 
     <footer>
