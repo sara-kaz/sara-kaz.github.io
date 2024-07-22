@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f3e5f5;
+            background-color: #ffffff; /* Background set to white */
             color: #333;
             margin: 0;
             padding: 0;
@@ -18,142 +18,129 @@
             padding: 20px;
         }
         header, footer {
-            background-color: #d1c4e9;
+            background: linear-gradient(to right, #d1c4e9, #b39ddb); /* Shades of purple */
+            color: white;
             padding: 20px;
             text-align: center;
         }
-        h1, h2, h3 {
-            color: #4a148c;
-        }
-        section {
-            margin-bottom: 40px;
-        }
-        .contact-info {
+        .button-container {
             text-align: center;
+            margin-top: 20px;
         }
-        .contact-info a {
-            color: #4a148c;
+        .button {
+            background-color: #7e57c2;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
             text-decoration: none;
+            font-size: 16px;
+            display: inline-block;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 10px;
+        .button:hover {
+            background-color: #5e35b1;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Sara Ali's Portfolio</h1>
+        <h1>Sara Ali</h1>
+        <p>sarakhaled.kaz@gmail.com | (424) 460-9975</p>
     </header>
     <div class="container">
-        <section class="contact-info">
-            <p>Email: <a href="mailto:sarakhaled.kaz@gmail.com">sarakhaled.kaz@gmail.com</a></p>
-            <p>Phone: (424) 460-9975</p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/sara-khaled-9a3a741ab" target="_blank">linkedin.com/in/sara-khaled-9a3a741ab</a></p>
-        </section>
-
-        <section class="summary">
-            <h2>Summary</h2>
-            <p>Highly motivated software engineering enthusiast with a strong academic background and a passion for applying software engineering principles to solve real-world challenges. Experienced in algorithm design, system development, and software testing, eager to contribute innovative solutions in data structures, machine learning, and embedded systems.</p>
-        </section>
-
-        <section class="technical-skills">
-            <h2>Technical Skills</h2>
-            <ul>
-                <li><strong>Programming Languages:</strong> Python, Java, JavaFX, C, C#, C++, HTML, CSS, VHDL, Verilog, System Verilog</li>
-                <li><strong>Software Tools:</strong> Arduino IDE, Microsoft Office, Figma, JIRA, Confluence, Azure DevOps, MATLAB, Multisim, Pspice</li>
-                <li><strong>Hardware:</strong> ARM7 LPC2148 Board, Terasic DE10-Lite, Xilinx FPGA board, CMOS</li>
-                <li><strong>Database:</strong> MySQL, SQL</li>
-            </ul>
-        </section>
-
-        <section class="experience">
-            <h2>Experience</h2>
-            <h3>Teacher Assistant, California State University Northridge</h3>
-            <p><em>August 2023 - May 2024</em></p>
-            <ul>
-                <li>Assisted with grading over 100 assignments per week, providing detailed and constructive feedback that resulted in a 20% improvement in overall class performance.</li>
-                <li>Monitored progress and behavior for over 30 students, offering timely feedback to the lead teacher, which contributed to a 15% reduction in behavioral incidents.</li>
-                <li>Provided one-on-one assistance to 10 students per week, leading to a 25% increase in the assignment completion rate and comprehension of key concepts.</li>
-            </ul>
-
-            <h3>Marketing Intern, The Nourishers</h3>
-            <p><em>March 2021 - June 2021</em></p>
-            <ul>
-                <li>Developed and automated the monthly newsletter email system for The Nourishers, increasing subscriber engagement by 40%.</li>
-                <li>Implemented data collection scripts to gather and analyze information on 100+ organizations in Bahrain and neighboring countries, enhancing database accuracy by 30%.</li>
-                <li>Utilized data analysis tools to evaluate information on 50+ companies related to physical and mental health in the Gulf, improving market insights by 25%.</li>
-                <li>Programmed and executed email campaigns using marketing automation software, increasing sponsor participation by 20%.</li>
-            </ul>
-
-            <h3>Data Analyst, Unipal</h3>
-            <p><em>January 2021 - January 2021</em></p>
-            <ul>
-                <li>Enhanced data analysis techniques by implementing advanced algorithms, improving data accuracy and processing speed by 25%.</li>
-                <li>Designed visually appealing infographics using graphic design software, increasing sponsor engagement by 30%.</li>
-                <li>Developed a comprehensive database of universities, popular shops, and discount apps in Abu Dhabi to support Unipal's launch, streamlining data access and usability.</li>
-                <li>Analyzed and translated survey responses into actionable statistical data and charts, enhancing data interpretation efficiency by 20%.</li>
-            </ul>
-        </section>
-
-        <section class="projects">
-            <h2>Projects</h2>
-            <h3>Smart Prosthetic Arm (C++)</h3>
-            <ul>
-                <li>Utilized C++ to implement Bluetooth technology, enhancing the integration of a foot controller into the Biomechanical Smart Prosthetic Arm, thereby improving user interface functionality and accessibility.</li>
-                <li>Implemented wireless communication protocols in C++ to establish seamless connectivity between foot controller microcontrollers, ensuring efficient data transmission and synchronization.</li>
-            </ul>
-
-            <h3>AES-128 Algorithm Implementation (Verilog)</h3>
-            <ul>
-                <li>Engineered and implemented a Verilog algorithm prioritizing efficiency and robustness, optimizing performance across diverse applications.</li>
-                <li>Developed a secure encryption solution in Verilog tailored for versatile application scenarios, ensuring robust data confidentiality and integrity.</li>
-            </ul>
-
-            <h3>Parkinson’s Disease Diagnosis using Machine Learning (MATLAB)</h3>
-            <ul>
-                <li>Engineered a machine learning model in MATLAB to facilitate early diagnosis of Parkinson’s Disease through analysis of voice recordings.</li>
-                <li>Employed advanced machine learning techniques to extract and classify voice features associated with Parkinson’s Disease diagnosis.</li>
-                <li>Published a research paper detailing findings and methodologies in the field of Parkinson’s Disease diagnosis using voice analysis.</li>
-            </ul>
-
-            <h3>Lost and Found System (Java/JavaFX)</h3>
-            <ul>
-                <li>Developed a JavaFX-based user interface (UI) for seamlessly reporting lost items and claiming found items, prioritizing intuitive navigation and user experience.</li>
-                <li>Implemented robust database functionality in Java to ensure efficient storage and retrieval of lost and found item records, optimizing system performance and reliability.</li>
-            </ul>
-
-            <h3>Traffic Light System (VHDL)</h3>
-            <ul>
-                <li>Designed and implemented a customized traffic light system using VHDL and integrated sensors, ensuring efficient operation and responsiveness.</li>
-                <li>Developed algorithms in VHDL to regulate traffic flow and optimize signal timings dynamically based on real-time sensor data, enhancing overall traffic management efficiency.</li>
-            </ul>
-        </section>
-
-        <section class="education">
-            <h2>Education</h2>
-            <p><strong>Bachelor of Science in Computer Engineering</strong><br>
-            California State University Northridge • 2024<br>
-            GPA: 3.94, Summa Cum Laude, Dean's List: Fall 2022 - Spring 2024, Joe and Nancy Owens Engineering Annual Scholarship, 50% Scholarship (AUBH)<br>
-            Relevant Coursework: Data Structures and Algorithms, Machine Learning, Software Engineering, FPGA Design using Verilog and VHDL, Electrical Engineering Fundamentals, Embedded System</p>
-        </section>
-
-        <section class="certifications">
-            <h2>Certifications</h2>
-            <ul>
-                <li>Net Full Stack Foundation (2024)</li>
-                <li>Six Sigma White Belt (2024)</li>
-                <li>Udacity Future Work in Digital: Web Development (2020)</li>
-                <li>Udacity Future Work in Digital: Data Analysis (2020)</li>
-                <li>Udacity Full Stack Developer Track (2018)</li>
-            </ul>
-        </section>
+        <h2>Summary</h2>
+        <p>Highly motivated software engineering enthusiast with a strong academic background and a passion for applying software engineering principles to solve real-world challenges. Experienced in algorithm design, system development, and software testing, eager to contribute innovative solutions in data structures, machine learning, and embedded systems.</p>
+        
+        <h2>Technical Skills</h2>
+        <p><strong>Programming Languages:</strong> Python, Java, JavaFX, C, C#, C++, HTML, CSS, VHDL, Verilog, System Verilog</p>
+        <p><strong>Software Tools:</strong> Arduino IDE, Microsoft Office, Figma, JIRA, Confluence, Azure DevOps, MATLAB, Multisim, Pspice</p>
+        <p><strong>Hardware:</strong> ARM7 LPC2148 Board, Terasic DE10-Lite, Xilinx FPGA board, CMOS</p>
+        <p><strong>Database:</strong> MySQL, SQL</p>
+        
+        <h2>Experience</h2>
+        <h3>Teacher Assistant, California State University Northridge</h3>
+        <p><em>August 2023 - May 2024</em></p>
+        <ul>
+            <li>Assisted with grading over 100 assignments per week, providing detailed and constructive feedback that resulted in a 20% improvement in overall class performance.</li>
+            <li>Monitored progress and behavior for over 30 students, offering timely feedback to the lead teacher, which contributed to a 15% reduction in behavioral incidents.</li>
+            <li>Provided one-on-one assistance to 10 students per week, leading to a 25% increase in the assignment completion rate and comprehension of key concepts.</li>
+        </ul>
+        
+        <h3>Marketing Intern, The Nourishers</h3>
+        <p><em>March 2021 - June 2021</em></p>
+        <ul>
+            <li>Developed and automated the monthly newsletter email system for The Nourishers, increasing subscriber engagement by 40%.</li>
+            <li>Implemented data collection scripts to gather and analyze information on 100+ organizations in Bahrain and neighboring countries, enhancing database accuracy by 30%.</li>
+            <li>Utilized data analysis tools to evaluate information on 50+ companies related to physical and mental health in the Gulf, improving market insights by 25%.</li>
+            <li>Programmed and executed email campaigns using marketing automation software, increasing sponsor participation by 20%.</li>
+        </ul>
+        
+        <h3>Data Analyst, Unipal</h3>
+        <p><em>January 2021 - January 2021</em></p>
+        <ul>
+            <li>Enhanced data analysis techniques by implementing advanced algorithms, improving data accuracy and processing speed by 25%.</li>
+            <li>Designed visually appealing infographics using graphic design software, increasing sponsor engagement by 30%.</li>
+            <li>Developed a comprehensive database of universities, popular shops, and discount apps in Abu Dhabi to support Unipal's launch, streamlining data access and usability.</li>
+            <li>Analyzed and translated survey responses into actionable statistical data and charts, enhancing data interpretation efficiency by 20%.</li>
+        </ul>
+        
+        <h2>Projects</h2>
+        <h3>Smart Prosthetic Arm (C++)</h3>
+        <ul>
+            <li>Utilized C++ to implement Bluetooth technology, enhancing the integration of a foot controller into the Biomechanical Smart Prosthetic Arm, thereby improving user interface functionality and accessibility.</li>
+            <li>Implemented wireless communication protocols in C++ to establish seamless connectivity between foot controller microcontrollers, ensuring efficient data transmission and synchronization.</li>
+        </ul>
+        
+        <h3>AES-128 Algorithm Implementation (Verilog)</h3>
+        <ul>
+            <li>Engineered and implemented a Verilog algorithm prioritizing efficiency and robustness, optimizing performance across diverse applications.</li>
+            <li>Developed a secure encryption solution in Verilog tailored for versatile application scenarios, ensuring robust data confidentiality and integrity.</li>
+        </ul>
+        
+        <h3>Parkinson’s Disease Diagnosis using Machine Learning (MATLAB)</h3>
+        <ul>
+            <li>Engineered a machine learning model in MATLAB to facilitate early diagnosis of Parkinson’s Disease through analysis of voice recordings.</li>
+            <li>Employed advanced machine learning techniques to extract and classify voice features associated with Parkinson’s Disease diagnosis.</li>
+            <li>Published a research paper detailing findings and methodologies in the field of Parkinson’s Disease diagnosis using voice analysis.</li>
+        </ul>
+        
+        <h3>Lost and Found System (Java/JavaFX)</h3>
+        <ul>
+            <li>Developed a JavaFX-based user interface (UI) for seamlessly reporting lost items and claiming found items, prioritizing intuitive navigation and user experience.</li>
+            <li>Implemented robust database functionality in Java to ensure efficient storage and retrieval of lost and found item records, optimizing system performance and reliability.</li>
+        </ul>
+        
+        <h3>Traffic Light System (VHDL)</h3>
+        <ul>
+            <li>Designed and implemented a customized traffic light system using VHDL and integrated sensors, ensuring efficient operation and responsiveness.</li>
+            <li>Developed algorithms in VHDL to regulate traffic flow and optimize signal timings dynamically based on real-time sensor data, enhancing overall traffic management efficiency.</li>
+        </ul>
+        
+        <h2>Education</h2>
+        <p><strong>Bachelor of Science in Computer Engineering</strong></p>
+        <p>California State University Northridge • 2024</p>
+        <p>GPA: 3.94, Summa Cum Laude, Dean's List: Fall 2022 - Spring 2024, Joe and Nancy Owens Engineering Annual Scholarship, 50% Scholarship (AUBH)</p>
+        <p>Relevant Coursework: Data Structures and Algorithms, Machine Learning, Software Engineering, FPGA Design using Verilog and VHDL, Electrical Engineering Fundamentals, Embedded System.</p>
+        
+        <h2>Certifications</h2>
+        <p>Software Development</p>
+        <ul>
+            <li>Net Full Stack Foundation (2024)</li>
+            <li>Six Sigma White Belt (2024)</li>
+            <li>Udacity Future Work in Digital: Web Development (2020)</li>
+            <li>Udacity Future Work in Digital: Data Analysis (2020)</li>
+            <li>Udacity Full Stack Developer Track (2018)</li>
+        </ul>
+        
+        <div class="button-container">
+            <a href="https://www.linkedin.com/in/sara-khaled-9a3a741ab" class="button">LinkedIn</a>
+            <a href="https://github.com/sara-kaz" class="button">GitHub</a>
+        </div>
     </div>
     <footer>
         <p>&copy; 2024 Sara Ali</p>
     </footer>
 </body>
 </html>
+```
