@@ -98,25 +98,29 @@
             margin: 0; /* Remove default margin */
         }
         .button-container {
-        text-align: center;
-        margin-top: 20px;
-        padding-top: 10px;
+            display: flex; /* Enable Flexbox */
+            flex-direction: column; /* Stack buttons vertically */
+            align-items: center; /* Center buttons horizontally */
+            gap: 10px; /* Adjust spacing between buttons */
+            margin-top: 20px; /* Keep the top margin */
         }
         .button {
-            background-color: #ebc0fc;
-            color: #333;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-            display: inline-block;
-            text-align: center;
+            background-color: #ebc0fc; /* Button background color */
+            color: #333; /* Button text color */
+            padding: 10px 20px; /* Padding inside buttons */
+            border: none; /* No border */
+           border-radius: 5px; /* Rounded corners */
+            text-decoration: none; /* Remove underline */
+            font-size: 16px; /* Font size */
+            display: inline-block; /* Inline-block for margin and padding */
+            text-align: center; /* Center text */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
         }
         .button:hover {
-            background-color: #8c64d0;
-            color: white;
+            background-color: #8c64d0; /* Background color on hover */
+            color: white; /* Text color on hover */
         }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             header, footer {
