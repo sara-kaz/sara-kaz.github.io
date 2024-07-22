@@ -125,11 +125,6 @@
             margin: 0 auto; /* Centering the dropdown */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
         }
-        .resume-dropdown input[type="file"] {
-            display: block;
-            width: 100%;
-            margin-top: 10px; /* Space above the file input */
-        }
         .pdf-viewer {
             margin-top: 20px; /* Space above the PDF viewer */
             max-width: 100%; /* Ensure the viewer is responsive */
@@ -266,7 +261,10 @@
             <h2>Resume</h2>
             <div class="resume-dropdown">
                 <p>Click below to view my resume:</p>
-                <iframe class="pdf-viewer" src="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/view?usp=drive_link" type="application/pdf"></iframe>
+                <iframe class="pdf-viewer" src="/Users/HP/Desktop/Work/Sara Aly Resume.pdf" type="application/pdf"></iframe>
+                <!-- Or use the <embed> tag as an alternative -->
+                <!-- <embed class="pdf-viewer" src="path/to/your/resume.pdf" type="application/pdf"> -->
+            </div>
         </div>
     </div>
 
