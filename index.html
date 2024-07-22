@@ -95,6 +95,23 @@
             height: 48px;
             vertical-align: middle;
         }
+        .projects-section {
+            display: flex;
+            align-items: center;
+            margin: 40px 0; /* Space above and below the section */
+            padding: 20px; /* Optional padding */
+        }
+        .projects-image {
+            width: 300px; 
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 20px; /* Space between image and text */
+            border-radius: 10px; /* Optional, for rounded corners */
+        }
+        .projects-section h2 {
+            margin: 0; /* Remove default margin */
+            color: #333; /* Adjust color as needed */
+        }
+
         /* Responsive adjustments */
     @media (max-width: 768px) {
     header, footer {
@@ -157,7 +174,9 @@
             <li>Analyzed and translated survey responses into actionable statistical data and charts, enhancing data interpretation efficiency by 20%.</li>
         </ul>
 
-        <h2>Projects</h2>
+        <div class="projects-section">
+            <img src="https://t3.ftcdn.net/jpg/01/78/58/88/360_F_178588822_8xplb7en8zo0OKZXDY7OXAuW9Od5X9zV.jpg" alt="Projects" class="projects-image">
+            <h2>Projects</h2>
         <h3>Smart Prosthetic Arm (C++)</h3>
         <ul>
             <li>Utilized C++ to implement Bluetooth technology, enhancing the integration of a foot controller into the Biomechanical Smart Prosthetic Arm, thereby improving user interface functionality and accessibility.</li>
@@ -188,6 +207,7 @@
             <li>Designed and implemented a customized traffic light system using VHDL and integrated sensors, ensuring efficient operation and responsiveness.</li>
             <li>Developed algorithms in VHDL to regulate traffic flow and optimize signal timings dynamically based on real-time sensor data, enhancing overall traffic management efficiency.</li>
         </ul>
+        </div>
 
         <h2>Education</h2>
         <h3>Bachelor of Science in Computer Engineering</h3>
