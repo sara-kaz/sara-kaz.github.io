@@ -98,28 +98,32 @@
             margin: 0; /* Remove default margin */
         }
         .button-container {
-            display: flex; /* Enable Flexbox */
-            flex-direction: column; /* Stack buttons vertically */
-            align-items: center; /* Center buttons horizontally */
-            gap: 10px; /* Adjust spacing between buttons */
-            margin-top: 20px; /* Keep the top margin */
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap; /* Allows buttons to wrap onto the next line if there's not enough space */
+            justify-content: center; /* Centers buttons horizontally */
+            gap: 10px; /* Adds space between buttons */
         }
         .button {
-            background-color: #ebc0fc; /* Button background color */
-            color: #333; /* Button text color */
-            padding: 10px 20px; /* Padding inside buttons */
-            border: none; /* No border */
-           border-radius: 5px; /* Rounded corners */
-            text-decoration: none; /* Remove underline */
-            font-size: 16px; /* Font size */
-            display: inline-block; /* Inline-block for margin and padding */
-            text-align: center; /* Center text */
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+            background-color: #ebc0fc;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+           font-size: 16px;
+           text-align: center;
+           display: inline-block;
+           box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
+           max-width: 100%; /* Ensures buttons do not exceed container width */
         }
+
         .button:hover {
-            background-color: #8c64d0; /* Background color on hover */
-            color: white; /* Text color on hover */
+            background-color: #8c64d0;
+            color: white;
         }
+
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
