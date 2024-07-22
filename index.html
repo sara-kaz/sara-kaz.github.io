@@ -110,19 +110,45 @@
             margin: 0; /* Remove default margin */
             color: #333; /* Adjust color as needed */
         }
+        .resume-section {
+            margin: 40px 0; /* Space above and below the section */
+        }
+        .resume-section h2 {
+            margin-bottom: 10px; /* Space below the heading */
+        }
+        .resume-dropdown {
+            background-color: #f5f5f5; /* Light grey background */
+            border: 1px solid #ddd; /* Light grey border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px;
+            max-width: 500px; /* Adjust width as needed */
+            margin: 0 auto; /* Centering the dropdown */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+        }
+        .resume-dropdown input[type="file"] {
+            display: block;
+            width: 100%;
+            margin-top: 10px; /* Space above the file input */
+        }
 
         /* Responsive adjustments */
     @media (max-width: 768px) {
     header, footer {
         padding: 20px; /* Adjust padding for smaller screens */
     }
-
     .summary-wrapper {
         flex-direction: column; /* Stack image and text vertically on small screens */
         align-items: center; /* Center content */
     }
-
     .summary-image {
+        margin-right: 0; /* Remove margin for stacked layout */
+        margin-bottom: 20px; /* Add space below image */
+    }
+    .projects-section {
+        flex-direction: column; /* Stack image and text vertically on small screens */
+        align-items: center; /* Center content */
+    }
+    .projects-image {
         margin-right: 0; /* Remove margin for stacked layout */
         margin-bottom: 20px; /* Add space below image */
     }
@@ -230,6 +256,16 @@
             <li>Udacity Future Work in Digital: Data Analysis (2020)</li>
         </ul>
     </div>
+
+    <div class="resume-section">
+        <h2>Resume</h2>
+        <div class="resume-dropdown">
+            <p>Upload your resume here:</p>
+            <input type="file" id="resume-upload" name="resume-upload" accept=".pdf, .doc, .docx">
+        </div>
+    </div>
+
+
     <footer>
         <div class="contact-info">
             <h2>Contact Me</h2>
