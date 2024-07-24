@@ -4,224 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sara-kaz.github.io/</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff; /* Background set to white */
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: url('https://marketplace.canva.com/EAFmahf0Yqs/1/0/1600w/canva-pink-minimalist-watercolor-background-linkedin-banner-UubSLOW3Y3M.jpg');
-            background-size: cover;
-            color: rgb(255, 255, 255);
-            padding: 40px; /* Increased padding for a larger header */
-            text-align: center;
-            font-size: 2em; /* Larger font size for header text */
-        }
-        footer {
-            background: url('https://marketplace.canva.com/EAFmahf0Yqs/1/0/1600w/canva-pink-minimalist-watercolor-background-linkedin-banner-UubSLOW3Y3M.jpg');
-            background-size: cover;
-            color: white;
-            padding: 20px; /* Reduced padding for a smaller footer */
-            text-align: center;
-            font-size: 1em; /* Standard font size for footer text */
-        }
-        .gradient-text {
-            font-weight: bold; 
-            background: linear-gradient(90deg, #8c64d0, #bb6eda, #ebc0fc);
-            -webkit-background-clip: text; /* WebKit browsers (Chrome, Safari) */
-            -webkit-text-fill-color: transparent; /* WebKit browsers */
-            background-clip: text; /* Other browsers */
-            color: transparent; /* Fallback color */    
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .image {
-            border-radius: 10px;
-            margin: auto; /* Space between image and text */
-            width: 900px;
-            height: auto;
-        }
-        .summary-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 40px auto; /* Centering the summary wrapper */
-        }
-        .summary-image {
-            border-radius: 10px;
-            margin: auto 20px; /* Space between image and text */
-            height: 400px;
-        }
-        .summary-container {
-            background-color: #ebc0fc; /* Purple background */
-            color: #333;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: left;
-            margin: 40px auto; /* Centering the summary */
-            max-width: 800px; /* Adjust max-width as needed */
-        }
-        footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background: url('https://marketplace.canva.com/EAFmahf0Yqs/1/0/1600w/canva-pink-minimalist-watercolor-background-linkedin-banner-UubSLOW3Y3M.jpg');
-            background-size: cover;
-        }
-        .contact-info {
-            text-align: left; 
-            color:#333 ;
-        }
-        .social-icons {
-            text-align: right;
-        }
-        .social-icons a {
-            margin: 0 10px;
-            text-decoration: none;
-        }
-        .social-icons img {
-            width: 48px;
-            height: 48px;
-            vertical-align: middle;
-        }
-        .projects-section {
-            display: flex;
-            align-items: center;
-            margin: 10px 0; /* Space above and below the section */
-        }
-        .projects-image {
-            width: 450px; 
-            height: auto; /* Maintain aspect ratio */
-            margin-left: 10px; /* Space between image and text */
-            border-radius: 10px; /* Optional, for rounded corners */
-        }
-        .projects-section h2 {
-            margin: 0; /* Remove default margin */
-        }
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap; /* Allows buttons to wrap onto the next line if there's not enough space */
-            justify-content: center; /* Centers buttons horizontally */
-            gap: 10px; /* Adds space between buttons */
-        }
-        .button {
-            background-color: #ebc0fc;
-            color: #333;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-            text-align: center;
-            display: inline-block;
-            box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
-            max-width: 100%; /* Ensures buttons do not exceed container width */
-        }
-        .button:hover {
-            background-color: #8c64d0;
-            color: white;
-        }
-        .link-preview {
-            display: flex;
-            align-items: center;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-left: 10px;
-            text-decoration: none;
-            color: black;
-        }
-        .link-preview img {
-            width: 100px;
-            height: auto;
-            margin-right: 10px;
-        }
-        .link-preview .content {
-            flex: 1;
-        }
-        .link-preview .title {
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .link-preview .description {
-            font-size: 14px;
-        }
-        .stats-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-            margin-right: 50px;
-            margin-left: 50px;
-        }
-        .frame {
-            display: grid;
-            align-items: center;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            padding: 10px;
-            border: 2px solid #333;
-            background-color: #fff;
-        }
-        .frame img {
-            width: 100%;
-            height: auto;
-        }
-        .pdf-container {
-            width: 100%;
-            height: 100%;
-            max-width: 1000px;
-            max-height: 100%;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            header, footer {
-                padding: 20px; /* Adjust padding for smaller screens */
-            }
-            .summary-wrapper {
-                flex-direction: column; /* Stack image and text vertically on small screens */
-                align-items: center; /* Center content */
-            }
-            .summary-image {
-                max-width: 300px;
-                height: auto;
-                margin-right: 0; /* Remove margin for stacked layout */
-                margin-bottom: 20px; /* Add space below image */
-            }
-            .image {
-                max-width: 350px;
-                height: auto;
-                margin-bottom: 20px; /* Add space below image */
-            }
-            .projects-section {
-                flex-direction: column; /* Stack image and text vertically on small screens */
-                align-items: center; /* Center content */
-            }
-            .projects-image {
-                margin-right: 0; /* Remove margin for stacked layout */
-                margin-bottom: 20px; /* Add space below image */
-            }
-            .stats-container {
-                margin-right: 0; /* Remove margin for stacked layout */
-                margin-bottom: 20px; /* Add space below image */
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -300,7 +83,7 @@
         <div class="summary-wrapper">
             <img src="https://www.shutterstock.com/image-vector/continuous-line-drawing-business-woman-600nw-1656612448.jpg" alt="Profile Picture" class="summary-image">
             <div>
-                <h3>Teacher Assistant, California State University Northridge</h3>
+                <h3>Teacher Assistant, <i>California State University Northridge</i></h3>
                 <p><em>August 2023 - May 2024</em></p>
                 <ul>
                     <li>Assisted with grading over 100 assignments per week, providing detailed and constructive feedback that resulted in a 20% improvement in overall class performance.</li>
@@ -308,7 +91,7 @@
                     <li>Provided one-on-one assistance to 10 students per week, leading to a 25% increase in the assignment completion rate and comprehension of key concepts.</li>
                 </ul>
         
-                <h3>Data Analyst, Unipal</h3>
+                <h3>Data Analyst, <i>Unipal</i></h3>
                 <p><em>January 2021 - January 2022</em></p>
                 <ul>
                     <li>Enhanced data analysis techniques by implementing advanced algorithms, improving data accuracy and processing speed by 25%.</li>
@@ -317,7 +100,7 @@
                     <li>Analyzed and translated survey responses into actionable statistical data and charts, enhancing data interpretation efficiency by 20%.</li>
                 </ul>
         
-                <h3>Marketing Intern, The Nourishers</h3>
+                <h3>Marketing Intern, <i>The Nourishers</i></h3>
                 <p><em>March 2021 - June 2021</em></p>
                 <ul>
                     <li>Developed and automated the monthly newsletter email system for The Nourishers, increasing subscriber engagement by 40%.</li>
