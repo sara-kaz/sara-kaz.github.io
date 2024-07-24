@@ -190,7 +190,43 @@
             height: 100%;
             border: none;
         }
-
+        .chat-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 90%;
+        max-width: 600px;
+        }
+        .code-bubble {
+            background-color: #e0e0e0;
+            border-radius: 12px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+           position: relative;
+        }
+        .code-bubble::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: -10px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-right-color: #e0e0e0;
+        }
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -241,6 +277,18 @@
             <img src="https://www.creativefabrica.com/wp-content/uploads/2023/04/19/Line-Art-Woman-Waving-Hello-67624166-1.png" alt="Profile Picture" class="summary-image">
             <div class="summary-container">
                 <h3 style="font-weight:lighter;"><i><strong>Hi! I am Sara Aly. </strong>I am a highly motivated computer engineering enthusiast with a strong academic background and a passion for applying software engineering principles to solve real-world challenges. Experienced in algorithm design, system development, and software testing, eager to contribute innovative solutions in data structures, machine learning, and embedded systems.</i></h3>
+            </div>
+        </div>
+        <div class="chat-container">
+            <div class="code-bubble">
+                <pre><code>
+                    // Example of a code bubble
+                    const greet = (name) => {
+                        console.log(`Hello, ${name}!`);
+                    };
+    
+                    greet('World');
+                </code></pre>
             </div>
         </div>
 
