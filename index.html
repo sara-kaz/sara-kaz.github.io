@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sara-kaz.github.io/</title>
@@ -317,16 +317,16 @@
             }
         }
     </style>
-</head>
+  </head>
 
 <!-----------------------------------------------------------------------------------
   ---------------------------------------Components----------------------------------
   ----------------------------------------------------------------------------------->
-<body>
+  <body>
     <header>
         <h1>Sara Aly Portfolio</h1> 
     </header>
-
+    <!--Menu bar implementations-->
     <nav>
         <ul class="navbar">
             <a href="#home">Home</a>
@@ -344,12 +344,12 @@
     </nav>
     <div class="container">
         <section id="home">
-        <div class="summary-wrapper">
-            <img src="https://www.creativefabrica.com/wp-content/uploads/2023/04/19/Line-Art-Woman-Waving-Hello-67624166-1.png" alt="Profile Picture" class="summary-image">
-            <div class="summary-container">
-                <h3 style="font-weight:lighter;"><i><strong>Hi! I am Sara Aly. </strong>I am a highly motivated computer engineering enthusiast with a strong academic background and a passion for applying software engineering principles to solve real-world challenges. Experienced in algorithm design, system development, and software testing, eager to contribute innovative solutions in data structures, machine learning, and embedded systems.</i></h3>
+            <div class="summary-wrapper">
+                <img src="https://www.creativefabrica.com/wp-content/uploads/2023/04/19/Line-Art-Woman-Waving-Hello-67624166-1.png" alt="Profile Picture" class="summary-image">
+                <div class="summary-container">
+                    <h3 style="font-weight:lighter;"><i><strong>Hi! I am Sara Aly. </strong>I am a highly motivated computer engineering enthusiast with a strong academic background and a passion for applying software engineering principles to solve real-world challenges. Experienced in algorithm design, system development, and software testing, eager to contribute innovative solutions in data structures, machine learning, and embedded systems.</i></h3>
+                </div>
             </div>
-        </div>
         </section>
       <!--  <div class="chat-container">
             <div class="code-bubble">
@@ -365,6 +365,7 @@ int main() {
 
         <div class="projects-section">
             <div>
+                <!-- List in a Drop-down -->
                 <h2 class="gradient-text">Technical Skills</h2>
                 <details>
                     <summary><strong>Programming Languages</strong></summary>
@@ -417,196 +418,208 @@ int main() {
                     </ul> 
                 </details>
             </div>
+            <!-- Showing the Github Status -->
             <div class="stats-container">
                 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sara-kaz&layout=donut&theme=buefy&card_width=300&card_height=300&hide_border=true" alt="GitHub Top Languages">
             </div>
             <img src="https://t4.ftcdn.net/jpg/05/00/07/55/360_F_500075544_8XXJ2dWoHy6pZB5AvFoQmOshlbJSDAKl.jpg" alt="Skills" class="project-image" width="400px">
         </div>
         
+        <!-- Using <section> to set an ID for each section determined-->
         <section id="work">
-        <div class="gradient-text"><h2>Work Experience</h2></div>
-        <div class="summary-wrapper">
-            <img src="https://www.shutterstock.com/image-vector/continuous-line-drawing-business-woman-600nw-1656612448.jpg" alt="Profile Picture" class="summary-image">
-            <div>
-                <h3>Teacher Assistant, <i>California State University Northridge</i></h3>
-                <p><em>August 2023 - May 2024</em></p>
-                <ul>
-                    <li>Assisted with grading over 100 assignments per week, providing detailed and constructive feedback that resulted in a 20% improvement in overall class performance.</li>
-                    <li>Monitored progress and behavior for over 30 students, offering timely feedback to the lead teacher, which contributed to a 15% reduction in behavioral incidents.</li>
-                    <li>Provided one-on-one assistance to 10 students per week, leading to a 25% increase in the assignment completion rate and comprehension of key concepts.</li>
-                </ul>
-        
-                <h3>Data Analyst, <i>Unipal</i></h3>
-                <p><em>January 2021 - January 2022</em></p>
-                <ul>
-                    <li>Enhanced data analysis techniques by implementing advanced algorithms, improving data accuracy and processing speed by 25%.</li>
-                    <li>Designed visually appealing infographics using graphic design software, increasing sponsor engagement by 30%.</li>
-                    <li>Developed a comprehensive database of universities, popular shops, and discount apps in Abu Dhabi to support Unipal's launch, streamlining data access and usability.</li>
-                    <li>Analyzed and translated survey responses into actionable statistical data and charts, enhancing data interpretation efficiency by 20%.</li>
-                </ul>
-        
-                <h3>Marketing Intern, <i>The Nourishers</i></h3>
-                <p><em>March 2021 - June 2021</em></p>
-                <ul>
-                    <li>Developed and automated the monthly newsletter email system for The Nourishers, increasing subscriber engagement by 40%.</li>
-                    <li>Implemented data collection scripts to gather and analyze information on 100+ organizations in Bahrain and neighboring countries, enhancing database accuracy by 30%.</li>
-                    <li>Utilized data analysis tools to evaluate information on 50+ companies related to physical and mental health in the Gulf, improving market insights by 25%.</li>
-                    <li>Programmed and executed email campaigns using marketing automation software, increasing sponsor participation by 20%.</li>
-                </ul>
+            <div class="gradient-text"><h2>Work Experience</h2></div>
+            <div class="summary-wrapper">
+               <img src="https://www.shutterstock.com/image-vector/continuous-line-drawing-business-woman-600nw-1656612448.jpg" alt="Profile Picture" class="summary-image">
+                <div>
+                    <h3>Teacher Assistant, <i>California State University Northridge</i></h3>
+                    <p><em>August 2023 - May 2024</em></p>
+                    <ul>
+                        <li>Assisted with grading over 100 assignments per week, providing detailed and constructive feedback that resulted in a 20% improvement in overall class performance.</li>
+                        <li>Monitored progress and behavior for over 30 students, offering timely feedback to the lead teacher, which contributed to a 15% reduction in behavioral incidents.</li>
+                        <li>Provided one-on-one assistance to 10 students per week, leading to a 25% increase in the assignment completion rate and comprehension of key concepts.</li>
+                    </ul>
+            
+                    <h3>Data Analyst, <i>Unipal</i></h3>
+                    <p><em>January 2021 - January 2022</em></p>
+                    <ul>
+                        <li>Enhanced data analysis techniques by implementing advanced algorithms, improving data accuracy and processing speed by 25%.</li>
+                        <li>Designed visually appealing infographics using graphic design software, increasing sponsor engagement by 30%.</li>
+                        <li>Developed a comprehensive database of universities, popular shops, and discount apps in Abu Dhabi to support Unipal's launch, streamlining data access and usability.</li>
+                        <li>Analyzed and translated survey responses into actionable statistical data and charts, enhancing data interpretation efficiency by 20%.</li>
+                    </ul>
+            
+                    <h3>Marketing Intern, <i>The Nourishers</i></h3>
+                    <p><em>March 2021 - June 2021</em></p>
+                    <ul>
+                        <li>Developed and automated the monthly newsletter email system for The Nourishers, increasing subscriber engagement by 40%.</li>
+                        <li>Implemented data collection scripts to gather and analyze information on 100+ organizations in Bahrain and neighboring countries, enhancing database accuracy by 30%.</li>
+                        <li>Utilized data analysis tools to evaluate information on 50+ companies related to physical and mental health in the Gulf, improving market insights by 25%.</li>
+                        <li>Programmed and executed email campaigns using marketing automation software, increasing sponsor participation by 20%.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="button-container">
-            <a href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/preview" target="_blank" class="button">View Resume</a>
-        </div>
+            <!-- Making Buttons to External Links (Documents) -->
+            <div class="button-container">
+                <a href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/preview" target="_blank" class="button">View Resume</a>
+            </div>
         </section>
 
         <section id="proj">
-        <div class="projects-section">
-            <h2 class="gradient-text">Projects</h2>
-            <img src="https://cdn.vectorstock.com/i/500p/48/12/one-line-woman-writing-and-study-with-help-laptop-vector-25564812.jpg" alt="Projects" class="projects-image">
-        </div>
+            <div class="projects-section">
+                <h2 class="gradient-text">Projects</h2>
+                <img src="https://cdn.vectorstock.com/i/500p/48/12/one-line-woman-writing-and-study-with-help-laptop-vector-25564812.jpg" alt="Projects" class="projects-image">
+            </div>
 
-        <h3>Smart Prosthetic Arm [2023-24] (<i>C/C++</i>)</h3>
-        <ul>
-            <li>Utilized C++ to implement Bluetooth technology, enhancing the integration of a foot controller into the Biomechanical Smart Prosthetic Arm, thereby improving user interface functionality and accessibility.</li>
-            <li>Implemented wireless communication protocols in C++ to establish seamless connectivity between foot controller microcontrollers, ensuring efficient data transmission and synchronization.</li>
-        </ul>
-        <div class="summary-wrapper">
-            <img src="https://media.licdn.com/dms/image/D4D2DAQFHXAn4KKtbXw/profile-treasury-image-shrink_800_800/0/1721805953694?e=1722412800&v=beta&t=JGncdzRW3W_6zjtQBO-6yW_khKEEhj7SxYApy7lklEI" alt="Outline" class="image">
-        </div>
-        <details>
-            <summary><strong>Bluetooth Integration</strong></summary>
+            <h3>Smart Prosthetic Arm [2023-24] (<i>C/C++</i>)</h3>
             <ul>
-                <div class="summary-wrapper">
-                    <img src="https://sleet-lamprey-dc0.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F68f47b84-3988-4832-bea2-11ee9aa0ea8d%2F02257f83-4127-48c9-8856-eb448c8329e4%2FBLE.png?table=block&id=5fc00c62-e1ef-4d31-ac48-1882109ba02e&spaceId=68f47b84-3988-4832-bea2-11ee9aa0ea8d&width=2000&userId=&cache=v2" alt="Bluetooth Outline" class="image">
-                </div>
+                <li>Utilized C++ to implement Bluetooth technology, enhancing the integration of a foot controller into the Biomechanical Smart Prosthetic Arm, thereby improving user interface functionality and accessibility.</li>
+                <li>Implemented wireless communication protocols in C++ to establish seamless connectivity between foot controller microcontrollers, ensuring efficient data transmission and synchronization.</li>
             </ul>
-        </details>
-        <details>
-            <summary><strong>ESP-NOW Integration</strong></summary>
-            <ul>
-                <div class="summary-wrapper">
-                    <img src="https://sleet-lamprey-dc0.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F68f47b84-3988-4832-bea2-11ee9aa0ea8d%2F0c5a0c50-b8cb-4c4f-899a-e11280cd11e1%2FESP_NOW.jpeg?table=block&id=4b286a38-1092-48ef-ac19-310f9e2852fc&spaceId=68f47b84-3988-4832-bea2-11ee9aa0ea8d&width=1360&userId=&cache=v2" alt="Bluetooth Outline" class="image">
-                </div>
-            </ul>
-        </details>
-        <details>
-            <summary><strong>Walking Detection</strong></summary>
-            <ul>
-                <div class="summary-wrapper">
-                    <img src="https://sleet-lamprey-dc0.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F68f47b84-3988-4832-bea2-11ee9aa0ea8d%2F3c76dd3f-0f76-4c56-8e7c-38af13e26d57%2FWalking.jpeg?table=block&id=534e6c9c-5a77-4447-b19e-943c5a0288a9&spaceId=68f47b84-3988-4832-bea2-11ee9aa0ea8d&width=1360&userId=&cache=v2" alt="Bluetooth Outline" class="image">
-                </div>
-                <div class="summary-wrapper">
-                    <img src="https://sleet-lamprey-dc0.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F68f47b84-3988-4832-bea2-11ee9aa0ea8d%2F587284e5-b39e-4e11-8999-059bd2045548%2FWalkingDt.jpg?table=block&id=9ab93f7b-f9b1-4cb7-9bc8-92dc271dac00&spaceId=68f47b84-3988-4832-bea2-11ee9aa0ea8d&width=1370&userId=&cache=v2" alt="Bluetooth Outline" class="image">
-                </div>
-            </ul>
-        </details>
+            <div class="summary-wrapper">
+                <img src="https://media.licdn.com/dms/image/D4D2DAQFHXAn4KKtbXw/profile-treasury-image-shrink_800_800/0/1721805953694?e=1722412800&v=beta&t=JGncdzRW3W_6zjtQBO-6yW_khKEEhj7SxYApy7lklEI" alt="Outline" class="image">
+            </div>
+
+            <!-- Dropdown with images -->
+            <details>
+                <summary><strong>Bluetooth Integration</strong></summary>
+                <ul>
+                    <div class="summary-wrapper">
+                        <img src="https://sleet-lamprey-dc0.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F68f47b84-3988-4832-bea2-11ee9aa0ea8d%2F02257f83-4127-48c9-8856-eb448c8329e4%2FBLE.png?table=block&id=5fc00c62-e1ef-4d31-ac48-1882109ba02e&spaceId=68f47b84-3988-4832-bea2-11ee9aa0ea8d&width=2000&userId=&cache=v2" alt="Bluetooth Outline" class="image">
+                    </div>
+                </ul>
+            </details>
+            <details>
+                <summary><strong>ESP-NOW Integration</strong></summary>
+                <ul>
+                    <div class="summary-wrapper">
+                        <img src="https://sleet-lamprey-dc0.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F68f47b84-3988-4832-bea2-11ee9aa0ea8d%2F0c5a0c50-b8cb-4c4f-899a-e11280cd11e1%2FESP_NOW.jpeg?table=block&id=4b286a38-1092-48ef-ac19-310f9e2852fc&spaceId=68f47b84-3988-4832-bea2-11ee9aa0ea8d&width=1360&userId=&cache=v2" alt="Bluetooth Outline" class="image">
+                    </div>
+                </ul>
+            </details>
+            <details>
+                <summary><strong>Walking Detection</strong></summary>
+                <ul>
+                    <div class="summary-wrapper">
+                        <img src="https://sleet-lamprey-dc0.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F68f47b84-3988-4832-bea2-11ee9aa0ea8d%2F3c76dd3f-0f76-4c56-8e7c-38af13e26d57%2FWalking.jpeg?table=block&id=534e6c9c-5a77-4447-b19e-943c5a0288a9&spaceId=68f47b84-3988-4832-bea2-11ee9aa0ea8d&width=1360&userId=&cache=v2" alt="Bluetooth Outline" class="image">
+                    </div>
+                    <div class="summary-wrapper">
+                        <img src="https://sleet-lamprey-dc0.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F68f47b84-3988-4832-bea2-11ee9aa0ea8d%2F587284e5-b39e-4e11-8999-059bd2045548%2FWalkingDt.jpg?table=block&id=9ab93f7b-f9b1-4cb7-9bc8-92dc271dac00&spaceId=68f47b84-3988-4832-bea2-11ee9aa0ea8d&width=1370&userId=&cache=v2" alt="Bluetooth Outline" class="image">
+                    </div>
+                </ul>
+            </details>
         
-        <div class="button-container">
-            <a href="https://www.csun.edu/~pbishay/projects.php" target="_blank" class="button">View Project Site</a>
-            <a href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank" class="button">View Report</a>
-            <a href="https://github.com/sara-kaz/Smart-Prosthesis-7th-Cohort" target="_blank" class="button">View Code</a>
-            <a href="https://drive.google.com/file/d/17OoT9koCpqH9PGj35ya8RFIaFsZ9H9zN/preview" target="_blank" class="button">More</a>
-        </div>
+            <div class="button-container">
+                <a href="https://www.csun.edu/~pbishay/projects.php" target="_blank" class="button">View Project Site</a>
+                <a href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank" class="button">View Report</a>
+                <a href="https://github.com/sara-kaz/Smart-Prosthesis-7th-Cohort" target="_blank" class="button">View Code</a>
+                <a href="https://drive.google.com/file/d/17OoT9koCpqH9PGj35ya8RFIaFsZ9H9zN/preview" target="_blank" class="button">More</a>
+            </div>
 
-        <h3>AES-128 Algorithm Implementation (<i>SystemVerilog</i>)</h3>
-        <ul>
-            <li>Engineered and implemented a Verilog algorithm prioritizing efficiency and robustness, optimizing performance across diverse applications.</li>
-            <li>Developed a secure encryption solution in Verilog tailored for versatile application scenarios, ensuring robust data confidentiality and integrity.</li>
-        </ul>
-        <div class="button-container">
-            <a href="https://drive.google.com/file/d/1JI9QK4zPidZLYTMg1YQxxda2uzVStjWH/preview" target="_blank" class="button">View Outline</a>
-            <a href="https://drive.google.com/file/d/1nKk8F7ppGmHeNGtD6ScAxxu0h6OUEoQZ/preview" target="_blank" class="button">View Report</a>
-            <a href="https://github.com/sara-kaz/AES-128" target="_blank" class="button">View Code</a>
-        </div>
-
-        <h3>Parkinson’s Disease Diagnosis using Machine Learning (<i>MATLAB</i>)</h3>
-        <div class="projects-section">
+            <h3>AES-128 Algorithm Implementation (<i>SystemVerilog</i>)</h3>
             <ul>
-             <li>Engineered a machine learning model in MATLAB to facilitate early diagnosis of Parkinson’s Disease through analysis of voice recordings.</li>
-             <li>Employed advanced machine learning techniques to extract and classify voice features associated with Parkinson’s Disease diagnosis.</li>
-             <li>Published a research paper detailing findings and methodologies in the field of Parkinson’s Disease diagnosis using voice analysis.</li>
+                <li>Engineered and implemented a Verilog algorithm prioritizing efficiency and robustness, optimizing performance across diverse applications.</li>
+                <li>Developed a secure encryption solution in Verilog tailored for versatile application scenarios, ensuring robust data confidentiality and integrity.</li>
             </ul>
-            <a href="https://link.springer.com/chapter/10.1007/978-981-19-7742-8_4" class="link-preview" target="_blank">
-                <img src="https://media.springernature.com/full/springer-static/cover-hires/book/978-981-19-7742-8?as=webp" alt="Preview Image">
-                <div class="content">
-                    <div class="title">Diagnosing Parkinson’s Disease Based on Voice Recordings: Comparative Study Using Machine Learning Techniques</div>
-                    <div class="description">This paper focuses on applying and evaluating different machine learning techniques to predict Parkinson’s disease based on patient’s voice data. The various algorithms in MATLAB were used to train models, and the better performing models among them were chosen.</div>
-                </div>
-            </a>
-        </div>
+            <div class="button-container">
+                <a href="https://drive.google.com/file/d/1JI9QK4zPidZLYTMg1YQxxda2uzVStjWH/preview" target="_blank" class="button">View Outline</a>
+                <a href="https://drive.google.com/file/d/1nKk8F7ppGmHeNGtD6ScAxxu0h6OUEoQZ/preview" target="_blank" class="button">View Report</a>
+                <a href="https://github.com/sara-kaz/AES-128" target="_blank" class="button">View Code</a>
+            </div>
 
-        <h3>Lost and Found System (<i>Java/JavaFX</i>)</h3>
-        <ul>
-            <li>Developed a JavaFX-based user interface (UI) for seamlessly reporting lost items and claiming found items, prioritizing intuitive navigation and user experience.</li>
-            <li>Implemented robust database functionality in Java to ensure efficient storage and retrieval of lost and found item records, optimizing system performance and reliability.</li>
-        </ul>
-        <div class="frame">
-            <img src="https://media.licdn.com/dms/image/D4D2DAQFjXSusZ4NUow/profile-treasury-image-shrink_800_800/0/1718859902573?e=1722326400&v=beta&t=U7x-I-7969GCI6TU_FRxnZtT_zghzPcn5pitbBrUQdQ" alt="Image 1">
-            <img src="https://media.licdn.com/dms/image/D4D2DAQENyNZhCAou3A/profile-treasury-image-shrink_800_800/0/1718859877116?e=1722326400&v=beta&t=5LIThGZy9VcgJx-eGvw_0dcml4rSKfBtCBcxbq2Ni3w" alt="Image 2">
-            <img src="https://media.licdn.com/dms/image/D4D2DAQEVexhyGA1MvA/profile-treasury-image-shrink_800_800/0/1718859854718?e=1722326400&v=beta&t=qCU_FYluMNjwWoljsieUsMEkkvCeJpPJEdX6S9SIEB8" alt="Image 3">
-            <img src="https://media.licdn.com/dms/image/D4D2DAQGBlRj-snZVRA/profile-treasury-image-shrink_800_800/0/1718859826964?e=1722326400&v=beta&t=aLIQIfFcy7ZDaQq6x0ZuXF3uBrMPUgNQLDOzuctpojg" alt="Image 4">
-        </div>
-        <div class="button-container">
-            <a href="https://github.com/sara-kaz/Lost-Found" target="_blank" class="button">View Code</a>
-        </div>
+            <h3>Parkinson’s Disease Diagnosis using Machine Learning (<i>MATLAB</i>)</h3>
+            <div class="projects-section">
+                <ul>
+                 <li>Engineered a machine learning model in MATLAB to facilitate early diagnosis of Parkinson’s Disease through analysis of voice recordings.</li>
+                 <li>Employed advanced machine learning techniques to extract and classify voice features associated with Parkinson’s Disease diagnosis.</li>
+                 <li>Published a research paper detailing findings and methodologies in the field of Parkinson’s Disease diagnosis using voice analysis.</li>
+                </ul>
+                <a href="https://link.springer.com/chapter/10.1007/978-981-19-7742-8_4" class="link-preview" target="_blank">
+                    <img src="https://media.springernature.com/full/springer-static/cover-hires/book/978-981-19-7742-8?as=webp" alt="Preview Image">
+                    <div class="content">
+                        <div class="title">Diagnosing Parkinson’s Disease Based on Voice Recordings: Comparative Study Using Machine Learning Techniques</div>
+                        <div class="description">This paper focuses on applying and evaluating different machine learning techniques to predict Parkinson’s disease based on patient’s voice data. The various algorithms in MATLAB were used to train models, and the better performing models among them were chosen.</div>
+                    </div>
+                </a>
+            </div>
 
-        <h3>Traffic Light System (<i>VHDL</i>)</h3>
-        <ul>
-            <li>Designed and implemented a customized traffic light system using VHDL and integrated sensors, ensuring efficient operation and responsiveness.</li>
-            <li>Developed algorithms in VHDL to regulate traffic flow and optimize signal timings dynamically based on real-time sensor data, enhancing overall traffic management efficiency.</li>
-        </ul>
+            <h3>Lost and Found System (<i>Java/JavaFX</i>)</h3>
+            <ul>
+                <li>Developed a JavaFX-based user interface (UI) for seamlessly reporting lost items and claiming found items, prioritizing intuitive navigation and user experience.</li>
+                <li>Implemented robust database functionality in Java to ensure efficient storage and retrieval of lost and found item records, optimizing system performance and reliability.</li>
+            </ul>
+            <div class="frame">
+                <img src="https://media.licdn.com/dms/image/D4D2DAQFjXSusZ4NUow/profile-treasury-image-shrink_800_800/0/1718859902573?e=1722326400&v=beta&t=U7x-I-7969GCI6TU_FRxnZtT_zghzPcn5pitbBrUQdQ" alt="Image 1">
+                <img src="https://media.licdn.com/dms/image/D4D2DAQENyNZhCAou3A/profile-treasury-image-shrink_800_800/0/1718859877116?e=1722326400&v=beta&t=5LIThGZy9VcgJx-eGvw_0dcml4rSKfBtCBcxbq2Ni3w" alt="Image 2">
+                <img src="https://media.licdn.com/dms/image/D4D2DAQEVexhyGA1MvA/profile-treasury-image-shrink_800_800/0/1718859854718?e=1722326400&v=beta&t=qCU_FYluMNjwWoljsieUsMEkkvCeJpPJEdX6S9SIEB8" alt="Image 3">
+                <img src="https://media.licdn.com/dms/image/D4D2DAQGBlRj-snZVRA/profile-treasury-image-shrink_800_800/0/1718859826964?e=1722326400&v=beta&t=aLIQIfFcy7ZDaQq6x0ZuXF3uBrMPUgNQLDOzuctpojg" alt="Image 4">
+            </div>
+            <div class="button-container">
+                <a href="https://github.com/sara-kaz/Lost-Found" target="_blank" class="button">View Code</a>
+            </div>
+
+            <h3>Traffic Light System (<i>VHDL</i>)</h3>
+            <ul>
+                <li>Designed and implemented a customized traffic light system using VHDL and integrated sensors, ensuring efficient operation and responsiveness.</li>
+                <li>Developed algorithms in VHDL to regulate traffic flow and optimize signal timings dynamically based on real-time sensor data, enhancing overall traffic management efficiency.</li>
+            </ul>
+        </section>
 
         <section id="edu">
-        <div class="projects-section">
-            <div>
-                <div class="gradient-text"><h2>Education</h2></div>
-                <h3>Bachelor of Science in Computer Engineering</h3>
-                <p><em>California State University Northridge • 2024</em></p>
-                <ul>
-                    <li>GPA: 3.94, Summa Cum Laude</li>
-                    <li>Dean's List: Fall 2022 - Spring 2024</li>
-                    <li>Joe and Nancy Owens Engineering Annual Scholarship</li>
-                    <li>50% Scholarship (AUBH)</li>
-                </ul>
-                <details>
-                    <summary>Relevant Coursework</summary>
+            <div class="projects-section">
+                <div>
+                    <div class="gradient-text"><h2>Education</h2></div>
+                    <h3>Bachelor of Science in Computer Engineering</h3>
+                    <p><em>California State University Northridge • 2024</em></p>
                     <ul>
-                        <li>Data Structures and Algorithms</li>
-                        <li>Machine Learning</li>
-                        <li>Software Engineering</li>
-                        <li>FPGA Design using Verilog and VHDL</li>
-                        <li>Electrical Engineering Fundamentals</li>
-                        <li>Embedded Systems</li>
-                        <li>Operating Systems</li>
-                        <li>Data Structures</li>
-                        <li>Digital Electronics</li>
+                        <li>GPA: 3.94, Summa Cum Laude</li>
+                        <li>Dean's List: Fall 2022 - Spring 2024</li>
+                        <li>Joe and Nancy Owens Engineering Annual Scholarship</li>
+                        <li>50% Scholarship (AUBH)</li>
                     </ul>
-                </details>
+                    <details>
+                        <summary>Relevant Coursework</summary>
+                        <ul>
+                            <li>Data Structures and Algorithms</li>
+                            <li>Machine Learning</li>
+                            <li>Software Engineering</li>
+                            <li>FPGA Design using Verilog and VHDL</li>
+                            <li>Electrical Engineering Fundamentals</li>
+                            <li>Embedded Systems</li>
+                            <li>Operating Systems</li>
+                            <li>Data Structures</li>
+                            <li>Digital Electronics</li>
+                        </ul>
+                    </details>
+                </div>
+                <img src="https://www.shutterstock.com/image-vector/continuous-single-drawn-one-line-600nw-2259328127.jpg" style="width: 260px;">
             </div>
-            <img src="https://www.shutterstock.com/image-vector/continuous-single-drawn-one-line-600nw-2259328127.jpg" style="width: 260px;">
-        </div>
-        <div class="button-container">
-            <a href="https://drive.google.com/file/d/1QjrFzWFWrzer3bw5xy2_jNyv7GuzGw3W/preview" target="_blank" class="button">View Diploma</a>
-            <a href="https://drive.google.com/file/d/1KSEZqqeRLfNL1Y9_D0JOmDpthqvLvgKs/preview" target="_blank" class="button">View Transcript</a>
-        </div>
+            <div class="button-container">
+                <a href="https://drive.google.com/file/d/1QjrFzWFWrzer3bw5xy2_jNyv7GuzGw3W/preview" target="_blank" class="button">View Diploma</a>
+                <a href="https://drive.google.com/file/d/1KSEZqqeRLfNL1Y9_D0JOmDpthqvLvgKs/preview" target="_blank" class="button">View Transcript</a>
+            </div>
         </section>
 
         <div class="gradient-text"><h2>Certifications</h2></div>
         <details><summary>.Net Full Stack Foundation</summary>
-            <ul><div class="pdf-container">
-                <iframe src="https://drive.google.com/file/d/1l1qRL4qCjjocptyPh8SAXOy_CuaUjt1q/preview" type="application/pdf"></iframe>
-            </div></ul>
+            <ul>
+                <div class="pdf-container">
+                    <iframe src="https://drive.google.com/file/d/1l1qRL4qCjjocptyPh8SAXOy_CuaUjt1q/preview" type="application/pdf"></iframe>
+                </div>
+            </ul>
         </details>
         <details><summary>Six Sigma White Belt</summary>
-            <ul><div class="pdf-container">
-                <iframe src="https://drive.google.com/file/d/10bfyRuuBM9_cLojjxG-qnRVXrEsID5yC/preview" type="application/pdf"></iframe>
-            </div></ul>
+            <ul>
+                <div class="pdf-container">
+                    <iframe src="https://drive.google.com/file/d/10bfyRuuBM9_cLojjxG-qnRVXrEsID5yC/preview" type="application/pdf"></iframe>
+                </div>
+            </ul>
         </details>
         <details><summary>Adult and Pediatric First Aid/CPR/AED</summary>
-            <ul><div class="pdf-container">
-                <iframe src="https://drive.google.com/file/d/1Y6dVhjLR_GNqgT9f7TYI4ab0uGs-dsix/preview" type="application/pdf"></iframe>
-            </div></ul>
+            <ul>
+                <div class="pdf-container">
+                    <iframe src="https://drive.google.com/file/d/1Y6dVhjLR_GNqgT9f7TYI4ab0uGs-dsix/preview" type="application/pdf"></iframe>
+                </div>
+            </ul>
         </details>
         <li>Udacity Future Work in Digital: Data Analysis</li>
         <li>Udacity Future Work in Digital: Web Development</li>
@@ -614,19 +627,19 @@ int main() {
     </div>
     
     <section id="contact">
-    <footer>
-        <div class="contact-info">
-            <h2>Contact Me</h2>
-            <p>Email: sarakhaled.kaz@gmail.com</p>
-            <p>Phone: +1(424)460-9975</p>
-        </div>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/sara-khaled-9a3a741ab/" target="_blank" title="LinkedIn"><img src="https://img.icons8.com/?size=80&id=ErvuoIU4kAzh&format=png&color=000000" alt="LinkedIn"></a>
-            <a href="https://github.com/sara-kaz" target="_blank" title="GitHub"><img src="https://img.icons8.com/?size=100&id=FOEqu0B3Z17A&format=png&color=000000" alt="GitHub"  style="width: 40px; height: 40px;"></a>
-            <a href="https://www.instagram.com/sara.__.kazz/" target="_blank" title="Instagram"><img src="https://img.icons8.com/?size=80&id=HBemF8R43rVx&format=png&color=000000" alt="Instagram"></a>
-            <p>&copyDesgined By Sara Aly </p>
-        </div>
-    </footer>
+        <footer>
+            <div class="contact-info">
+                <h2>Contact Me</h2>
+                <p>Email: sarakhaled.kaz@gmail.com</p>
+                <p>Phone: +1(424)460-9975</p>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/sara-khaled-9a3a741ab/" target="_blank" title="LinkedIn"><img src="https://img.icons8.com/?size=80&id=ErvuoIU4kAzh&format=png&color=000000" alt="LinkedIn"></a>
+                <a href="https://github.com/sara-kaz" target="_blank" title="GitHub"><img src="https://img.icons8.com/?size=100&id=FOEqu0B3Z17A&format=png&color=000000" alt="GitHub"  style="width: 40px; height: 40px;"></a>
+                <a href="https://www.instagram.com/sara.__.kazz/" target="_blank" title="Instagram"><img src="https://img.icons8.com/?size=80&id=HBemF8R43rVx&format=png&color=000000" alt="Instagram"></a>
+                <p>&copy Desgined By Sara Aly </p>
+            </div>
+        </footer>
     </section>
-</body>
+  </body>
 </html>
