@@ -228,39 +228,41 @@
             padding: 2px 4px;
             border-radius: 4px;
         }
-        .navbar {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-content: center;
-            justify-content: space-around;
+         /* Style the navigation bar */
+         ul.navbar {
             background-color: #ebc0fc;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
         }
-        .navbar li {
+
+        ul.navbar li {
             position: relative;
         }
-        .navbar a {
+
+        ul.navbar a {
             color: #333;
             font-size: 24px;
             text-decoration: none;
             padding: 15px 20px;
             display: inline-block;
         }
-        .navbar a:hover {
+
+        ul.navbar a:hover {
             background-color: #8c64d0;
             color: #fff;
         }
+
         .dropdown-content {
             display: none;
             position: absolute;
-            align-items: center;
-            align-content: center;
             background-color: #ebc0fc;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px #ccc;
             color: #333;
             z-index: 1;
         }
+
         .dropdown-content a {
             color: black;
             font-size: 18px;
@@ -268,10 +270,12 @@
             text-decoration: none;
             display: block;
         }
+
         .dropdown-content a:hover {
             background-color: #f1f1f1;
             color: #333;
         }
+
         .dropdown:hover .dropdown-content {
             display: block;
         }
@@ -333,17 +337,17 @@
     <!--Menu bar implementations-->
     <nav>
         <ul class="navbar">
-            <a href="#home">Home</a>
-            <ul class="dropdown">
+            <li><a href="#home">Home</a></li>
+            <li class="dropdown">
                 <a class="dropbtn">Sections</a>
                 <div class="dropdown-content">
                     <a href="#proj">Projects</a>
                     <a href="#work">Work</a>
                     <a href="#edu">Education</a>
                 </div>
-            </ul>
-            <ul class="dropdown">
-                <!--Menu bar dropdown implementations-->
+            </li>
+            <li class="dropdown">
+                <!-- Menu bar dropdown implementations -->
                 <a class="dropbtn">Documents</a>
                 <div class="dropdown-content">
                     <a href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/preview" target="_blank">Resume</a>
@@ -351,8 +355,8 @@
                     <a href="https://drive.google.com/file/d/1KSEZqqeRLfNL1Y9_D0JOmDpthqvLvgKs/preview" target="_blank">Transcript</a>
                     <a href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank">Grad Proj Report</a>
                 </div>
-            </ul>
-            <a href="#contact">Contact</a>
+            </li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
     <div class="container">
