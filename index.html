@@ -9,275 +9,196 @@
   ---------------------------------------Style---------------------------------------
   ----------------------------------------------------------------------------------->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff; /* Background set to white */
-            color: #333;
+        /* Basic Reset */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        header {
-            background: url('https://marketplace.canva.com/EAFmahf0Yqs/1/0/1600w/canva-pink-minimalist-watercolor-background-linkedin-banner-UubSLOW3Y3M.jpg');
-            background-size: cover;
-            color: rgb(255, 255, 255);
-            padding: 40px; /* Increased padding for a larger header */
-            text-align: center;
-            font-size: 2em; /* Larger font size for header text */
-        }
-        footer {
-            background: url('https://marketplace.canva.com/EAFmahf0Yqs/1/0/1600w/canva-pink-minimalist-watercolor-background-linkedin-banner-UubSLOW3Y3M.jpg');
-            background-size: cover;
-            color: white;
-            padding: 20px; /* Reduced padding for a smaller footer */
-            text-align: center;
-            font-size: 1em; /* Standard font size for footer text */
-        }
-        .gradient-text {
-            font-weight: bold; 
-            background: linear-gradient(90deg, #8c64d0, #bb6eda, #ebc0fc);
-            -webkit-background-clip: text; /* WebKit browsers (Chrome, Safari) */
-            -webkit-text-fill-color: transparent; /* WebKit browsers */
-            background-clip: text; /* Other browsers */
-            color: transparent; /* Fallback color */    
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .image {
-            border-radius: 10px;
-            margin: auto; /* Space between image and text */
-            width: 900px;
-            height: auto;
-        }
-        .summary-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 40px auto; /* Centering the summary wrapper */
-        }
-        .summary-image {
-            border-radius: 10px;
-            margin: auto 20px; /* Space between image and text */
-            height: 400px;
-        }
-        .summary-container {
-            background-color: #ebc0fc; /* Purple background */
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
             color: #333;
             padding: 20px;
-            border-radius: 10px;
-            text-align: left;
-            margin: 40px auto; /* Centering the summary */
-            max-width: 800px; /* Adjust max-width as needed */
         }
-        footer {
+
+        /* Navbar Styling */
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background-color: #333;
             padding: 10px 20px;
-            background: url('https://marketplace.canva.com/EAFmahf0Yqs/1/0/1600w/canva-pink-minimalist-watercolor-background-linkedin-banner-UubSLOW3Y3M.jpg');
-            background-size: cover;
-        }
-        .contact-info {
-            text-align: left; 
-            color:#333 ;
-        }
-        .social-icons {
-            text-align: right;
-        }
-        .social-icons a {
-            margin: 0 10px;
-            text-decoration: none;
-        }
-        .social-icons img {
-            width: 48px;
-            height: 48px;
-            vertical-align: middle;
-        }
-        .projects-section {
-            display: flex;
-            align-items: center;
-            margin: 10px 0; /* Space above and below the section */
-        }
-        .projects-image {
-            width: 450px; 
-            height: auto; /* Maintain aspect ratio */
-            margin-left: 10px; /* Space between image and text */
-            border-radius: 10px; /* Optional, for rounded corners */
-        }
-        .projects-section h2 {
-            margin: 0; /* Remove default margin */
-        }
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap; /* Allows buttons to wrap onto the next line if there's not enough space */
-            justify-content: center; /* Centers buttons horizontally */
-            gap: 10px; /* Adds space between buttons */
-        }
-        .button {
-            background-color: #ebc0fc;
-            color: #333;
-            padding: 10px 20px;
-            border: none;
             border-radius: 5px;
+        }
+
+        .navbar a {
+            color: #fff;
             text-decoration: none;
-            font-size: 16px;
+            padding: 10px 20px;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+            border-radius: 4px;
+        }
+
+        /* Header */
+        header {
             text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        .gradient-text {
+            background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            margin-bottom: 40px;
+        }
+
+        .projects-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 10px;
+        }
+
+        /* Project Details */
+        h3 {
+            color: #0072ff;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .summary-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Dropdown with images */
+        details {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        details[open] summary::after {
+            content: "▼";
+            float: right;
+        }
+
+        summary::after {
+            content: "►";
+            float: right;
+        }
+
+        /* Buttons */
+        .button-container {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .button {
             display: inline-block;
-            box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
-            max-width: 100%; /* Ensures buttons do not exceed container width */
-        }
-        .button:hover {
-            background-color: #8c64d0;
+            background-color: #0072ff;
             color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
         }
+
+        .button:hover {
+            background-color: #005bb5;
+        }
+
+        /* Frame styling for images */
+        .frame {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .frame img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        /* Link preview */
         .link-preview {
             display: flex;
             align-items: center;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-left: 10px;
-            text-decoration: none;
-            color: black;
-        }
-        .link-preview img {
-            width: 100px;
-            height: auto;
-            margin-right: 10px;
-        }
-        .link-preview .content {
-            flex: 1;
-        }
-        .link-preview .title {
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .link-preview .description {
-            font-size: 14px;
-        }
-        .stats-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-            margin-right: 50px;
-            margin-left: 50px;
-        }
-        .frame {
-            display: grid;
-            align-items: center;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            padding: 10px;
-            border: 2px solid #333;
             background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            margin-bottom: 20px;
         }
-        .frame img {
-            width: 100%;
+
+        .link-preview img {
+            width: 120px;
             height: auto;
-        }
-        .pdf-container {
-            width: 100%;
-            height: 100%;
-            max-width: 1000px;
-            max-height: 100%;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .chat-container {
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            width: 90%;
-            max-width: 1500px;
-        }
-        .code-bubble {
-            background-color: #ebc0fc;
-            border-radius: 12px;
-            padding: 10px 15px;
-            margin: 0px 0;
-            box-shadow: 0 2px 5px #ebc0fc;
-            position: relative;
-        }
-        .code-bubble::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: -10px;
-            width: 0;
-            height: 0;
-            border: 10px solid transparent;
-            border-right-color: #ebc0fc;
-        }
-        pre {
-            margin: 0;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        code {
-            font-family: 'Courier New', Courier, monospace;
-            color: #333;
-            background-color: #ebc0fc;
-            padding: 2px 4px;
-            border-radius: 4px;
-        }
-         /* Style the navigation bar */
-         ul.navbar {
-            background-color: #ebc0fc;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
+            border-radius: 10px;
+            margin-right: 20px;
         }
 
-        ul.navbar li {
-            position: relative;
+        .content {
+            max-width: 500px;
         }
 
-        ul.navbar a {
-            color: #333;
-            font-size: 24px;
-            text-decoration: none;
-            padding: 15px 20px;
-            display: inline-block;
+        .title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
 
-        ul.navbar a:hover {
-            background-color: #8c64d0;
-            color: #fff;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #ebc0fc;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px #ccc;
-            color: #333;
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            font-size: 18px;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-            color: #333;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
+        .description {
+            font-size: 0.9em;
+            color: #666;
         }
 
         /* Responsive adjustments */
@@ -335,19 +256,24 @@
         <h1>Sara Aly Portfolio</h1> 
     </header>
     <!--Menu bar implementations-->
+    <div class="navbar">
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
     <nav>
         <ul class="navbar">
-            <li><a href="#home">Home</a></li>
-            <li class="dropdown">
+            <a href="#home">Home</a>
+            <ul class="dropdown">
                 <a class="dropbtn">Sections</a>
                 <div class="dropdown-content">
                     <a href="#proj">Projects</a>
                     <a href="#work">Work</a>
                     <a href="#edu">Education</a>
                 </div>
-            </li>
-            <li class="dropdown">
-                <!-- Menu bar dropdown implementations -->
+            </ul>
+            <ul class="dropdown">
+                <!--Menu bar dropdown implementations-->
                 <a class="dropbtn">Documents</a>
                 <div class="dropdown-content">
                     <a href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/preview" target="_blank">Resume</a>
@@ -355,8 +281,8 @@
                     <a href="https://drive.google.com/file/d/1KSEZqqeRLfNL1Y9_D0JOmDpthqvLvgKs/preview" target="_blank">Transcript</a>
                     <a href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank">Grad Proj Report</a>
                 </div>
-            </li>
-            <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact">Contact</a>
         </ul>
     </nav>
     <div class="container">
@@ -666,7 +592,7 @@ int main() {
                 <a href="https://www.linkedin.com/in/sara-khaled-9a3a741ab/" target="_blank" title="LinkedIn"><img src="https://img.icons8.com/?size=80&id=ErvuoIU4kAzh&format=png&color=000000" alt="LinkedIn"></a>
                 <a href="https://github.com/sara-kaz" target="_blank" title="GitHub"><img src="https://img.icons8.com/?size=100&id=FOEqu0B3Z17A&format=png&color=000000" alt="GitHub"  style="width: 40px; height: 40px;"></a>
                 <a href="https://www.instagram.com/sara.__.kazz/" target="_blank" title="Instagram"><img src="https://img.icons8.com/?size=80&id=HBemF8R43rVx&format=png&color=000000" alt="Instagram"></a>
-                <p>&copy Desgined By Sara Aly </p>
+                <p>&copy; 2024 Sara Aly. All rights reserved.</p>
             </div>
         </footer>
     </section>
