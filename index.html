@@ -281,14 +281,16 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* Center the child elements */
   padding: 20px;
   background-color: #222;
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
   color: white;
   text-transform: uppercase;
   overflow: hidden;
-  width: 600px;
+  width: 80%; /* Use relative width for responsiveness */
+  max-width: 1200px; /* Optional: Set a max-width for larger screens */
+  margin: 0 auto; /* Center the navigationWrapper horizontally */
 
   .logoWrapper {
     display: flex;
@@ -306,6 +308,7 @@
   .navigation {
     display: flex;
     list-style-type: none;
+    margin-left: auto; /* Push the navigation items to the right */
 
     li {
       opacity: 1;
@@ -316,7 +319,7 @@
     }
 
     .parent {
-      padding: 0 10px;
+      padding: 0 15px;
       cursor: pointer;
 
       .link {
@@ -452,6 +455,20 @@
             .navbar li {
                 width: 100%;
             }
+            .navigationWrapper {
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center;
+  }
+  
+  .navigationWrapper .navigation {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navigationWrapper .navigation .parent {
+    padding: 10px 0;
+  }
         }
     </style>
   </head>
