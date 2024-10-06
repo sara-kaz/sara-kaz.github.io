@@ -827,5 +827,41 @@ int main() {
             </div>
         </footer>
     </section>
+
+        <!-----------------------------------------------------------------------------------
+      ---------------------------------------JavaScript-----------------------------------
+      ----------------------------------------------------------------------------------->
+    <script>
+      // Vanilla JavaScript version of your style.js
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var clients = document.getElementById('clients');
+        var services = document.getElementById('services');
+
+        clients.addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent default anchor behavior
+          clients.classList.toggle("active");
+          
+          var parents = document.querySelectorAll('.parent');
+          parents.forEach(function(parent) {
+            if (parent.id !== 'clients') {
+              parent.classList.toggle("invisible");
+            }
+          });
+        }, false);
+
+        services.addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent default anchor behavior
+          services.classList.toggle("active");
+          
+          var parents = document.querySelectorAll('.parent');
+          parents.forEach(function(parent) {
+            if (parent.id !== 'services') {
+              parent.classList.toggle("invisible");
+            }
+          });
+        }, false);
+      });
+    </script>
   </body>
 </html>
