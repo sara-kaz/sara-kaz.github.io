@@ -412,6 +412,314 @@
           margin-bottom: 20px; /* Add space below image */
         }
       }
+
+       .site-wrap {
+  max-width: 700px;
+  margin: 70px auto;
+  background:white;
+  padding:40px;
+  text-align: justify;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
+  transform: scale(0.98);
+  transition: transform 0.5s;
+}
+
+body.fixed-nav .site-wrap {
+  transform: scale(1);
+}
+
+
+header {
+  text-align: center;
+  height:50vh;
+  background:url(http://wes.io/iEgP/wow-so-deep.jpg) bottom center no-repeat;
+  background-size:cover;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+h1 {
+  color:white;
+  font-size: 7vw;
+  text-shadow: 3px 4px 0 rgba(0,0,0,0.2)
+}
+
+nav {
+  background:black;
+  top:0;
+  width: 100%;
+  transition:all 0.5s;
+  position: relative;
+  z-index: 1;
+}
+
+body.fixed-nav nav {
+  position: fixed;
+  box-shadow:0 5px 0 rgba(0,0,0,0.1);
+}
+
+nav ul {
+  margin: 0;
+  padding:0;
+  list-style: none;
+  display:flex;
+}
+
+nav li {
+  flex:1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+li.logo a {
+  color:black;
+}
+
+.fixed-nav li.logo {
+  max-width:100px;
+}
+
+nav a {
+  text-decoration: none;
+  padding:20px;
+  display: inline-block;
+  color:white !important;
+  transition:all 0.2s;
+  text-transform: uppercase;
+}
+li.logo {
+  max-width:0;
+  overflow: hidden;
+  background: #fbd406;
+  transition: all 0.5s;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+header,
+section {
+  font-family: "Rationale", sans-serif;
+  height: 100vh;
+  background: url(http://www.redtankstudio.com/website/images/slider1.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+section {
+  background: white;
+  color: black;
+}
+
+i {
+  color: gray;
+  margin-left: 10px;
+}
+
+img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+#about{
+  background-color: #fbd406;
+}
+
+
+
+.plan ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan ul li {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding:10px;
+}
+
+.plan ul li:last-child {
+  border-bottom: 0;
+}
+
+.plan a {
+  text-decoration: none;
+  background:#FEFF00;
+  padding:10px;
+  color:black;
+  border-radius:4px;
+}
+
+
+.plan h2 {
+  text-transform: uppercase;
+  color:white;
+  letter-spacing: 2px;
+  text-shadow:3px 3px 0 rgba(0,0,0,0.1);
+}
+
+.price {
+  font-size: 50px;
+  font-family: serif;
+  margin: 10px 0;
+}
+
+
+/* Flex Container!!! */
+.pricing-grid {
+  max-width:750px;
+  margin: 0 auto;
+  display:flex; 
+  align-items:center;
+}
+
+.plan {
+  background:rgba(255,255,255,0.2);
+  margin:20px;
+  padding:20px;
+  border-radius: 4px;
+  text-align: center;
+  
+  flex:1;
+  display:flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+  justify-content: center;
+  aling-items:center;
+  text-align:center;
+}
+.plan p {
+  margin-top: 30px
+}
+.plan h5{
+  align-self:flex-end;
+}
+
+#reference{
+  margin: auto;
+  height: 70px;
+  width: 70px;
+}
+
+#projects {
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+    background-color: #1a1e2F;
+}
+
+.card {
+  position: relative;
+  display: block;
+  width: 30%;
+  margin: 6% 10px;
+  
+  border-top: 6px solid #38429F;
+  background-color: #18223F;
+  
+  -webkit-box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.25);
+}
+
+.card.active {
+  border-color: #0f7552;
+}
+
+.card-img {
+  width: 100%;
+  height: 230px;
+  opacity: 0.3;
+  background-color: rgb(0,	120,	241);
+  background: rgba(29,29,29,1);
+  background-blend-mode: screen;
+  background-size: cover;
+  opacity: 0.6;
+  z-index: 0;
+   -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+.card-img:hover {
+    opacity: 1;
+}
+.card-img-1{
+    background-image: url('https://source.unsplash.com/800x600/?nature');
+}
+
+.card-img-2{
+    background-image: url('https://source.unsplash.com/800x600/?wate');
+}
+
+.card-img-3{
+    background-image: url('https://source.unsplash.com/800x600/?sea');
+}
+.card-deets {
+  position: relative;
+  color: #fff;
+  z-index: 9999;
+  margin-top: -95px;
+}
+
+.card-info {
+  margin: 10px 20px;
+}
+
+.card-title {
+  clear: both;
+  float: left;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+}
+
+.card-title h1 {
+    letter-spacing: 0.1em;
+  }
+
+.card-description {
+  clear: both;
+  padding-top: 54px;
+  color: #c8d2eF;
+  margin: 0 20px 20px 20px;
+  font-size: 0.9em;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  background-color: transparent;
+}
+
+
+.card-data {
+  width: 100%;
+  margin-bottom: 20px;
+  color: #c8d2eF;
+  display: flex;
+  justify-content: center;
+}
+.card-data   div {
+    padding: 5px;
+    margin-bottom: 20px;
+    float: left;
+    width: 33.333339%;
+    text-align: center;
+  }
+
+.card-data div h6 { opacity:0.35 }
+.card-data div p { letter-spacing: 0.02em; }
     </style>
 
     <!-- Include Font Awesome for icons -->
@@ -431,6 +739,124 @@
     <header>
         <h1>Sara Aly Portfolio</h1> 
     </header>
+
+    <nav id="main">
+  <ul>
+    <li class="logo"><a>ST</a></li>
+    <li><a data-id="home">Home</a></li>
+    <li><a data-id="about">About</a></li>
+    <li><a data-id="references">References</a></li>
+    <li><a data-id="projects">Projects</a></li>
+  </ul>
+</nav>
+
+<section id="about">
+  <h2>Welcome 🖐</h2>
+  <div class="row">
+    <img src="http://i58.tinypic.com/adlrbt.jpg" class="img-responsive" alt="Responsive image">
+    <p>Süleyman Tekin</p>
+  </div>
+  <p><i class="fa fa-university"></i> Istanbul Aydin Univercity</p>
+  <p><i class="fa fa-free-code-camp" aria-hidden="true"></i> Software Engineer</p>
+  <div class="row">
+    <a href="#" target="_blank">
+			<i class="fa fa-twitter"></i>
+		</a>
+    <a href="#" target="_blank">
+			<i class="fa fa-facebook"></i>
+		</a>
+    <a href="#" target="_blank">
+			<i class="fa fa-linkedin"></i>
+		</a>
+    <a href="#" target="_blank">
+			<i class="fa fa-github"></i>
+		</a>
+  </div>
+</section>
+
+<section id='references'>
+  <div class="pricing-grid">
+
+    <div class="plan plan1">
+
+      <img id="reference" src="https://arawal.files.wordpress.com/2015/07/flat-faces-icons-circle-3.png?w=1024" class="img-responsive" alt="Responsive image">
+
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, facilis perspiciatis dicta possimus </p>
+
+      <h5>Paul Cole</h5>
+    </div>
+
+    <div class="plan plan2">
+
+      <img id="reference" src="https://arawal.files.wordpress.com/2015/07/flat-faces-icons-circle-3.png?w=1024" class="img-responsive" alt="Responsive image">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptate voluptates odit impedit voluptatibus cupiditate in ab! Deleniti sint aperiam accusamus fugiat aliquid, illum doloribus qui, laboriosam soluta quia praesentium. </p>
+      <h5>Paul Cole</h5>
+    </div>
+
+    <div class="plan plan3">
+
+      <img id="reference" src="https://arawal.files.wordpress.com/2015/07/flat-faces-icons-circle-3.png?w=1024" class="img-responsive" alt="Responsive image">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptate voluptates odit impedit voluptatibus cupiditate in ab! Deleniti sint aperiam accusamus fugiat aliquid, illum doloribus qui, laboriosam </p>
+
+      <h5>Paul Cole</h5>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects">
+  <div class="card">
+  <div class="card-img  card-img-1"></div>
+  <div class="card-deets">
+    <div class="card-info card-title">
+      <h2>Project Title</h2>
+    </div>
+  </div>
+
+  <p class="card-info card-description">Room for a short description of the work needed. Commodi maxime aspernatur similique cum dolorem aut ipsam, porro iusto culpa id blanditiis ipsum repellat quidem tempore quam, quaerat voluptatibus.</p>
+
+  <div class="card-data">
+    <div>
+      <h6>Designer</h6>
+      <p>R. Chase</p>
+    </div>
+  </div>
+</div>
+  <div class="card">
+  <div class="card-img card-img-2"></div>
+  <div class="card-deets">
+    <div class="card-info card-title">
+      <h2>Project Title</h2>
+    </div>
+  </div>
+
+  <p class="card-info card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
+
+  <div class="card-data">
+    <div>
+      <h6>Designer</h6>
+      <p>R. Chase</p>
+    </div>
+  </div>
+</div>
+  <div class="card">
+  <div class="card-img  card-img-3"></div>
+  <div class="card-deets">
+    <div class="card-info card-title">
+      <h2>Project Title</h2>
+    </div>
+  </div>
+
+  <p class="card-info card-description"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+  <div class="card-data">
+    <div>
+      <h6>Designer</h6>
+      <p>R. Chase</p>
+    </div>
+  </div>
+</div>
+</section>
 
     <!-- Main Navigation -->
     <nav class="navigationWrapper">
@@ -796,6 +1222,34 @@
           });
         }, false);
       });
+
+         const nav = document.querySelector("#main");
+const navItems = document.querySelectorAll("#main ul li");
+navItems.forEach(item => item.addEventListener("click", scroll));
+
+function scroll(e) {
+  const el = document.getElementById(e.target.dataset.id);
+  console.log(el)
+  el.scrollIntoView({
+    behavior: "smooth"
+  });
+  
+  console.log(e.target.dataset.id)
+}
+
+let topOfNav = nav.offsetTop;
+
+function fixNav() {
+  if (window.scrollY >= topOfNav) {
+    document.body.style.paddingTop = nav.offsetHeight + "px";
+    document.body.classList.add("fixed-nav");
+  } else {
+    document.body.classList.remove("fixed-nav");
+    document.body.style.paddingTop = 0;
+  }
+}
+
+window.addEventListener("scroll", fixNav);
     </script>
   </body>
 </html>
