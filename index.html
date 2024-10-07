@@ -469,12 +469,12 @@
     <!-- Main Navigation -->
     <nav class="navigationWrapper">
       <div class="logoWrapper">
-        <span class="stylish">Stylish</span>
-        <span class="logo">Logo</span>
+        <span class="stylish">Portfolio</span>
+        <span class="logo">Menu</span>
       </div>
       <ul class="navigation">
         <li class="parent"><a class="link" href="#home"> Home </a></li>
-        <li class="parent" id="services">
+        <li class="parent" id="clients">
           <a class="link"><i class="fas fa-minus"></i> Sections <i class="fas fa-plus"></i></a>
           <ul class="subnavigation">
             <li><a class="link" href="#proj">Projects</a></li>
@@ -803,7 +803,20 @@
       // Vanilla JavaScript version of your style.js
 
       document.addEventListener('DOMContentLoaded', function() {
+        var clients = document.getElementById('clients');
         var services = document.getElementById('services');
+
+        clients.addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent default anchor behavior
+          clients.classList.toggle("active");
+          
+          var parents = document.querySelectorAll('.parent');
+          parents.forEach(function(parent) {
+            if (parent.id !== 'clients') {
+              parent.classList.toggle("invisible");
+            }
+          });
+        }, false);
 
         services.addEventListener('click', function(event) {
           event.preventDefault(); // Prevent default anchor behavior
