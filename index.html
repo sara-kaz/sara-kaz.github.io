@@ -8,7 +8,7 @@
 <!-----------------------------------------------------------------------------------
   ---------------------------------------Style---------------------------------------
   ----------------------------------------------------------------------------------->
-    <style>
+     <style>
       body {
         font-family: Arial, sans-serif;
         background-color: #ffffff; /* Background set to white */
@@ -228,8 +228,54 @@
         padding: 2px 4px;
         border-radius: 4px;
       }
-      /* Removed .navbar styles since secondary nav is removed */
-      
+      .navbar {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-content: center;
+        justify-content: space-around;
+        background-color: #ebc0fc;
+      }
+      .navbar li {
+        position: relative;
+      }
+      .navbar a {
+        color: #333;
+        font-size: 24px;
+        text-decoration: none;
+        padding: 15px 20px;
+        display: inline-block;
+      }
+      .navbar a:hover {
+        background-color: #8c64d0;
+        color: #fff;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        align-items: center;
+        align-content: center;
+        background-color: #ebc0fc;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px #ccc;
+        color: #333;
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: black;
+        font-size: 18px;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        color: #333;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
       /* Updated navigationWrapper CSS */
       .navigationWrapper {
         position: relative;
@@ -269,7 +315,6 @@
 
       .navigationWrapper .navigation .parent {
         padding: 0 15px;
-        position: relative; /* For positioning subnavigation */
       }
 
       .navigationWrapper .navigation .parent .link {
@@ -279,7 +324,6 @@
         text-decoration: none;
         transition: all 0.3s ease-in-out;
         color: white;
-        cursor: pointer;
       }
 
       .navigationWrapper .navigation .parent .link:hover {
@@ -299,41 +343,28 @@
         transition: all 0.3s ease-in-out;
       }
 
-      .navigationWrapper .navigation .parent .fas {
+      .navigationWrapper .navigation .parent .link .fas {
         color: #ea4f4c;
         margin: -2px 4px 0;
         font-size: 10px;
         transition: all 0.3s ease-in-out;
       }
 
-      /* Subnavigation Styles */
       .navigationWrapper .navigation .subnavigation {
-        display: none; /* Hidden by default */
+        display: none;
         list-style-type: none;
+        width: 500px;
         position: absolute;
-        top: 100%; /* Position below the parent */
-        left: 0;
+        top: 40%;
+        left: 25%;
+        margin: auto;
+        transition: all 0.3s ease-in-out;
         background-color: #222;
-        padding: 10px 0;
-        min-width: 200px; /* Adjust as needed */
-        z-index: 1000; /* Ensure it appears above other elements */
       }
 
-      .navigationWrapper .navigation .parent:hover .subnavigation {
-        display: block; /* Show on hover */
-      }
-
-      /* Style subnavigation links */
       .navigationWrapper .navigation .subnavigation li a {
-        display: block;
-        padding: 10px 20px;
-        color: white;
-        text-decoration: none;
-      }
-
-      .navigationWrapper .navigation .subnavigation li a:hover {
-        background-color: #8c64d0;
-        color: white;
+        font-size: 17px;
+        padding: 0 5px;
       }
 
       /* Active and Invisible Classes */
@@ -369,7 +400,6 @@
       .invisible {
         opacity: 0 !important;
         transform: translate(50px, 0);
-        pointer-events: none; /* Prevent interaction */
       }
 
       /* Responsive adjustments */
@@ -408,29 +438,12 @@
           margin-right: 0; /* Remove margin for stacked layout */
           margin-bottom: 20px; /* Add space below image */
         }
-        .navigationWrapper {
-          flex-direction: column; /* Stack logo and nav vertically */
-          align-items: center;
-        }
-        
-        .navigationWrapper .navigation {
+        .navbar {
           flex-direction: column;
           align-items: center;
+        }
+        .navbar li {
           width: 100%;
-        }
-      
-        .navigationWrapper .navigation .parent {
-          padding: 10px 0; /* Vertical spacing for nav items */
-        }
-
-        /* Adjust subnavigation for mobile */
-        .navigationWrapper .navigation .subnavigation {
-          position: static; /* Remove absolute positioning */
-          width: 100%;
-        }
-
-        .navigationWrapper .navigation .subnavigation li a {
-          padding: 10px 0;
         }
       }
     </style>
@@ -453,7 +466,7 @@
         <h1>Sara Aly Portfolio</h1> 
     </header>
 
-    <!-- Primary Navigation -->
+    <!-- Main Navigation -->
     <nav class="navigationWrapper">
       <div class="logoWrapper">
         <span class="stylish">Stylish</span>
@@ -481,31 +494,33 @@
         <li class="parent"><a class="link" href="#contact">Contact</a></li>
       </ul>
     </nav>
-</nav>
+
+    <!-- Secondary Navigation (if needed) -->
     <nav>
-        <ul class="navbar">
-            <a href="#home">Home</a>
-            <ul class="dropdown">
-                <a class="dropbtn">Sections</a>
-                <div class="dropdown-content">
-                    <a href="#proj">Projects</a>
-                    <a href="#work">Work</a>
-                    <a href="#edu">Education</a>
-                </div>
-            </ul>
-            <ul class="dropdown">
-                <!--Menu bar dropdown implementations-->
-                <a class="dropbtn">Documents</a>
-                <div class="dropdown-content">
-                    <a href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/preview" target="_blank">Resume</a>
-                    <a href="https://drive.google.com/file/d/1QjrFzWFWrzer3bw5xy2_jNyv7GuzGw3W/preview" target="_blank">Diploma</a>
-                    <a href="https://drive.google.com/file/d/1KSEZqqeRLfNL1Y9_D0JOmDpthqvLvgKs/preview" target="_blank">Transcript</a>
-                    <a href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank">Grad Proj Report</a>
-                </div>
-            </ul>
-            <a href="#contact">Contact</a>
+      <ul class="navbar">
+        <a href="#home">Home</a>
+        <ul class="dropdown">
+          <a class="dropbtn">Sections</a>
+          <div class="dropdown-content">
+            <a href="#proj">Projects</a>
+            <a href="#work">Work</a>
+            <a href="#edu">Education</a>
+          </div>
         </ul>
+        <ul class="dropdown">
+          <!--Menu bar dropdown implementations-->
+          <a class="dropbtn">Documents</a>
+          <div class="dropdown-content">
+            <a href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/preview" target="_blank">Resume</a>
+            <a href="https://drive.google.com/file/d/1QjrFzWFWrzer3bw5xy2_jNyv7GuzGw3W/preview" target="_blank">Diploma</a>
+            <a href="https://drive.google.com/file/d/1KSEZqqeRLfNL1Y9_D0JOmDpthqvLvgKs/preview" target="_blank">Transcript</a>
+            <a href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank">Grad Proj Report</a>
+          </div>
+        </ul>
+        <a href="#contact">Contact</a>
+      </ul>
     </nav>
+    
     <div class="container">
         <section id="home">
             <div class="summary-wrapper">
@@ -821,33 +836,35 @@ int main() {
         <!-----------------------------------------------------------------------------------
       ---------------------------------------JavaScript-----------------------------------
       ----------------------------------------------------------------------------------->
-    <script>
+       <script>
       // Vanilla JavaScript version of your style.js
 
       document.addEventListener('DOMContentLoaded', function() {
         var clients = document.getElementById('clients');
         var services = document.getElementById('services');
 
-        // Function to toggle 'active' class and manage visibility
-        function toggleMenu(element, excludeId) {
-          element.classList.toggle("active");
-
+        clients.addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent default anchor behavior
+          clients.classList.toggle("active");
+          
           var parents = document.querySelectorAll('.parent');
           parents.forEach(function(parent) {
-            if (parent.id !== excludeId) {
+            if (parent.id !== 'clients') {
               parent.classList.toggle("invisible");
             }
           });
-        }
-
-        clients.addEventListener('click', function(event) {
-          event.preventDefault(); // Prevent default anchor behavior
-          toggleMenu(clients, 'clients');
         }, false);
 
         services.addEventListener('click', function(event) {
           event.preventDefault(); // Prevent default anchor behavior
-          toggleMenu(services, 'services');
+          services.classList.toggle("active");
+          
+          var parents = document.querySelectorAll('.parent');
+          parents.forEach(function(parent) {
+            if (parent.id !== 'services') {
+              parent.classList.toggle("invisible");
+            }
+          });
         }, false);
       });
     </script>
