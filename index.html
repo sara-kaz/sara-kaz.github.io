@@ -707,6 +707,61 @@ img {
 
 .card-data div h6 { opacity:0.35 }
 .card-data div p { letter-spacing: 0.02em; }
+
+	     .it {
+  transition: all 0.3s ease;
+}
+.it:hover {
+  transform: translate3d(0, -12px, 22px);
+  color: #ff0266;
+  cursor: pointer;
+}
+ul {
+  list-style: none;
+}
+.skills {
+  margin: 0 auto;
+  justify-content: center;
+  max-width: 90%;
+}
+
+.skills-list {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.skill {
+  float: left;
+  text-align: center;
+  font-size: 5em;
+  padding: 20px;
+}
+
+.skill div {
+  width: 100px;
+}
+i:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .skills-list {
+    width: 500px;
+    margin: auto;
+  }
+}
+
+@media (max-width: 625px) {
+  .skills-list {
+    width: 350px;
+    margin: auto;
+  }
+}
     </style>
 
     <!-- Include Font Awesome for icons -->
@@ -742,22 +797,61 @@ img {
   <h2>Welcome! I am Sara Aly</h2>
   <h3 style="font-weight:lighter;">I am a highly motivated computer engineering enthusiast with a strong academic background and a passion for applying software engineering principles to solve real-world challenges. 
   <h3 style="font-weight:lighter;">Experienced in algorithm design, system development, and software testing, eager to contribute innovative solutions in data structures, machine learning, and embedded systems.</h3>
-  <p><i class="fa fa-university"></i> Istanbul Aydin Univercity</p>
-  <p><i class="fa fa-free-code-camp" aria-hidden="true"></i> Software Engineer</p>
-  <div class="row">
-    <a href="#" target="_blank">
-			<i class="fa fa-twitter"></i>
-		</a>
-    <a href="#" target="_blank">
-			<i class="fa fa-facebook"></i>
-		</a>
-    <a href="#" target="_blank">
-			<i class="fa fa-linkedin"></i>
-		</a>
-    <a href="#" target="_blank">
-			<i class="fa fa-github"></i>
-		</a>
-  </div>
+  .skills
+  h1.it MY FAVORITE TOOLS
+  ul.skills-list.group
+    li.skill
+      i.devicon-tomcat-line-wordmark
+    li.skill
+      i.devicon-javascript-plain.colored
+    li.skill
+      i.devicon-nodejs-plain.colored
+    li.skill
+      i.devicon-express-original
+    li.skill
+      i.devicon-materialui-plain.colored
+    li.skill
+      i.devicon-firebase-plain.colored
+    li.skill
+      i.devicon-postgresql-plain-wordmark.colored
+    li.skill
+      i.devicon-typescript-plain.colored
+    li.skill
+      i.devicon-react-original-wordmark.colored
+    li.skill
+      i.devicon-jest-plain.colored
+    li.skill
+      i.devicon-heroku-plain-wordmark.colored
+    li.skill
+      i.devicon-mocha-plain
+    li.skill
+      i.devicon-redux-original.colored
+    li.skill
+      i.devicon-amazonwebservices-plain-wordmark.colored
+    li.skill
+      i.devicon-firefox-plain-wordmark.colored
+    li.skill
+      i.devicon-npm-original-wordmark
+    li.skill
+      i.devicon-docker-plain-wordmark.colored
+    li.skill
+      i.devicon-raspberrypi-line
+    li.skill
+      i.devicon-gatsby-plain.colored
+    li.skill
+      i.devicon-threejs-original-wordmark
+    li.skill
+      i.devicon-yarn-plain-wordmark.colored
+    li.skill
+      i.devicon-python-plain-wordmark.colored
+    li.skill
+      i.devicon-vscode-plain-wordmark.colored
+    li.skill
+      i.devicon-phalcon-plain
+script(
+  src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"
+)
+
 </section>
 
 <section id='references'>
@@ -843,35 +937,6 @@ img {
   </div>
 </div>
 </section>
-
-    <!-- Main Navigation 
-    <nav class="navigationWrapper">
-      <div class="logoWrapper">
-        <span class="stylish">Portfolio</span>
-        <span class="logo">Menu</span>
-      </div>
-      <ul class="navigation">
-        <li class="parent"><a class="link" href="#home"> Home </a></li>
-        <li class="parent" id="clients">
-          <a class="link"><i class="fas fa-minus"></i> Sections <i class="fas fa-plus"></i></a>
-          <ul class="subnavigation">
-            <li><a class="link" href="#proj">Projects</a></li>
-            <li><a class="link" href="#work">Work Experience</a></li>
-            <li><a class="link" href="#edu">Education</a></li>
-          </ul>
-        </li>
-        <li class="parent" id="services">
-          <a class="link"><i class="fas fa-minus"></i> Documents <i class="fas fa-plus"></i></a>
-          <ul class="subnavigation">
-            <li><a class="link" href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/preview" target="_blank">Resume</a></li>
-            <li><a class="link" href="https://drive.google.com/file/d/1QjrFzWFWrzer3bw5xy2_jNyv7GuzGw3W/preview" target="_blank">Diploma</a></li>
-            <li><a class="link" href="https://drive.google.com/file/d/1KSEZqqeRLfNL1Y9_D0JOmDpthqvLvgKs/preview" target="_blank">Transcript</a></li>
-            <li><a class="link" href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank">Grad Proj Report</a></li>
-          </ul>
-        </li>
-        <li class="parent"><a class="link" href="#contact"> Contact </a></li>
-      </ul>
-    </nav> -->
     
     <div class="container">
         <div class="projects-section">
@@ -1171,35 +1236,6 @@ img {
        <script>
       // Vanilla JavaScript version of your style.js
 
-      document.addEventListener('DOMContentLoaded', function() {
-        var clients = document.getElementById('clients');
-        var services = document.getElementById('services');
-
-        clients.addEventListener('click', function(event) {
-          event.preventDefault(); // Prevent default anchor behavior
-          clients.classList.toggle("active");
-          
-          var parents = document.querySelectorAll('.parent');
-          parents.forEach(function(parent) {
-            if (parent.id !== 'clients') {
-              parent.classList.toggle("invisible");
-            }
-          });
-        }, false);
-
-        services.addEventListener('click', function(event) {
-          event.preventDefault(); // Prevent default anchor behavior
-          services.classList.toggle("active");
-          
-          var parents = document.querySelectorAll('.parent');
-          parents.forEach(function(parent) {
-            if (parent.id !== 'services') {
-              parent.classList.toggle("invisible");
-            }
-          });
-        }, false);
-      });
-
          const nav = document.querySelector("#main");
 const navItems = document.querySelectorAll("#main ul li");
 navItems.forEach(item => item.addEventListener("click", scroll));
@@ -1227,6 +1263,17 @@ function fixNav() {
 }
 
 window.addEventListener("scroll", fixNav);
+
+
+	       VanillaTilt.init(document.querySelectorAll(".skill"), {
+  max: 25,
+  speed: 400,
+  easing: "cubic-bezier(.02,.77,.43,.87)",
+  perspective: 730,
+  transition: true,
+  gyroscope: true
+});
+
     </script>
   </body>
 </html>
