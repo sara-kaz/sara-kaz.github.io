@@ -708,60 +708,92 @@ img {
 .card-data div h6 { opacity:0.35 }
 .card-data div p { letter-spacing: 0.02em; }
 
-	     .it {
-  transition: all 0.3s ease;
-}
-.it:hover {
-  transform: translate3d(0, -12px, 22px);
-  color: #ff0266;
-  cursor: pointer;
-}
-ul {
-  list-style: none;
-}
-.skills {
-  margin: 0 auto;
-  justify-content: center;
-  max-width: 90%;
+	     span {
+	font-family: "Avenir";
+	font-size: 14px;
+	color: rgba(34, 34, 34, 0.5);
+	margin: 5px 0;
 }
 
-.skills-list {
-  margin: auto;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-  justify-content: center;
-  padding: 10px;
+.skill-card {
+	background-color: #fff;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+	display: flex;
+	flex-direction: row;
+	padding: 30px;
+	max-width: 400px;
+	min-height: 130px;
+	margin: 20px 0;
+	transition: all 0.5s ease;
 }
 
-.skill {
-  float: left;
-  text-align: center;
-  font-size: 5em;
-  padding: 20px;
+.skill-card:hover {
+	box-shadow: 8px 28px 50px rgba(39, 44, 49, 0.07),
+		1px 6px 12px rgba(39, 44, 49, 0.04);
+	transform: translate3D(0, -1px, 0) scale(1.02);
+	transition: all 0.5s ease;
 }
 
-.skill div {
-  width: 100px;
-}
-i:hover {
-  cursor: pointer;
+.profile_img {
+	width: 80px;
+	height: 80px;
+
+	object-fit: cover;
+	object-position: 50% 50%;
+
+	border-radius: 100%;
 }
 
-@media (max-width: 800px) {
-  .skills-list {
-    width: 500px;
-    margin: auto;
-  }
+.flag_wrapper {
+	width: 25px;
+	height: 25px;
+	background-color: #f2f2f2;
+	border-radius: 100%;
+	position: relative;
+	top: -30px;
+	left: 55px;
 }
 
-@media (max-width: 625px) {
-  .skills-list {
-    width: 350px;
-    margin: auto;
-  }
+.flag {
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto auto;
 }
+
+.left {
+	margin-right: 12.5px;
+}
+.right {
+	margin-left: 12.5px;
+}
+
+.interests {
+	margin-top: 10px;
+}
+
+.interests_title {
+	color: #222222;
+	margin-bottom: 5px;
+}
+
+.interests_item {
+	padding: 0 15px;
+	margin-right: 5px;
+	line-height: 35px;
+	background-color: #e6e6e6;
+	border-radius: 5px;
+
+	display: inline-block;
+}
+
+
+	     
     </style>
 
     <!-- Include Font Awesome for icons -->
@@ -797,61 +829,26 @@ i:hover {
   <h2>Welcome! I am Sara Aly</h2>
   <h3 style="font-weight:lighter;">I am a highly motivated computer engineering enthusiast with a strong academic background and a passion for applying software engineering principles to solve real-world challenges. 
   <h3 style="font-weight:lighter;">Experienced in algorithm design, system development, and software testing, eager to contribute innovative solutions in data structures, machine learning, and embedded systems.</h3>
-  .skills
-  h1.it MY FAVORITE TOOLS
-  ul.skills-list.group
-    li.skill
-      i.devicon-tomcat-line-wordmark
-    li.skill
-      i.devicon-javascript-plain.colored
-    li.skill
-      i.devicon-nodejs-plain.colored
-    li.skill
-      i.devicon-express-original
-    li.skill
-      i.devicon-materialui-plain.colored
-    li.skill
-      i.devicon-firebase-plain.colored
-    li.skill
-      i.devicon-postgresql-plain-wordmark.colored
-    li.skill
-      i.devicon-typescript-plain.colored
-    li.skill
-      i.devicon-react-original-wordmark.colored
-    li.skill
-      i.devicon-jest-plain.colored
-    li.skill
-      i.devicon-heroku-plain-wordmark.colored
-    li.skill
-      i.devicon-mocha-plain
-    li.skill
-      i.devicon-redux-original.colored
-    li.skill
-      i.devicon-amazonwebservices-plain-wordmark.colored
-    li.skill
-      i.devicon-firefox-plain-wordmark.colored
-    li.skill
-      i.devicon-npm-original-wordmark
-    li.skill
-      i.devicon-docker-plain-wordmark.colored
-    li.skill
-      i.devicon-raspberrypi-line
-    li.skill
-      i.devicon-gatsby-plain.colored
-    li.skill
-      i.devicon-threejs-original-wordmark
-    li.skill
-      i.devicon-yarn-plain-wordmark.colored
-    li.skill
-      i.devicon-python-plain-wordmark.colored
-    li.skill
-      i.devicon-vscode-plain-wordmark.colored
-    li.skill
-      i.devicon-phalcon-plain
-script(
-  src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"
-)
-
+	  <div class="skill-card">
+		<div class="left">
+			<img class="profile_img" src="https://images.summitmedia-digital.com/cosmo/images/2020/10/23/nam-joo-hyuk-start-up-min-1-1603449918.jpg" alt="">
+			<div class="flag_wrapper">
+				<img class="flag" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/271/flag-south-korea_1f1f0-1f1f7.png" alt="South Korean Flag" />
+			</div>
+		</div>
+		<div class="right">
+			<h2 class="name">Nam Do-San</h2>
+			<p class="title">Developer</p>
+			<p class="location">Seoul, South Korea</p>
+			<div class="interests">
+				<p class="interests_title">Interests: </p>
+				<span class="interests_item">A.I.</span>
+				<span class="interests_item">Technology</span>
+				<span class="interests_item">Coding</span>
+				<span class="interests_item">Python</span>
+			</div>
+		</div>
+	</div>
 </section>
 
 <section id='references'>
@@ -1263,16 +1260,6 @@ function fixNav() {
 }
 
 window.addEventListener("scroll", fixNav);
-
-
-	       VanillaTilt.init(document.querySelectorAll(".skill"), {
-  max: 25,
-  speed: 400,
-  easing: "cubic-bezier(.02,.77,.43,.87)",
-  perspective: 730,
-  transition: true,
-  gyroscope: true
-});
 
     </script>
   </body>
