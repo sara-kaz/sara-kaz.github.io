@@ -898,74 +898,117 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
 body {
   font-family: 'Josefin Sans', sans-serif;
 }
+$slider-length: 4;
+$radioBtn-size: 16px;
+$btn-color: #ccc;
+$active-color: #333;
+//---------------------------------------------------
+
+*, *:before, *:after { box-sizing: border-box;}
+
+body {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 1rem;
+	line-height: 1.7;
+}
 
 .slider {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  overflow: hidden;
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: flex-end;
+	justify-content: center;
+	
+	&__dot {
+		width: $radioBtn-size;
+		height: $radioBtn-size;
+		margin: 2rem $radioBtn-size;
+		border-radius: 50%;
+		z-index: 10;
+		background-color: $btn-color;
+		outline: $radioBtn-size / 2 solid $btn-color;
+		outline-offset: $radioBtn-size / -2;
+		box-shadow: 
+			0 0 0 0 $active-color, 
+			0 0 0 0 rgba($active-color,0);
+		cursor: pointer;
+		appearance: none;
+		backface-visibility: hidden;
+
+		&:checked {
+			background-color: $active-color;
+			animation: check 0.5s linear forwards;
+
+			@for $i from 0 to $slider-length {
+				&:nth-of-type(#{$i+1}) {
+				~ .slider__inner {
+					transform: translateX((-100% * $i) / $slider-length);
+					}
+				}
+			}
+		}
+	}
+	
+	&__inner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100% * $slider-length;
+		height: 100%;
+		transition: all 1s ease-out;
+		display: flex;
+		flex-flow: row nowrap;
+	}
+	
+	&__body {
+		display: flex;
+		flex: 1;
+		flex-flow: column nowrap;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		text-align: center;
+	}
+	
+	&__image {
+		font-size: 2.7rem;
+		margin-bottom: 2rem;
+	}
+
+	&__caption {
+		font-weight: bold;
+		margin-bottom: 1rem;
+		text-transform: uppercase;
+	}
+
+	&__text {
+		color: #999;
+		margin-bottom: 3rem;
+		max-width: 300px;
+	}
 }
 
-.slider__inner {
-  display: flex;
-  width: 400%; /* Since there are 4 slides, it's 400% */
-  transition: transform 0.5s ease-in-out;
+
+
+// animation ---------------------------
+
+@keyframes check {
+	50% {
+		outline-color: $active-color;
+		box-shadow: 
+			0 0 0 $radioBtn-size $active-color, 
+			0 0 0 $radioBtn-size*3 rgba($active-color,0.2);
+	}
+	100% {
+		outline-color: $active-color;
+		box-shadow: 
+			0 0 0 0 $active-color, 
+			0 0 0 0 rgba($active-color,0);
+	}
 }
 
-.slider__body {
-  flex: 1;
-  min-width: 100%; /* Each slide takes 100% of the container width */
-  text-align: center;
-  padding: 50px;
-}
-
-.slider__dot {
-  display: none; /* Hide the radio buttons */
-}
-
-/* Control the slide movement */
-#slide1:checked ~ .slider__inner {
-  transform: translateX(0%);
-}
-#slide2:checked ~ .slider__inner {
-  transform: translateX(-100%);
-}
-#slide3:checked ~ .slider__inner {
-  transform: translateX(-200%);
-}
-#slide4:checked ~ .slider__inner {
-  transform: translateX(-300%);
-}
-
-/* Add navigation dots */
-.slider__nav {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.slider__nav label {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #ccc;
-  margin: 0 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.slider__nav label:hover {
-  background-color: #333;
-}
-
-/* Highlight the active dot */
-#slide1:checked ~ .slider__nav label:nth-of-type(1),
-#slide2:checked ~ .slider__nav label:nth-of-type(2),
-#slide3:checked ~ .slider__nav label:nth-of-type(3),
-#slide4:checked ~ .slider__nav label:nth-of-type(4) {
-  background-color: #333;
-}
     </style>
 
 
