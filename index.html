@@ -896,6 +896,55 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
   width: 100%;
 }
 
+	             /* Slider Container */
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Adjust as needed */
+            margin: auto;
+            overflow: hidden;
+            border: 1px solid #ddd; /* Optional: Border for slider */
+            border-radius: 10px; /* Optional: Rounded corners */
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .slide {
+            min-width: 100%; /* Full width */
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        .img-responsive {
+            width: 100%;
+            height: auto;
+            border-radius: 10px; /* Optional: Rounded corners */
+        }
+
+        /* Navigation Buttons */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
     </style>
 
 
@@ -1015,6 +1064,38 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
 	</div>
    </div>
 </section>
+
+	   <section id='work'>
+        <div class="gradient-text"><h2>Work Experience</h2></div>
+        <div class="slider">
+            <div class="slides">
+                <div class="slide">
+                    <img id="reference" src="https://media.licdn.com/dms/image/v2/C560BAQERjWEoRZ15Tg/company-logo_200_200/company-logo_200_200/0/1656545579397/productmanagerinterview_logo?e=2147483647&v=beta&t=x54gWmD8-qQcBwCxttUih9FrSCKKpa-Az-0q7URRN80" class="img-responsive" alt="Responsive image">
+                    <h4>AI/ML Engineer, <i>PM Accelerator</i></h4>
+                    <ul>
+                        <li><i>In Progress</i></li>
+                    </ul>
+                </div>
+                <div class="slide">
+                    <img id="reference" src="https://media.licdn.com/dms/image/v2/D560BAQG9eo028LHzAQ/company-logo_200_200/company-logo_200_200/0/1716488300349?e=2147483647&v=beta&t=WQGK4luRMLRWE_BnfuQsCokITVIwNJL9pBhseWU9QAA" class="img-responsive" alt="Responsive image">
+                    <h4>Research Assistant, <i>ARCS CSUN</i></h4>
+                    <ul>
+                        <li><i>In Progress</i></li>
+                    </ul>
+                </div>
+                <div class="slide">
+                    <img id="reference" src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/CSUNS.svg/800px-CSUNS.svg.png" class="img-responsive" alt="Responsive image">
+                    <h4>Research Assistant, <i>California State University Northridge</i></h4>
+                    <ul>
+                        <li><i>In Progress</i></li>
+                    </ul>
+                </div>
+            </div>
+            <button class="nav-button prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="nav-button next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
 
 <!-- <section id='work'>
 	<div class="gradient-text"><h2>Work Experience</h2></div>
@@ -1418,6 +1499,25 @@ function fixNav() {
 window.addEventListener("scroll", fixNav);
 
 	       //-----
+	       let slideIndex = 0;
+        showSlide(slideIndex);
+
+        function moveSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            if (n >= slides.length) {
+                slideIndex = 0; // Loop back to the first slide
+            }
+            if (n < 0) {
+                slideIndex = slides.length - 1; // Loop back to the last slide
+            }
+            slides.forEach((slide, index) => {
+                slide.style.display = index === slideIndex ? 'block' : 'none'; // Show the current slide
+            });
+        }
     </script>
   </body>
 </html>
