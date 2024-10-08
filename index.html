@@ -895,115 +895,61 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
 .btn-8 span:hover:after {
   width: 100%;
 }
-
-	     @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,700);
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
-
-$slider-length: 4;
-$radioBtn-size: 16px;
-$btn-color: #ccc;
-$active-color: #333;
-//---------------------------------------------------
-
-*, *:before, *:after { box-sizing: border-box;}
-
 .slider {
-	height: 100vh;
-	position: relative;
-	overflow: hidden;
-	display: flex;
-	flex-flow: row nowrap;
-	align-items: flex-end;
-	justify-content: center;
-	
-	&__dot {
-		width: $radioBtn-size;
-		height: $radioBtn-size;
-		margin: 2rem $radioBtn-size;
-		border-radius: 50%;
-		z-index: 10;
-		background-color: $btn-color;
-		outline: $radioBtn-size / 2 solid $btn-color;
-		outline-offset: $radioBtn-size / -2;
-		box-shadow: 
-			0 0 0 0 $active-color, 
-			0 0 0 0 rgba($active-color,0);
-		cursor: pointer;
-		appearance: none;
-		backface-visibility: hidden;
-
-		&:checked {
-			background-color: $active-color;
-			animation: check 0.5s linear forwards;
-
-			@for $i from 0 to $slider-length {
-				&:nth-of-type(#{$i+1}) {
-				~ .slider__inner {
-					transform: translateX((-100% * $i) / $slider-length);
-					}
-				}
-			}
-		}
-	}
-	
-	&__inner {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100% * $slider-length;
-		height: 100%;
-		transition: all 1s ease-out;
-		display: flex;
-		flex-flow: row nowrap;
-	}
-	
-	&__body {
-		display: flex;
-		flex: 1;
-		flex-flow: column nowrap;
-		align-items: center;
-		justify-content: center;
-		padding: 2rem;
-		text-align: center;
-	}
-	
-	&__image {
-		font-size: 2.7rem;
-		margin-bottom: 2rem;
-	}
-
-	&__caption {
-		font-weight: bold;
-		margin-bottom: 1rem;
-		text-transform: uppercase;
-	}
-
-	&__text {
-		color: #999;
-		margin-bottom: 3rem;
-		max-width: 300px;
-	}
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-
-
-// animation ---------------------------
-
-@keyframes check {
-	50% {
-		outline-color: $active-color;
-		box-shadow: 
-			0 0 0 $radioBtn-size $active-color, 
-			0 0 0 $radioBtn-size*3 rgba($active-color,0.2);
-	}
-	100% {
-		outline-color: $active-color;
-		box-shadow: 
-			0 0 0 0 $active-color, 
-			0 0 0 0 rgba($active-color,0);
-	}
+.slider__dot {
+  display: none;
 }
 
+.slider__inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider__body {
+  flex: 1;
+  min-width: 100%;
+  text-align: center;
+  padding: 50px;
+}
+
+.slider__image {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.slider__caption {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.slider__text {
+  color: #777;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.slider__dot:checked:nth-of-type(1) ~ .slider__inner {
+  transform: translateX(0%);
+}
+
+.slider__dot:checked:nth-of-type(2) ~ .slider__inner {
+  transform: translateX(-100%);
+}
+
+.slider__dot:checked:nth-of-type(3) ~ .slider__inner {
+  transform: translateX(-200%);
+}
+
+.slider__dot:checked:nth-of-type(4) ~ .slider__inner {
+  transform: translateX(-300%);
+}
     </style>
 
 
@@ -1015,6 +961,8 @@ $active-color: #333;
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap" rel="stylesheet">
   </head>
 
 <!-----------------------------------------------------------------------------------
@@ -1124,39 +1072,32 @@ $active-color: #333;
    </div>
 </section>
 	  <section>
-		  <div class="slider">
-  <input class="slider__dot" type="radio" name="slider" title="slide1" checked="checked"/>
-  <input class="slider__dot" type="radio" name="slider" title="slide2"/>
-  <input class="slider__dot" type="radio" name="slider" title="slide3"/>
-  <input class="slider__dot" type="radio" name="slider" title="slide4"/>
+		 <div class="slider">
+  <input class="slider__dot" type="radio" name="slider" id="slide1" checked="checked"/>
+  <input class="slider__dot" type="radio" name="slider" id="slide2"/>
+  <input class="slider__dot" type="radio" name="slider" id="slide3"/>
+  <input class="slider__dot" type="radio" name="slider" id="slide4"/>
+
   <div class="slider__inner">
     <div class="slider__body">
-			<i class="slider__image fa fa-codepen"></i>
-      <h2 class="slider__caption">codepen</h2>
-      <p class="slider__text">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo quos, corporis minima!
-			</p>
+      <i class="slider__image fa fa-codepen"></i>
+      <h2 class="slider__caption">Codepen</h2>
+      <p class="slider__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
     </div>
     <div class="slider__body">
-			<i class="slider__image fa fa-newspaper-o"></i>
-      <h2 class="slider__caption">newspaper-o</h2>
-      <p class="slider__text">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo quos, corporis minima!
-			</p>
+      <i class="slider__image fa fa-newspaper-o"></i>
+      <h2 class="slider__caption">Newspaper-o</h2>
+      <p class="slider__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
     </div>
     <div class="slider__body">
-			<i class="slider__image fa fa-television"></i>
-      <h2 class="slider__caption">television</h2>
-      <p class="slider__text">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo quos, corporis minima!
-			</p>
+      <i class="slider__image fa fa-television"></i>
+      <h2 class="slider__caption">Television</h2>
+      <p class="slider__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
     </div>
     <div class="slider__body">
-			<i class="slider__image fa fa-diamond"></i>
-      <h2 class="slider__caption">diamond</h2>
-      <p class="slider__text">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo quos, corporis minima!
-			</p>
+      <i class="slider__image fa fa-diamond"></i>
+      <h2 class="slider__caption">Diamond</h2>
+      <p class="slider__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
     </div>
   </div>
 </div>
