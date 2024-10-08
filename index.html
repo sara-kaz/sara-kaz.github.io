@@ -909,6 +909,7 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
 
 .slider__inner {
   display: flex;
+  width: 400%;
   transition: transform 0.5s ease-in-out;
 }
 
@@ -917,6 +918,7 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
   min-width: 100%;
   text-align: center;
   padding: 50px;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .slider__image {
@@ -949,6 +951,30 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
 
 .slider__dot:checked:nth-of-type(4) ~ .slider__inner {
   transform: translateX(-300%);
+}
+
+/* Add navigation dots */
+.slider__nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.slider__nav label {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slider__dot:nth-of-type(1):checked ~ .slider__nav label:nth-of-type(1),
+.slider__dot:nth-of-type(2):checked ~ .slider__nav label:nth-of-type(2),
+.slider__dot:nth-of-type(3):checked ~ .slider__nav label:nth-of-type(3),
+.slider__dot:nth-of-type(4):checked ~ .slider__nav label:nth-of-type(4) {
+  background-color: #333;
 }
     </style>
 
@@ -1099,6 +1125,13 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
       <h2 class="slider__caption">Diamond</h2>
       <p class="slider__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
     </div>
+  </div>
+
+  <div class="slider__nav">
+    <label for="slide1"></label>
+    <label for="slide2"></label>
+    <label for="slide3"></label>
+    <label for="slide4"></label>
   </div>
 </div>
 </section>
