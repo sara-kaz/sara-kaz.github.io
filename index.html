@@ -898,117 +898,121 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
 body {
   font-family: 'Josefin Sans', sans-serif;
 }
-$slider-length: 4;
+$slider-length: 4; // number of slides
 $radioBtn-size: 16px;
 $btn-color: #ccc;
 $active-color: #333;
-//---------------------------------------------------
 
-*, *:before, *:after { box-sizing: border-box;}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 
 body {
-	font-family: 'Josefin Sans', sans-serif;
-	font-size: 1rem;
-	line-height: 1.7;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 .slider {
-	height: 100vh;
-	position: relative;
-	overflow: hidden;
-	display: flex;
-	flex-flow: row nowrap;
-	align-items: flex-end;
-	justify-content: center;
-	
-	&__dot {
-		width: $radioBtn-size;
-		height: $radioBtn-size;
-		margin: 2rem $radioBtn-size;
-		border-radius: 50%;
-		z-index: 10;
-		background-color: $btn-color;
-		outline: $radioBtn-size / 2 solid $btn-color;
-		outline-offset: $radioBtn-size / -2;
-		box-shadow: 
-			0 0 0 0 $active-color, 
-			0 0 0 0 rgba($active-color,0);
-		cursor: pointer;
-		appearance: none;
-		backface-visibility: hidden;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  justify-content: center;
 
-		&:checked {
-			background-color: $active-color;
-			animation: check 0.5s linear forwards;
+  &__dot {
+    width: $radioBtn-size;
+    height: $radioBtn-size;
+    margin: 2rem $radioBtn-size;
+    border-radius: 50%;
+    z-index: 10;
+    background-color: $btn-color;
+    outline: $radioBtn-size / 2 solid $btn-color;
+    outline-offset: $radioBtn-size / -2;
+    box-shadow:
+      0 0 0 0 $active-color,
+      0 0 0 0 rgba($active-color, 0);
+    cursor: pointer;
+    appearance: none;
+    backface-visibility: hidden;
 
-			@for $i from 0 to $slider-length {
-				&:nth-of-type(#{$i+1}) {
-				~ .slider__inner {
-					transform: translateX((-100% * $i) / $slider-length);
-					}
-				}
-			}
-		}
-	}
-	
-	&__inner {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100% * $slider-length;
-		height: 100%;
-		transition: all 1s ease-out;
-		display: flex;
-		flex-flow: row nowrap;
-	}
-	
-	&__body {
-		display: flex;
-		flex: 1;
-		flex-flow: column nowrap;
-		align-items: center;
-		justify-content: center;
-		padding: 2rem;
-		text-align: center;
-	}
-	
-	&__image {
-		font-size: 2.7rem;
-		margin-bottom: 2rem;
-	}
+    &:checked {
+      background-color: $active-color;
+      animation: check 0.5s linear forwards;
 
-	&__caption {
-		font-weight: bold;
-		margin-bottom: 1rem;
-		text-transform: uppercase;
-	}
+      // Apply different translations based on checked dot
+      &:nth-of-type(1) ~ .slider__inner {
+        transform: translateX(0%); // first slide
+      }
+      &:nth-of-type(2) ~ .slider__inner {
+        transform: translateX(-100%); // second slide
+      }
+      &:nth-of-type(3) ~ .slider__inner {
+        transform: translateX(-200%); // third slide
+      }
+      &:nth-of-type(4) ~ .slider__inner {
+        transform: translateX(-300%); // fourth slide
+      }
+    }
+  }
 
-	&__text {
-		color: #999;
-		margin-bottom: 3rem;
-		max-width: 300px;
-	}
+  &__inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% * $slider-length;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    transition: transform 1s ease-out; // Smooth transition between slides
+  }
+
+  &__body {
+    width: 100vw; // Make each slide take up the entire viewport width
+    display: flex;
+    flex: 1;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  &__image {
+    font-size: 2.7rem;
+    margin-bottom: 2rem;
+  }
+
+  &__caption {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    color: #999;
+    margin-bottom: 3rem;
+    max-width: 300px;
+  }
 }
 
-
-
-// animation ---------------------------
-
+// animation for radio buttons
 @keyframes check {
-	50% {
-		outline-color: $active-color;
-		box-shadow: 
-			0 0 0 $radioBtn-size $active-color, 
-			0 0 0 $radioBtn-size*3 rgba($active-color,0.2);
-	}
-	100% {
-		outline-color: $active-color;
-		box-shadow: 
-			0 0 0 0 $active-color, 
-			0 0 0 0 rgba($active-color,0);
-	}
+  50% {
+    outline-color: $active-color;
+    box-shadow:
+      0 0 0 $radioBtn-size $active-color,
+      0 0 0 $radioBtn-size*3 rgba($active-color, 0.2);
+  }
+  100% {
+    outline-color: $active-color;
+    box-shadow:
+      0 0 0 0 $active-color,
+      0 0 0 0 rgba($active-color, 0);
+  }
 }
-
     </style>
 
 
