@@ -898,121 +898,99 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
 body {
   font-family: 'Josefin Sans', sans-serif;
 }
-$slider-length: 4; // number of slides
-$radioBtn-size: 16px;
-$btn-color: #ccc;
-$active-color: #333;
-
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
-}
-
-.slider {
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: flex-end;
-  justify-content: center;
-
-  &__dot {
-    width: $radioBtn-size;
-    height: $radioBtn-size;
-    margin: 2rem $radioBtn-size;
-    border-radius: 50%;
-    z-index: 10;
-    background-color: $btn-color;
-    outline: $radioBtn-size / 2 solid $btn-color;
-    outline-offset: $radioBtn-size / -2;
-    box-shadow:
-      0 0 0 0 $active-color,
-      0 0 0 0 rgba($active-color, 0);
-    cursor: pointer;
-    appearance: none;
-    backface-visibility: hidden;
-
-    &:checked {
-      background-color: $active-color;
-      animation: check 0.5s linear forwards;
-
-      // Apply different translations based on checked dot
-      &:nth-of-type(1) ~ .slider__inner {
-        transform: translateX(0%); // first slide
-      }
-      &:nth-of-type(2) ~ .slider__inner {
-        transform: translateX(-100%); // second slide
-      }
-      &:nth-of-type(3) ~ .slider__inner {
-        transform: translateX(-200%); // third slide
-      }
-      &:nth-of-type(4) ~ .slider__inner {
-        transform: translateX(-300%); // fourth slide
-      }
+    .slider {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 40px auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
-  }
 
-  &__inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100% * $slider-length;
-    height: 100%;
-    display: flex;
-    flex-flow: row nowrap;
-    transition: transform 1s ease-out; // Smooth transition between slides
-  }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 600%;
+    }
 
-  &__body {
-    width: 100vw; // Make each slide take up the entire viewport width
-    display: flex;
-    flex: 1;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    text-align: center;
-  }
+    .slide {
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      text-align: center;
+    }
 
-  &__image {
-    font-size: 2.7rem;
-    margin-bottom: 2rem;
-  }
+    .slide img {
+      max-width: 150px;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 50%;
+    }
 
-  &__caption {
-    font-weight: bold;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-  }
+    .slide h4 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
 
-  &__text {
-    color: #999;
-    margin-bottom: 3rem;
-    max-width: 300px;
-  }
-}
+    .slide ul {
+      list-style: none;
+    }
 
-// animation for radio buttons
-@keyframes check {
-  50% {
-    outline-color: $active-color;
-    box-shadow:
-      0 0 0 $radioBtn-size $active-color,
-      0 0 0 $radioBtn-size*3 rgba($active-color, 0.2);
-  }
-  100% {
-    outline-color: $active-color;
-    box-shadow:
-      0 0 0 0 $active-color,
-      0 0 0 0 rgba($active-color, 0);
-  }
-}
+    .slide li {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .nav-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-dots button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ccc;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .nav-dots button.active {
+      background: #333;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+
+    .prev:hover, .next:hover {
+      color: #333;
+    }
     </style>
 
 
@@ -1135,42 +1113,76 @@ body {
    </div>
 </section>
 	  <section>
-		<div class="slider">
-  <input class="slider__dot" type="radio" name="slider" title="slide1" checked="checked"/>
-  <input class="slider__dot" type="radio" name="slider" title="slide2"/>
-  <input class="slider__dot" type="radio" name="slider" title="slide3"/>
-  <input class="slider__dot" type="radio" name="slider" title="slide4"/>
-  <div class="slider__inner">
-    <div class="slider__body">
-			<i class="slider__image fa fa-codepen"></i>
-      <h2 class="slider__caption">codepen</h2>
-      <p class="slider__text">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo quos, corporis minima!
-			</p>
+<div class="slider">
+  <div class="slides">
+    <div class="slide">
+      <img src="https://media.licdn.com/dms/image/v2/C560BAQERjWEoRZ15Tg/company-logo_200_200/company-logo_200_200/0/1656545579397/productmanagerinterview_logo?e=2147483647&v=beta&t=x54gWmD8-qQcBwCxttUih9FrSCKKpa-Az-0q7URRN80" alt="PM Accelerator">
+      <h4>AI/ML Engineer, <i>PM Accelerator</i></h4>
+      <ul>
+        <li><i>In Progress</i></li>
+      </ul>
     </div>
-    <div class="slider__body">
-			<i class="slider__image fa fa-newspaper-o"></i>
-      <h2 class="slider__caption">newspaper-o</h2>
-      <p class="slider__text">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo quos, corporis minima!
-			</p>
+
+    <div class="slide">
+      <img src="https://media.licdn.com/dms/image/v2/D560BAQG9eo028LHzAQ/company-logo_200_200/company-logo_200_200/0/1716488300349?e=2147483647&v=beta&t=WQGK4luRMLRWE_BnfuQsCokITVIwNJL9pBhseWU9QAA" alt="ARCS CSUN">
+      <h4>Research Assistant, <i>ARCS CSUN</i></h4>
+      <ul>
+        <li><i>In Progress</i></li>
+      </ul>
     </div>
-    <div class="slider__body">
-			<i class="slider__image fa fa-television"></i>
-      <h2 class="slider__caption">television</h2>
-      <p class="slider__text">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo quos, corporis minima!
-			</p>
+
+    <div class="slide">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/CSUNS.svg/800px-CSUNS.svg.png" alt="CSUN">
+      <h4>Research Assistant, <i>California State University Northridge</i></h4>
+      <ul>
+        <li><i>In Progress</i></li>
+      </ul>
     </div>
-    <div class="slider__body">
-			<i class="slider__image fa fa-diamond"></i>
-      <h2 class="slider__caption">diamond</h2>
-      <p class="slider__text">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cupiditate omnis possimus illo quos, corporis minima!
-			</p>
+
+    <div class="slide">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/CSUNS.svg/800px-CSUNS.svg.png" alt="CSUN">
+      <h4>Teacher Assistant, <i>California State University Northridge</i></h4>
+      <ul>
+        <li>Assisted with grading over 100 assignments per week.</li>
+        <li>Monitored progress for over 30 students.</li>
+        <li>Provided one-on-one assistance to 10 students per week.</li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <img src="https://play-lh.googleusercontent.com/fRrSFHsVbROTFn5yMVm5m0H34Gi2rZxjaBbDNfKwxtkujx4ywwSVDTRgjeXUH76Ewo8=w240-h480-rw" alt="Unipal">
+      <h4>Data Analyst, <i>Unipal</i></h4>
+      <ul>
+        <li>Enhanced data analysis techniques.</li>
+        <li>Designed visually appealing infographics.</li>
+        <li>Developed a comprehensive database of universities.</li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <img src="https://thenourishers.com/wp-content/uploads/2023/01/TN_Logo.png" alt="The Nourishers">
+      <h4>Marketing Intern, <i>The Nourishers</i></h4>
+      <ul>
+        <li>Developed and automated the monthly newsletter email system.</li>
+        <li>Implemented data collection scripts for organizations in Bahrain.</li>
+        <li>Programmed and executed email campaigns using marketing software.</li>
+      </ul>
     </div>
   </div>
+
+  <button class="prev" onclick="moveSlides(-1)">&#10094;</button>
+  <button class="next" onclick="moveSlides(1)">&#10095;</button>
+
+  <div class="nav-dots">
+    <button class="active" onclick="currentSlide(1)"></button>
+    <button onclick="currentSlide(2)"></button>
+    <button onclick="currentSlide(3)"></button>
+    <button onclick="currentSlide(4)"></button>
+    <button onclick="currentSlide(5)"></button>
+    <button onclick="currentSlide(6)"></button>
+  </div>
 </div>
+
 
 </section>
 
@@ -1575,6 +1587,29 @@ function fixNav() {
 
 window.addEventListener("scroll", fixNav);
 
+	       let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function moveSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.nav-dots button');
+    if (n > slides.length) slideIndex = 1;
+    if (n < 1) slideIndex = slides.length;
+
+    slides.forEach(slide => slide.style.display = 'none');
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slides[slideIndex - 1].style.display = 'flex';
+    dots[slideIndex - 1].classList.add('active');
+  }
     </script>
   </body>
 </html>
