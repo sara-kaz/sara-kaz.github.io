@@ -810,19 +810,28 @@ color:#ebc0fc;
   #main.active ul {
     display: flex;
   }
-	.skill-card {
-    max-width: 100%; /* Make card responsive to screen size */
-    flex-direction: column; /* Ensure column layout on smaller screens */
-    padding: 20px; /* Adjust padding for smaller viewports */
+ .skill-card {
+    width: 100%; /* Full width on mobile */
+    margin: 20px 0; /* Add space between stacked cards */
+  }
+
+  .profile_img {
+    width: 40px; /* Smaller profile image for mobile */
+    height: 40px;
+  }
+
+  .flag_wrapper {
+    top: -25px; /* Adjust flag position on smaller screens */
+    left: 45px;
   }
 
   .interests {
-    justify-content: center; /* Center items on smaller screens */
+    justify-content: center; /* Center interests on mobile */
   }
 
   .interests_item {
-    padding: 0 10px; /* Adjust padding for smaller items */
-    font-size: 14px; /* Reduce font size for smaller screens */
+    padding: 0 10px; /* Reduce padding for smaller screens */
+    line-height: 30px; /* Adjust line height */
   }
 	.card {
     width: 100%; /* Make the cards take full width */
