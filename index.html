@@ -511,14 +511,14 @@
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   display: flex;
-  flex-direction: column; /* Changed to column for better stacking */
+  flex-direction: column; /* Stack content vertically */
   padding: 30px;
   max-width: 400px;
   min-height: 300px;
   margin: 20px 0;
   transition: all 0.5s ease;
-  position: relative; /* Ensure content stays within */
-  box-sizing: border-box; /* To keep padding and margins within width */
+  position: relative;
+  box-sizing: border-box; /* Ensure padding/margin within dimensions */
 }
 
 .skill-card:hover {
@@ -568,7 +568,7 @@
 .interests {
   margin-top: 10px;
   display: flex;
-  flex-wrap: wrap; /* Ensure items wrap */
+  flex-wrap: wrap; /* Wrap interests in case of overflow */
 }
 
 .interests_title {
@@ -583,8 +583,9 @@
   background-color: #e6e6e6;
   border-radius: 5px;
   display: inline-block;
-  margin-bottom: 5px; /* Add spacing between rows if wrapping */
+  margin-bottom: 5px; /* Space between items */
 }
+	
 
 .custom-btn {
   width: 130px;
