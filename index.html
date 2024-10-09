@@ -398,13 +398,6 @@
       }
     
       /* Flex Container */
-      .skill-grid {
-	max-width:auto;
-	max-height: 500px;
-	margin: 0 10px;
-	display:flex; 
-	lign-items:center;
-      }
  .card {
 	position: relative;
 	display: block;
@@ -505,6 +498,13 @@
 	font-size: 14px;
 	color: rgba(34, 34, 34, 0.5);
 	margin: 5px 0;
+      }
+	      .skill-grid {
+	max-width:auto;
+	max-height: 500px;
+	margin: 0 10px;
+	display:flex; 
+	lign-items:center;
       }
 	.skill-card {
   background-color: #fff;
@@ -810,6 +810,10 @@ color:#ebc0fc;
   /* Show the navigation when active */
   #main.active ul {
     display: flex;
+  }
+	  .skill-grid {
+    flex-direction: column; /* Ensure cards stack on mobile */
+    align-items: stretch; /* Stretch cards to full width */
   }
  .skill-card {
     width: 100%; /* Full width on mobile */
