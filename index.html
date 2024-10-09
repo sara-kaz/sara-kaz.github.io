@@ -329,6 +329,8 @@
       }
       #about {
 	background-color: #ebc0fc;
+	padding: 20px; /* Add padding for better spacing */
+        overflow: hidden; /* Prevent content overflow */
       }
       #edu {
 	background-color: #E5E4E2;
@@ -499,13 +501,22 @@
 	color: rgba(34, 34, 34, 0.5);
 	margin: 5px 0;
       }
-	.skill-grid {
+	/* Skill Grid Configuration */
+.skill-grid {
+  max-width: 100%; /* Ensure full width for responsiveness */
+  margin: 0 auto; /* Centering */
+  display: flex; 
+  flex-direction: row; /* Default for larger screens */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: space-between; /* Evenly space items */
+}
+	/*.skill-grid {
 	max-width:auto;
 	max-height: 500px;
 	margin: 0 10px;
 	display:flex; 
 	lign-items:center;
-      }
+      }*/
 	.skill-card {
   background-color: #fff;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
