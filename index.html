@@ -759,7 +759,74 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
           margin-bottom: 20px; /* Add space below image */
         }
       }
-	@media screen and (max-width: 768px) {
+	/* Base styles for navigation */
+#main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#main ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+#main ul li {
+  margin: 0 10px;
+}
+
+#main ul li a {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Hamburger icon - hidden by default on larger screens */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+/* Media Query for mobile screens */
+@media (max-width: 768px) {
+  #main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #main ul {
+    display: none; /* Hide the navigation by default on mobile */
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #main ul li {
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+  }
+
+  #main ul li a {
+    padding: 10px;
+    display: block;
+    font-size: 16px;
+  }
+
+  /* Show the hamburger icon on mobile */
+  .hamburger {
+    display: block;
+    margin: 10px 0;
+  }
+
+  /* Show the navigation when active */
+  #main.active ul {
+    display: flex;
+  }
+}
+/* Mobile-specific styles */
+@media screen and (max-width: 768px) {
   .navigationWrapper {
     flex-direction: column; /* Stack navigation vertically */
     padding: 10px;
@@ -844,7 +911,7 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
         <h1 style="font-weight:lighter;">Sara Aly Portfolio</h1> 
     </header>
 
-    <nav id="main">
+   <!-- <nav id="main">
   <ul>
     <li class="logo"><a>SA</a></li>
     <li><a data-id="about">About</a></li>
@@ -854,6 +921,18 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
     <li><a data-id="other">Other</a></li>  
     <li><a data-id="contact">Contact</a></li>
   </ul>
+</nav>-->
+	  <nav id="main">
+  <ul class="navigation">
+    <li class="logo"><a>SA</a></li>
+    <li><a data-id="about">About</a></li>
+    <li><a data-id="work">Work</a></li>
+    <li><a data-id="projects">Projects</a></li>
+    <li><a data-id="edu">Education</a></li>
+    <li><a data-id="other">Other</a></li>
+    <li><a data-id="contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger icon for mobile -->
 </nav>
 
 <section id="about">
@@ -1275,6 +1354,11 @@ window.addEventListener("scroll", fixNav);
                 slide.style.display = index === slideIndex ? 'block' : 'none'; // Show the current slide
             });
         }
+
+	       function toggleMenu() {
+  const mainNav = document.getElementById('main');
+  mainNav.classList.toggle('active');
+}
     </script>
   </body>
 </html>
