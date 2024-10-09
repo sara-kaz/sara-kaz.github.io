@@ -803,8 +803,22 @@ color:#ebc0fc;
   #main.active ul {
     display: flex;
   }
+	.skill-card {
+    max-width: 100%; /* Make card responsive to screen size */
+    flex-direction: column; /* Ensure column layout on smaller screens */
+    padding: 20px; /* Adjust padding for smaller viewports */
+  }
+
+  .interests {
+    justify-content: center; /* Center items on smaller screens */
+  }
+
+  .interests_item {
+    padding: 0 10px; /* Adjust padding for smaller items */
+    font-size: 14px; /* Reduce font size for smaller screens */
+  }
 }
-/* Mobile-specific styles */
+/* Mobile-specific styles*/
 @media screen and (max-width: 768px) {
   .navigationWrapper {
     flex-direction: column; /* Stack navigation vertically */
@@ -848,7 +862,7 @@ color:#ebc0fc;
   }
 }
 
-/* Optional Hamburger Menu for Mobile */
+
 @media screen and (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -868,7 +882,7 @@ color:#ebc0fc;
     display: flex; /* Show the navigation when menu is active */
     flex-direction: column;
   }
-}
+} 
 </style>
 
 
