@@ -891,18 +891,6 @@ color:#ebc0fc;
     </header>
 
 <nav id="main">
-  <div class="hamburger" id="hamburger">&#9776;</div> <!-- Hamburger icon -->
-  <ul>
-    <li class="logo"><a href="#">SA</a></li>
-    <li><a data-id="about" href="#about">About</a></li>
-    <li><a data-id="work" href="#work">Work</a></li>
-    <li><a data-id="projects" href="#projects">Projects</a></li>
-    <li><a data-id="edu" href="#edu">Education</a></li>
-    <li><a data-id="other" href="#other">Other</a></li>  
-    <li><a data-id="contact" href="#contact">Contact</a></li>
-  </ul>
-</nav>
-	  <!-- <nav id="main">
   <ul class="navigation">
     <li class="logo"><a>SA</a></li>
     <li><a data-id="about">About</a></li>
@@ -913,7 +901,7 @@ color:#ebc0fc;
     <li><a data-id="contact">Contact</a></li>
   </ul>
   <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-</nav> -->
+</nav>
 
 <section id="about">
   <h2>Welcome! I am Sara Aly</h2>
@@ -1335,17 +1323,9 @@ window.addEventListener("scroll", fixNav);
             });
         }
 
-// Toggle the mobile menu
-document.getElementById('hamburger').addEventListener('click', function() {
-  document.getElementById('main').classList.toggle('active');
-});
-
-// Close the menu when a link is clicked
-document.querySelectorAll('#main ul li a').forEach(item => {
-  item.addEventListener('click', function() {
-    document.getElementById('main').classList.remove('active'); // Collapse the menu
-  });
-});
+function toggleMenu() {
+  const mainNav = document.getElementById('main');
+  mainNav.classList.toggle('active');
 }
     </script>
   </body>
