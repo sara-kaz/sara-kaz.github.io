@@ -507,7 +507,86 @@
 	color: rgba(34, 34, 34, 0.5);
 	margin: 5px 0;
       }
-      .skill-card {
+	.skill-card {
+  background-color: #fff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column; /* Changed to column for better stacking */
+  padding: 30px;
+  max-width: 400px;
+  min-height: 300px;
+  margin: 20px 0;
+  transition: all 0.5s ease;
+  position: relative; /* Ensure content stays within */
+  box-sizing: border-box; /* To keep padding and margins within width */
+}
+
+.skill-card:hover {
+  box-shadow: 8px 28px 50px rgba(39, 44, 49, 0.07),
+    1px 6px 12px rgba(39, 44, 49, 0.04);
+  transform: translate3D(0, -1px, 0) scale(1.02);
+  transition: all 0.5s ease;
+}
+
+.profile_img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.flag_wrapper {
+  width: 25px;
+  height: 25px;
+  background-color: #f2f2f2;
+  border-radius: 100%;
+  position: relative;
+  top: -30px;
+  left: 55px;
+}
+
+.flag {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto auto;
+}
+
+.left {
+  margin-right: 12.5px;
+}
+
+.right {
+  margin-left: 12.5px;
+}
+
+/* Interests section */
+.interests {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap; /* Ensure items wrap */
+}
+
+.interests_title {
+  color: #222222;
+  margin-bottom: 5px;
+}
+
+.interests_item {
+  padding: 0 15px;
+  margin-right: 5px;
+  line-height: 35px;
+  background-color: #e6e6e6;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 5px; /* Add spacing between rows if wrapping */
+}
+      /*.skill-card {
 	background-color: #fff;
 	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 	border-radius: 20px;
@@ -577,7 +656,7 @@
 	border-radius: 5px;
 
 	display: inline-block;
-}
+}*/
 
 .custom-btn {
   width: 130px;
