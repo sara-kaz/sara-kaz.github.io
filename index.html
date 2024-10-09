@@ -333,13 +333,7 @@
       #edu {
 	background-color: #E5E4E2;
       }
-      #projects {
-	flex-direction: row;
-	justify-content: space-evenly;
-	flex-wrap: wrap;
-	background-color: #1a1e2F;
-      }
-	#projects2 {
+      #projects, #projects2 {
 	flex-direction: row;
 	justify-content: space-evenly;
 	flex-wrap: wrap;
@@ -841,6 +835,26 @@ color:#ebc0fc;
 
   .card-description {
     padding-top: 20px; /* Reduce padding for smaller screens */
+  }
+	  section {
+    height: auto; /* Auto height to prevent overlap */
+    padding: 20px 0; /* Add padding to ensure content has space */
+    justify-content: flex-start; /* Align items to the top */
+  }
+
+  #projects, #projects2 {
+    flex-direction: column; /* Stack the project sections vertically */
+    justify-content: center; /* Center-align content */
+    align-items: center; /* Center content on the page */
+  }
+
+  img {
+    width: 15px; /* Adjust image size for smaller screens */
+    height: 15px;
+  }
+
+  i {
+    margin-left: 5px; /* Adjust spacing for icons */
   }
 }
 
