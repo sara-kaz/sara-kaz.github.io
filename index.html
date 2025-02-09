@@ -511,34 +511,6 @@
 	margin: 5px 0;
       }
 
-	/* Main container to center everything */
-    .edu-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    /* Education section with two side-by-side containers */
-    .edu-content {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        width: 100%;
-    }
-
-    /* Individual education boxes */
-    .education-container {
-        width: 48%;
-        background: #f8f8f8;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        text-align: left;
-    }
 	/* Skill Grid Configuration */
       .skill-grid {
 	      max-width: 100%; /* Ensure full width for responsiveness */
@@ -1242,84 +1214,82 @@ color:#ebc0fc;
 </div>
 </section>
 
-<section id="edu" class="edu-container">
+<section id="edu">
     <div class="gradient-text"><h2>Education</h2></div>
 
-    <div class="edu-content">
-        <!-- Master's Degree Container -->
-        <div class="education-container">
-            <h3>Master of Science in Computer Engineering</h3>
-            <p><em>California State University Northridge • 2026</em></p>
-            <ul style="list-style: none;">
-                <li>
-                    <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000"> Teaching Associate (TA) Fee Waiver
-                </li>
-            </ul>
-            <div class="skill-card">
-                <div class="left">
-                    <img class="profile_img" src="https://img.icons8.com/?size=100&id=UGXHGl4Ucxlm&format=png&color=000000" alt="">
-                </div>
-                <div class="right">
-                    <p>Relevant Coursework</p>
-                    <div class="interests">
-                        <span class="interests_item">Deep Learning</span>
-                        <span class="interests_item">SoC Design</span>
-                    </div>
+    <!-- Master's Degree Container -->
+    <div class="education-container">
+        <h3>Master of Science in Computer Engineering</h3>
+        <p><em>California State University Northridge • 2026</em></p>
+        <ul style="list-style: none;">
+            <li>
+                <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000"> Teaching Associate (TA) Fee Waiver
+            </li>
+        </ul>
+        <div class="skill-card">
+            <div class="left">
+                <img class="profile_img" src="https://img.icons8.com/?size=100&id=UGXHGl4Ucxlm&format=png&color=000000" alt="">
+            </div>
+            <div class="right">
+                <p>Relevant Coursework</p>
+                <div class="interests">
+                    <span class="interests_item">Deep Learning</span>
+                    <span class="interests_item">SoC Design</span>
                 </div>
             </div>
         </div>
+	</div>
 
-        <!-- Bachelor's Degree Container -->
-        <div class="education-container">
-            <h3>Bachelor of Science in Computer Engineering</h3>
-            <p><em>California State University Northridge • 2024</em></p>
-            <ul style="list-style: none;">
-                <li>
-                    <img src="https://img.icons8.com/?size=100&id=1CAlGt81d-IE&format=png&color=000000"> GPA: 3.94, Summa Cum Laude
-                </li>
-                <li>
-                    <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000"> Dean's List: Fall 2022 - Spring 2024
-                </li>
-                <li>
-                    <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000"> Joe and Nancy Owens Engineering Annual Scholarship
-                </li>
-                <li>
-                    <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000"> Outstanding Senior of ECE Department
-                </li>
-                <li>
-                    <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000"> Half-Ride Scholarship (AUBH)
-                </li>
-            </ul>
-            <div class="skill-card">
-                <div class="left">
-                    <img class="profile_img" src="https://img.icons8.com/?size=100&id=UGXHGl4Ucxlm&format=png&color=000000" alt="">
-                </div>
-                <div class="right">
-                    <p>Relevant Coursework</p>
-                    <div class="interests">
-                        <span class="interests_item">Data Structures and Algorithms</span>
-                        <span class="interests_item">Machine Learning</span>
-                        <span class="interests_item">Software Engineering</span>
-                        <span class="interests_item">FPGA Design using Verilog and VHDL</span>
-                        <span class="interests_item">Electrical Engineering Fundamentals</span>
-                        <span class="interests_item">Embedded Systems</span>
-                        <span class="interests_item">Operating Systems</span>
-                        <span class="interests_item">Digital Electronics</span>
+       <!-- Bachelor's Degree Container -->
+    <div class="education-container">
+        <h3>Bachelor of Science in Computer Engineering</h3>
+        <p><em>California State University Northridge • 2024</em></p>
+        <ul style="list-style: none;">
+            <li>
+                <img src="https://img.icons8.com/?size=100&id=1CAlGt81d-IE&format=png&color=000000"> GPA: 3.94, Summa Cum Laude
+            </li>
+            <li>
+                <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000"> Dean's List: Fall 2022 - Spring 2024
+            </li>
+            <li>
+                <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000"> Joe and Nancy Owens Engineering Annual Scholarship
+            </li>
+            <li>
+                <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000"> Outstanding Senior of ECE Department
+            </li>
+            <li>
+                <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000"> Half-Ride Scholarship (AUBH)
+            </li>
+        </ul>
+        <div class="skill-card">
+            <div class="left">
+                <img class="profile_img" src="https://img.icons8.com/?size=100&id=UGXHGl4Ucxlm&format=png&color=000000" alt="">
+            </div>
+            <div class="right">
+                <p>Relevant Coursework</p>
+                <div class="interests">
+                    <span class="interests_item">Data Structures and Algorithms</span>
+                    <span class="interests_item">Machine Learning</span>
+                    <span class="interests_item">Software Engineering</span>
+                    <span class="interests_item">FPGA Design using Verilog and VHDL</span>
+                    <span class="interests_item">Electrical Engineering Fundamentals</span>
+                    <span class="interests_item">Embedded Systems</span>
+                    <span class="interests_item">Operating Systems</span>
+                    <span class="interests_item">Digital Electronics</span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Buttons -->
-    <div class="button-container">
-        <a href="https://drive.google.com/file/d/1QjrFzWFWrzer3bw5xy2_jNyv7GuzGw3W/preview" target="_blank">
-            <button class="custom-btn btn-8"><span>Diploma</span></button>
-        </a>
-        <a href="https://drive.google.com/file/d/1KSEZqqeRLfNL1Y9_D0JOmDpthqvLvgKs/preview" target="_blank">
-            <button class="custom-btn btn-8"><span>Transcript</span></button>
-        </a>
-    </div>
+<div class="button-container">
+    <a href="https://drive.google.com/file/d/1QjrFzWFWrzer3bw5xy2_jNyv7GuzGw3W/preview" target="_blank">
+        <button class="custom-btn btn-8"><span>Diploma</span></button>
+    </a>
+    <a href="https://drive.google.com/file/d/1KSEZqqeRLfNL1Y9_D0JOmDpthqvLvgKs/preview" target="_blank">
+        <button class="custom-btn btn-8"><span>Transcript</span></button>
+    </a>
+</div>
 </section>
     
     <section id='other'>
