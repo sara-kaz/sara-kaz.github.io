@@ -434,18 +434,67 @@
          SECTION STYLES
          ============================================================================= */
       section {
-	font-family: "Rationale", sans-serif;
-	height: 100vh;
-	background-size: cover;
-	background-position: center;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	background: white;
+        font-family: "Rationale", sans-serif;
+        min-height: 100vh; /* Changed from height to min-height to prevent overlapping */
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: white;
         color: black;
-     }
+        padding: 60px 20px; /* Added padding for better spacing between sections */
+        box-sizing: border-box; /* Ensure padding is included in height calculation */
+      }
+
+      /* =============================================================================
+         SECTION-SPECIFIC STYLES
+         ============================================================================= */
+      
+      /* About section styling */
+      #about {
+        background-color: #ebc0fc;
+        padding: 60px 20px; /* Consistent padding with other sections */
+        overflow: hidden; /* Prevent content overflow */
+        min-height: auto; /* Allow content to determine height */
+      }
+
+      /* Education section styling */
+      #edu {
+        background-color: #E5E4E2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Changed from center to flex-start */
+        padding: 60px 20px;
+        text-align: center;
+        min-height: auto; /* Allow content to determine height */
+        overflow: visible; /* Allow content to flow naturally */
+      }
+
+      /* Projects sections styling */
+      #projects, #projects2 {
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        background-color: #1a1e2F;
+        min-height: auto; /* Allow content to determine height */
+        padding: 60px 20px;
+      }
+
+      /* Work section styling */
+      #work {
+        min-height: auto; /* Allow content to determine height */
+        padding: 60px 20px;
+      }
+
+      /* Other section styling */
+      #other {
+        min-height: auto; /* Allow content to determine height */
+        padding: 60px 20px;
+      }
      i {
 	color: gray;
 	margin-left: 10px;
@@ -460,27 +509,22 @@
 	padding: 20px; /* Add padding for better spacing */
         overflow: hidden; /* Prevent content overflow */
       }
-      #edu {
-	background-color: #E5E4E2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 40px 20px;
-        text-align: center;
-      }
 
-    .education-header {
+      /* =============================================================================
+         EDUCATION COMPONENT STYLES
+         ============================================================================= */
+      
+      .education-header {
         text-align: center;
         margin-bottom: 40px;
-    }
+      }
 
-    .education-header h2 {
+      .education-header h2 {
         font-size: 2.5em;
         margin-bottom: 10px;
-    }
+      }
 
-    .education-container {
+      .education-container {
         width: 100%;
         max-width: 800px;
         background-color: #ffffff;
@@ -490,92 +534,92 @@
         margin: 20px 0;
         text-align: left;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+      }
 
-    .education-container:hover {
+      .education-container:hover {
         transform: translateY(-5px);
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-    }
+      }
 
-    .degree-header {
+      .degree-header {
         text-align: center;
         margin-bottom: 30px;
         padding-bottom: 20px;
         border-bottom: 2px solid #8c64d0;
-    }
+      }
 
-    .degree-header h3 {
+      .degree-header h3 {
         color: #8c64d0;
         font-size: 1.8em;
         margin-bottom: 10px;
-    }
+      }
 
-    .institution {
+      .institution {
         font-size: 1.1em;
         color: #666;
         font-style: italic;
-    }
+      }
 
-    .achievements {
+      .achievements {
         margin: 25px 0;
-    }
+      }
 
-    .achievements ul {
+      .achievements ul {
         list-style: none;
         padding: 0;
         margin: 0;
-    }
+      }
 
-    .achievements li {
+      .achievements li {
         display: flex;
         align-items: center;
         margin: 12px 0;
         padding: 8px 0;
         font-size: 1em;
         color: #444;
-    }
+      }
 
-    .achievements li img {
+      .achievements li img {
         width: 20px;
         height: 20px;
         margin-right: 15px;
         flex-shrink: 0;
-    }
+      }
 
-    .coursework-section {
+      .coursework-section {
         background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         border-radius: 12px;
         padding: 25px;
         margin: 25px 0;
         border-left: 4px solid #8c64d0;
-    }
+      }
 
-    .coursework-header {
+      .coursework-header {
         display: flex;
         align-items: center;
         margin-bottom: 20px;
-    }
+      }
 
-    .coursework-icon {
+      .coursework-icon {
         width: 30px;
         height: 30px;
         margin-right: 15px;
-    }
+      }
 
-    .coursework-header h4 {
+      .coursework-header h4 {
         font-weight: bold;
         color: #333;
         margin: 0;
         font-size: 1.2em;
-    }
+      }
 
-    .coursework-tags {
+      .coursework-tags {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-    }
+      }
 
-    .coursework-tag {
+      .coursework-tag {
         background: linear-gradient(135deg, #8c64d0, #bb6eda);
         color: white;
         padding: 8px 16px;
@@ -583,31 +627,23 @@
         font-size: 0.9em;
         font-weight: 500;
         transition: transform 0.2s ease;
-    }
+      }
 
-    .coursework-tag:hover {
+      .coursework-tag:hover {
         transform: scale(1.05);
-    }
+      }
 
-    .education-buttons {
+      .education-buttons {
         text-align: center;
         margin-top: 30px;
         padding-top: 20px;
         border-top: 1px solid #e0e0e0;
-    }
-
-    .education-container {
-        width: 48%;
-        background-color: #E5E4E2;
-	justify-content: center;
-    }
-      #projects, #projects2 {
-	flex-direction: row;
-	justify-content: space-evenly;
-	flex-wrap: wrap;
-	background-color: #1a1e2F;
       }
-	
+
+      /* =============================================================================
+         PROJECT COMPONENT STYLES
+         ============================================================================= */
+      
       .plan {
 	background:rgba(255,255,255,0.2);
 	margin:20px;
