@@ -494,6 +494,234 @@
       #other {
         min-height: auto; /* Allow content to determine height */
         padding: 60px 20px;
+        background-color: #f8f9fa; /* Light background for contrast */
+      }
+
+      /* =============================================================================
+         OTHER SECTION COMPONENT STYLES
+         ============================================================================= */
+      
+      /* Other section header */
+      .other-header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .other-header h2 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      /* Other container styling */
+      .other-container {
+        width: 100%;
+        max-width: 1000px;
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        margin: 30px auto;
+        text-align: left;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .other-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Other section header styling */
+      .other-section-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #8c64d0;
+      }
+
+      .other-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+      }
+
+      .other-section-header h3 {
+        color: #8c64d0;
+        font-size: 1.8em;
+        margin: 0;
+      }
+
+      /* =============================================================================
+         CERTIFICATION STYLES
+         ============================================================================= */
+      
+      /* Certification grid layout */
+      .certification-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 30px;
+      }
+
+      /* Certification card styling */
+      .certification-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 12px;
+        padding: 25px;
+        border-left: 4px solid #8c64d0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .certification-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Certification header */
+      .certification-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 15px;
+      }
+
+      .certification-header h4 {
+        font-size: 1.2em;
+        color: #333;
+        margin: 0;
+        flex: 1;
+        margin-right: 15px;
+      }
+
+      /* Certification badge */
+      .certification-badge {
+        background: linear-gradient(135deg, #8c64d0, #bb6eda);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      /* Certification details */
+      .certification-details {
+        margin-top: 15px;
+      }
+
+      .certification-details summary {
+        background: linear-gradient(135deg, #8c64d0, #bb6eda);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 500;
+        text-align: center;
+        transition: transform 0.2s ease;
+        display: inline-block;
+      }
+
+      .certification-details summary:hover {
+        transform: scale(1.05);
+      }
+
+      .certification-details .pdf-container {
+        margin-top: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      /* Additional certifications */
+      .additional-certifications {
+        margin-top: 30px;
+        padding-top: 25px;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .additional-certifications h4 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 1.3em;
+      }
+
+      .certification-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .certification-tag {
+        background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+        color: #495057;
+        padding: 10px 18px;
+        border-radius: 25px;
+        font-size: 0.95em;
+        font-weight: 500;
+        border: 1px solid #ced4da;
+        transition: all 0.3s ease;
+      }
+
+      .certification-tag:hover {
+        background: linear-gradient(135deg, #8c64d0, #bb6eda);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(140, 100, 208, 0.3);
+      }
+
+      /* =============================================================================
+         ACTIVITIES STYLES
+         ============================================================================= */
+      
+      /* Activities grid layout */
+      .activities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      /* Activity card styling */
+      .activity-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 12px;
+        padding: 25px;
+        border-left: 4px solid #8c64d0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .activity-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Activity logo */
+      .activity-logo {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        background-color: white;
+        padding: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Activity content */
+      .activity-content h4 {
+        color: #333;
+        font-size: 1.2em;
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+
+      .activity-content p {
+        color: #666;
+        font-size: 0.95em;
+        line-height: 1.5;
+        margin: 0;
       }
      i {
 	color: gray;
@@ -1179,6 +1407,105 @@ color:#ebc0fc;
     margin-left: 5px; /* Adjust spacing for icons */
   }
 }
+
+      /* =============================================================================
+         RESPONSIVE DESIGN FOR OTHER SECTION
+         ============================================================================= */
+      
+      @media (max-width: 768px) {
+        /* Other section responsive adjustments */
+        #other {
+          padding: 40px 15px;
+        }
+
+        .other-header h2 {
+          font-size: 2em;
+        }
+
+        .other-container {
+          padding: 25px;
+          margin: 20px auto;
+        }
+
+        .other-section-header h3 {
+          font-size: 1.5em;
+        }
+
+        /* Certification grid responsive */
+        .certification-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .certification-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+
+        .certification-header h4 {
+          margin-right: 0;
+          margin-bottom: 8px;
+        }
+
+        /* Activities grid responsive */
+        .activities-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .activity-card {
+          padding: 20px;
+        }
+
+        .activity-logo {
+          width: 60px;
+          height: 60px;
+        }
+
+        /* Certification tags responsive */
+        .certification-tags {
+          gap: 8px;
+        }
+
+        .certification-tag {
+          padding: 8px 14px;
+          font-size: 0.9em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        /* Mobile-specific adjustments */
+        .other-container {
+          padding: 20px;
+          margin: 15px auto;
+        }
+
+        .other-header h2 {
+          font-size: 1.8em;
+        }
+
+        .other-section-header {
+          flex-direction: column;
+          text-align: center;
+          gap: 10px;
+        }
+
+        .other-icon {
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
+
+        .certification-card,
+        .activity-card {
+          padding: 15px;
+        }
+
+        .certification-details summary {
+          padding: 8px 16px;
+          font-size: 0.9em;
+        }
+      }
     </style>
 
     <!-- =============================================================================
@@ -1743,6 +2070,10 @@ color:#ebc0fc;
               <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000" alt="Award">
               <span>Teaching Associate (TA) Fee Waiver</span>
             </li>
+            <li>
+                <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000" alt="Award">
+                <span>ARCS Fellowship</span>
+              </li>
           </ul>
         </div>
         
@@ -1824,65 +2155,117 @@ color:#ebc0fc;
          ============================================================================= -->
     <section id="other">
       <!-- Certifications Section -->
-      <div class="gradient-text">
-        <h2>Certifications</h2>
+      <div class="other-header">
+        <h2 class="gradient-text">Certifications & Activities</h2>
       </div>
       
-      <!-- .Net Full Stack Foundation -->
-      <details>
-        <summary>.Net Full Stack Foundation</summary>
-        <ul>
-          <div class="pdf-container">
-            <iframe src="https://drive.google.com/file/d/1l1qRL4qCjjocptyPh8SAXOy_CuaUjt1q/preview" 
-                    type="application/pdf"></iframe>
+      <!-- Certifications Container -->
+      <div class="other-container">
+        <div class="other-section-header">
+          <img class="other-icon" src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000" alt="Certifications">
+          <h3>Professional Certifications</h3>
+        </div>
+        
+        <!-- Certification Cards -->
+        <div class="certification-grid">
+          <!-- .Net Full Stack Foundation -->
+          <div class="certification-card">
+            <div class="certification-header">
+              <h4>.Net Full Stack Foundation</h4>
+              <div class="certification-badge">Professional</div>
+            </div>
+            <details class="certification-details">
+              <summary>View Certificate</summary>
+              <div class="pdf-container">
+                <iframe src="https://drive.google.com/file/d/1l1qRL4qCjjocptyPh8SAXOy_CuaUjt1q/preview" 
+                        type="application/pdf"></iframe>
+              </div>
+            </details>
           </div>
-        </ul>
-      </details>
-      
-      <!-- Six Sigma White Belt -->
-      <details>
-        <summary>Six Sigma White Belt</summary>
-        <ul>
-          <div class="pdf-container">
-            <iframe src="https://drive.google.com/file/d/10bfyRuuBM9_cLojjxG-qnRVXrEsID5yC/preview" 
-                    type="application/pdf"></iframe>
+          
+          <!-- Six Sigma White Belt -->
+          <div class="certification-card">
+            <div class="certification-header">
+              <h4>Six Sigma White Belt</h4>
+              <div class="certification-badge">Quality Management</div>
+            </div>
+            <details class="certification-details">
+              <summary>View Certificate</summary>
+              <div class="pdf-container">
+                <iframe src="https://drive.google.com/file/d/10bfyRuuBM9_cLojjxG-qnRVXrEsID5yC/preview" 
+                        type="application/pdf"></iframe>
+              </div>
+            </details>
           </div>
-        </ul>
-      </details>
-      
-      <!-- Adult and Pediatric First Aid/CPR/AED -->
-      <details>
-        <summary>Adult and Pediatric First Aid/CPR/AED</summary>
-        <ul>
-          <div class="pdf-container">
-            <iframe src="https://drive.google.com/file/d/1Y6dVhjLR_GNqgT9f7TYI4ab0uGs-dsix/preview" 
-                    type="application/pdf"></iframe>
+          
+          <!-- Adult and Pediatric First Aid/CPR/AED -->
+          <div class="certification-card">
+            <div class="certification-header">
+              <h4>Adult and Pediatric First Aid/CPR/AED</h4>
+              <div class="certification-badge">Safety</div>
+            </div>
+            <details class="certification-details">
+              <summary>View Certificate</summary>
+              <div class="pdf-container">
+                <iframe src="https://drive.google.com/file/d/1Y6dVhjLR_GNqgT9f7TYI4ab0uGs-dsix/preview" 
+                        type="application/pdf"></iframe>
+              </div>
+            </details>
           </div>
-        </ul>
-      </details>
-      
-      <!-- Additional Certifications List -->
-      <ul>
-        <li>Udacity Future Work in Digital: Data Analysis</li>
-        <li>Udacity Future Work in Digital: Web Development</li>
-        <li>Udacity Full Stack Developer Track</li>
-      </ul>
-    
-      <!-- Extracurricular Activities Section -->
-      <h2 class="gradient-text">Extracurricular Activities</h2>
-      <div class="frame" style="border: 0px; gap: 5px">
-        <img src="https://www.uri.edu/news/wp-content/uploads/news/sites/16/2023/04/stack_4c.png" 
-             alt="The Honor Society of Phi Kappa Phi" 
-             class="image" 
-             style="max-width: 200px;">
-        <img src="https://www.ece.cmu.edu/_media/news-images/2019/02/hkn-logo-900x600.png" 
-             alt="IEEE-Eta Kappa Nu (IEEE-HKN) Honor Society" 
-             class="image" 
-             style="max-width: 200px;">
-        <img src="https://arcs.center/wp-content/uploads/2021/03/arcs.jpg" 
-             alt="ARCS Foundation" 
-             class="image" 
-             style="max-width: 200px;">
+        </div>
+        
+        <!-- Additional Certifications -->
+        <div class="additional-certifications">
+          <h4>Additional Certifications</h4>
+          <div class="certification-tags">
+            <span class="certification-tag">Udacity Future Work in Digital: Data Analysis</span>
+            <span class="certification-tag">Udacity Future Work in Digital: Web Development</span>
+            <span class="certification-tag">Udacity Full Stack Developer Track</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extracurricular Activities Container -->
+      <div class="other-container">
+        <div class="other-section-header">
+          <img class="other-icon" src="https://img.icons8.com/?size=100&id=14280&format=png&color=000000" alt="Activities">
+          <h3>Extracurricular Activities</h3>
+        </div>
+        
+        <div class="activities-grid">
+          <!-- Phi Kappa Phi -->
+          <div class="activity-card">
+            <img src="https://www.uri.edu/news/wp-content/uploads/news/sites/16/2023/04/stack_4c.png" 
+                 alt="The Honor Society of Phi Kappa Phi" 
+                 class="activity-logo">
+            <div class="activity-content">
+              <h4>The Honor Society of Phi Kappa Phi</h4>
+              <p>Member of the nation's oldest and most selective collegiate honor society for all academic disciplines</p>
+            </div>
+          </div>
+          
+          <!-- IEEE-Eta Kappa Nu -->
+          <div class="activity-card">
+            <img src="https://www.ece.cmu.edu/_media/news-images/2019/02/hkn-logo-900x600.png" 
+                 alt="IEEE-Eta Kappa Nu (IEEE-HKN) Honor Society" 
+                 class="activity-logo">
+            <div class="activity-content">
+              <h4>IEEE-Eta Kappa Nu (IEEE-HKN)</h4>
+              <p>Member of the electrical and computer engineering honor society, recognizing excellence in the field</p>
+            </div>
+          </div>
+          
+          <!-- ARCS Foundation -->
+          <div class="activity-card">
+            <img src="https://arcs.center/wp-content/uploads/2021/03/arcs.jpg" 
+                 alt="ARCS Foundation" 
+                 class="activity-logo">
+            <div class="activity-content">
+              <h4>ARCS Foundation</h4>
+              <p>Fellow of the ARCS Foundation, supporting outstanding scholars in science, engineering, and medical research</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1896,7 +2279,7 @@ color:#ebc0fc;
         <p>Phone: +1(424)460-9975</p>
       </div>
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/sara-khaled-9a3a741ab/" target="_blank" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/sara-k-aly/" target="_blank" title="LinkedIn">
           <img src="https://img.icons8.com/?size=80&id=ErvuoIU4kAzh&format=png&color=000000" alt="LinkedIn">
         </a>
         <a href="https://github.com/sara-kaz" target="_blank" title="GitHub">
