@@ -398,22 +398,29 @@
          NAVIGATION STYLES
          ============================================================================= */
       nav {
-	background:black;
+	background:rgba(0, 0, 0, 0.95);
 	top:0;
 	width: 100%;
 	transition:all 0.5s;
 	position: relative;
-	z-index: 1;
+	z-index: 1000;
+	backdrop-filter: blur(10px);
       }
       body.fixed-nav nav {
 	position: fixed;
-	box-shadow:0 5px 0 rgba(0,0,0,0.1);
+	box-shadow:0 5px 15px rgba(0,0,0,0.3);
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	right: 0;
       }
       nav ul {
 	margin: 0;
 	padding:0;
 	list-style: none;
 	display:flex;
+	position: relative;
+	z-index: 1001;
       }
       nav li {
 	flex:1;
@@ -429,10 +436,14 @@
 	color:white !important;
 	transition:all 0.2s;
 	text-transform: uppercase;
+	position: relative;
+	z-index: 1002;
       }
 	
       li.logo a {
 	color:black;
+	position: relative;
+	z-index: 1002;
       }
       .fixed-nav li.logo {
 	max-width:100px;
@@ -504,6 +515,8 @@
       #work {
         min-height: auto; /* Allow content to determine height */
         padding: 60px 20px;
+        position: relative;
+        z-index: 1;
       }
 
       /* Other section styling */
@@ -1615,14 +1628,14 @@ color:#ebc0fc;
       .contact-item-icon {
         width: 25px;
         height: 25px;
-        /*margin-right: 15px;*/
+        margin-right: 15px;
         filter: brightness(0) invert(1);
         opacity: 0.8;
       }
 
       .contact-item-content h4 {
         font-size: 1em;
-        margin: 0;
+        margin: 0 0 5px 0;
         color: rgba(255, 255, 255, 0.9);
         font-weight: 600;
       }
@@ -2464,14 +2477,6 @@ color:#ebc0fc;
         
         <div class="achievements">
           <ul>
-			<li>
-              <img src="https://img.icons8.com/?size=100&id=1CAlGt81d-IE&format=png&color=000000" alt="GPA">
-              <span>GPA: 4.0</span>
-            </li>
-            <li>
-              <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000" alt="Award">
-              <span>Dean's List: Spring 2025</span>
-            </li>
             <li>
               <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000" alt="Award">
               <span>Teaching Associate (TA) Fee Waiver</span>
@@ -2491,8 +2496,6 @@ color:#ebc0fc;
           <div class="coursework-tags">
             <span class="coursework-tag">Deep Learning</span>
             <span class="coursework-tag">SoC Design</span>
-			<span class="coursework-tag">FPGA/ASIC DESIGN</span>
-			<span class="coursework-tag">ASIC DEVELOPMENT</span>
           </div>
         </div>
       </div>
