@@ -51,6 +51,7 @@
         text-align: center;
         position: relative;
         overflow: hidden;
+        scroll-margin-top: 100px; /* Ensure proper scroll positioning */
       }
 
       /* Footer overlay for better text readability */
@@ -485,6 +486,7 @@
         position: relative; /* Ensure proper positioning */
         z-index: 1; /* Ensure sections are below navigation */
         margin-bottom: 0; /* Remove space between sections */
+        scroll-margin-top: 100px; /* Ensure proper scroll positioning with fixed navigation */
       }
 
       /* =============================================================================
@@ -498,6 +500,7 @@
         overflow: hidden; /* Prevent content overflow */
         min-height: auto; /* Allow content to determine height */
         margin-bottom: 0; /* Remove space below section */
+        scroll-margin-top: 100px; /* Ensure proper scroll positioning */
       }
 
       /* Education section styling */
@@ -512,6 +515,7 @@
         min-height: auto; /* Allow content to determine height */
         overflow: visible; /* Allow content to flow naturally */
         margin-bottom: 0; /* Remove space below section */
+        scroll-margin-top: 100px; /* Ensure proper scroll positioning */
       }
 
       /* Projects section styling */
@@ -523,6 +527,7 @@
         min-height: auto; /* Allow content to determine height */
         padding: 40px 20px;
         margin-bottom: 0; /* Remove space below section */
+        scroll-margin-top: 100px; /* Ensure proper scroll positioning */
       }
 
       /* Work section styling */
@@ -532,6 +537,7 @@
         position: relative;
         z-index: 1;
         margin-bottom: 0; /* Remove space below section */
+        scroll-margin-top: 100px; /* Ensure proper scroll positioning */
       }
 
       /* Other section styling */
@@ -540,6 +546,7 @@
         padding: 40px 20px;
         background-color: #f8f9fa; /* Light background for contrast */
         margin-bottom: 0; /* Remove space below section */
+        scroll-margin-top: 100px; /* Ensure proper scroll positioning */
       }
 
       /* =============================================================================
@@ -2927,10 +2934,15 @@ color:#ebc0fc;
       // Smooth scroll to section function
       function scroll(e) {
         const el = document.getElementById(e.target.dataset.id);
-        console.log(el);
-        el.scrollIntoView({
-          behavior: "smooth"
-        });
+        if (el) {
+          const navHeight = nav.offsetHeight;
+          const elementPosition = el.offsetTop - navHeight - 20; // Subtract nav height + extra offset
+          
+          window.scrollTo({
+            top: elementPosition,
+            behavior: "smooth"
+          });
+        }
         console.log(e.target.dataset.id);
       }
 
