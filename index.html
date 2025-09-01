@@ -205,17 +205,21 @@
       /* PDF container for embedded documents */
       .pdf-container {
         width: 100%;
-        height: 100%;
-        max-width: 1000px;
-        max-height: 100%;
-        border-radius: 8px;
+        height: 600px;
+        max-width: 800px;
+        margin: 20px auto;
+        border-radius: 12px;
         overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border: 2px solid #8c64d0;
+        background: #f8f9fa;
       }
 
       iframe {
         width: 100%;
         height: 100%;
         border: none;
+        border-radius: 10px;
       }
 
       /* =============================================================================
@@ -635,29 +639,96 @@
 
       /* Certification details */
       .certification-details {
-        margin-top: 15px;
+        margin-top: 20px;
+        text-align: center;
       }
 
       .certification-details summary {
         background: linear-gradient(135deg, #8c64d0, #bb6eda);
         color: white;
-        padding: 10px 20px;
-        border-radius: 25px;
+        padding: 15px 30px;
+        border-radius: 30px;
         cursor: pointer;
-        font-weight: 500;
+        font-weight: 600;
         text-align: center;
-        transition: transform 0.2s ease;
+        transition: all 0.3s ease;
         display: inline-block;
+        font-size: 1.1em;
+        box-shadow: 0 4px 15px rgba(140, 100, 208, 0.3);
+        border: none;
+        outline: none;
       }
 
       .certification-details summary:hover {
-        transform: scale(1.05);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(140, 100, 208, 0.4);
+        background: linear-gradient(135deg, #9d74e0, #cb7eea);
+      }
+
+      .certification-details summary:focus {
+        outline: 2px solid #8c64d0;
+        outline-offset: 2px;
       }
 
       .certification-details .pdf-container {
-        margin-top: 15px;
-        border-radius: 8px;
+        margin-top: 25px;
+        border-radius: 12px;
         overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .certification-details .pdf-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+      }
+
+      /* PDF loading and error states */
+      .pdf-container::before {
+        content: "📄 PDF Loading...";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #8c64d0;
+        font-size: 1.2em;
+        font-weight: 600;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .pdf-container iframe[src*="drive.google.com"] {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Certificate card improvements */
+      .certification-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 12px;
+        padding: 25px;
+        border-left: 4px solid #8c64d0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .certification-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #8c64d0, #bb6eda);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .certification-card:hover::before {
+        transform: scaleX(1);
       }
 
       /* Additional certifications */
@@ -1464,6 +1535,24 @@ color:#ebc0fc;
         .certification-grid {
           grid-template-columns: 1fr;
           gap: 20px;
+        }
+
+        /* PDF container responsive adjustments */
+        .pdf-container {
+          height: 400px;
+          max-width: 100%;
+          margin: 15px auto;
+        }
+
+        .certification-details summary {
+          padding: 12px 25px;
+          font-size: 1em;
+        }
+
+        /* Mobile PDF improvements */
+        .pdf-container::before {
+          font-size: 1em;
+          padding: 15px;
         }
 
         .certification-header {
@@ -2496,6 +2585,8 @@ color:#ebc0fc;
           <div class="coursework-tags">
             <span class="coursework-tag">Deep Learning</span>
             <span class="coursework-tag">SoC Design</span>
+            <span class="coursework-tag">FPGA/ASIC Design</span>
+            <span class="coursework-tag">ASIC Development</span>
           </div>
         </div>
       </div>
@@ -2851,6 +2942,59 @@ color:#ebc0fc;
         const mainNav = document.getElementById('main');
         mainNav.classList.toggle('active');
       }
+
+      // =============================================================================
+      // PDF VIEWER ENHANCEMENTS
+      // =============================================================================
+      
+      // Enhance PDF viewing experience
+      function enhancePDFViewers() {
+        const pdfContainers = document.querySelectorAll('.pdf-container');
+        
+        pdfContainers.forEach(container => {
+          const iframe = container.querySelector('iframe');
+          if (iframe) {
+            // Add loading state
+            iframe.style.opacity = '0';
+            iframe.style.transition = 'opacity 0.3s ease';
+            
+            // Show PDF when loaded
+            iframe.onload = function() {
+              this.style.opacity = '1';
+              // Remove loading indicator
+              const loadingIndicator = container.querySelector('.pdf-loading');
+              if (loadingIndicator) {
+                loadingIndicator.remove();
+              }
+            };
+            
+            // Handle PDF loading errors
+            iframe.onerror = function() {
+              container.innerHTML = `
+                <div style="text-align: center; padding: 40px; color: #8c64d0;">
+                  <div style="font-size: 3em; margin-bottom: 20px;">📄</div>
+                  <h3>PDF Could Not Load</h3>
+                  <p>Please try refreshing the page or check your internet connection.</p>
+                  <button onclick="location.reload()" style="
+                    background: linear-gradient(135deg, #8c64d0, #bb6eda);
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    margin-top: 15px;
+                  ">Retry</button>
+                </div>
+              `;
+            };
+          }
+        });
+      }
+
+      // Initialize PDF enhancements when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        enhancePDFViewers();
+      });
     </script>
   </body>
 </html>
