@@ -36,9 +36,13 @@
         background-size: cover;
         background-position: center;
         color: rgb(255, 255, 255);
-        padding: 40px;
+        padding: 40px 20px;
         text-align: center;
         font-size: 2em;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       /* Footer styling with background image */
@@ -400,7 +404,9 @@
       h1 {
 	color:white;
         font-size: 7vw;
-        text-shadow: 3px 4px 0 rgba(0,0,0,0.2)
+        text-shadow: 3px 4px 0 rgba(0,0,0,0.2);
+        margin: 0;
+        line-height: 1.2;
       }
 
       /* =============================================================================
@@ -1006,7 +1012,7 @@
 	flex-direction: column;
 	flex-wrap:wrap;
 	justify-content: center;
-	aling-items:center;
+	align-items:center;
 	text-align:center;
       }
       .plan p {
@@ -1358,7 +1364,7 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
             position: relative;
             width: 100%;
             max-width: 800px; /* Adjust as needed */
-            margin: 60px;
+            margin: 60px auto;
             overflow: hidden;
             border-radius: 10px; /* Optional: Rounded corners */
         }
@@ -1422,61 +1428,98 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
 /* Hamburger icon - hidden by default on larger screens */
 .hamburger {
   display: none;
-color:#ebc0fc;
+  color: #ebc0fc;
   cursor: pointer;
   font-size: 30px;
+  padding: 10px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1003;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
 	header {
-          padding: 5px; /* Adjust padding for smaller screens */
+          padding: 20px 10px; /* Better padding for smaller screens */
+          font-size: 1.5em; /* Smaller font size for mobile */
+          min-height: 150px; /* Reduced height for mobile */
         }
+        
+        h1 {
+          font-size: 8vw; /* Better responsive font size */
+        }
+        
 	footer {
-        padding: 5px; /* Reduced padding for a smaller footer */
-        font-size: 0.5em; /* Small font size for phone footer */
-        justify-content: space-between;
+        padding: 20px 10px; /* Better padding for mobile footer */
+        font-size: 0.8em; /* More readable font size */
       }
+      
 	.image {
-          max-width: 350px;
+          max-width: 100%; /* Full width on mobile */
           height: auto;
-          margin-bottom: 20px; /* Add space below image */
+          margin-bottom: 20px;
+          padding: 0 10px; /* Add horizontal padding */
         }
-	        .frame {
-          margin-right: 0; /* Remove margin for stacked layout */
-          margin-bottom: 20px; /* Add space below image */
-			.social-icons img {
-        width: 30px;
-        height: 30px;
-      }
+        
+        .frame {
+          margin-right: 0;
+          margin-bottom: 20px;
+          padding: 10px; /* Add padding to frame */
+        }
+        
+        .social-icons img {
+          width: 30px;
+          height: 30px;
         }
   #main {
     flex-direction: column;
     align-items: flex-start;
+    position: relative;
+    padding: 10px 20px;
   }
 
   #main ul {
     display: none; /* Hide the navigation by default on mobile */
     flex-direction: column;
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 0 0 10px 10px;
   }
 
   #main ul li {
     width: 100%;
     text-align: left;
-    padding: 10px 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  #main ul li:last-child {
+    border-bottom: none;
   }
 
   #main ul li a {
-    padding: 10px;
+    padding: 15px 20px;
     display: block;
     font-size: 16px;
+    color: white !important;
+    transition: background-color 0.3s ease;
+  }
+
+  #main ul li a:hover {
+    background-color: rgba(140, 100, 208, 0.2);
   }
 
   /* Show the hamburger icon on mobile */
   .hamburger {
     display: block;
-    margin: 10px 0;
   }
 
   /* Show the navigation when active */
@@ -1524,14 +1567,33 @@ color:#ebc0fc;
   }
 	  section {
     height: auto; /* Auto height to prevent overlap */
-    padding: 20px 0; /* Add padding to ensure content has space */
+    padding: 30px 15px; /* Better padding for mobile */
     justify-content: flex-start; /* Align items to the top */
+    min-height: auto; /* Remove fixed min-height */
   }
 
   #projects {
     flex-direction: column; /* Stack the project sections vertically */
     justify-content: center; /* Center-align content */
     align-items: center; /* Center content on the page */
+    padding: 30px 15px; /* Better mobile padding */
+  }
+
+  /* Improve text readability on mobile */
+  h2, h3 {
+    font-size: 1.8em; /* Smaller headings for mobile */
+    line-height: 1.3;
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    font-size: 1.4em;
+  }
+
+  p {
+    font-size: 16px; /* Better readable font size */
+    line-height: 1.6;
+    margin-bottom: 15px;
   }
 
   img {
@@ -1541,6 +1603,44 @@ color:#ebc0fc;
 
   i {
     margin-left: 5px; /* Adjust spacing for icons */
+  }
+  
+  /* Mobile slider improvements */
+  .slider {
+    margin: 30px 15px; /* Better mobile margins */
+    max-width: 100%; /* Full width on mobile */
+  }
+  
+  .slide {
+    padding: 15px; /* Better mobile padding */
+  }
+  
+  .slide h4 {
+    font-size: 1.2em; /* Smaller heading for mobile */
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  
+  .slide ul {
+    padding-left: 20px; /* Better list indentation */
+  }
+  
+  .slide ul li {
+    font-size: 14px; /* Better readable list items */
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  
+  .slide img {
+    width: 40px; /* Smaller company logos for mobile */
+    height: 40px;
+    margin-bottom: 10px;
+  }
+  
+  /* Navigation buttons for mobile */
+  .nav-button {
+    padding: 8px;
+    font-size: 18px;
   }
 }
 
@@ -1644,13 +1744,39 @@ color:#ebc0fc;
 
       @media (max-width: 480px) {
         /* Mobile-specific adjustments */
+        header {
+          padding: 15px 10px;
+          font-size: 1.2em;
+          min-height: 120px;
+        }
+        
+        h1 {
+          font-size: 9vw; /* Even smaller for very small screens */
+        }
+        
+        section {
+          padding: 20px 10px; /* Tighter padding for small phones */
+        }
+        
+        h2, h3 {
+          font-size: 1.5em; /* Smaller headings for small phones */
+        }
+        
+        h3 {
+          font-size: 1.2em;
+        }
+        
+        p {
+          font-size: 15px; /* Slightly smaller text for small phones */
+        }
+        
         .other-container {
-          padding: 20px;
-          margin: 15px auto;
+          padding: 15px;
+          margin: 10px auto;
         }
 
         .other-header h2 {
-          font-size: 1.8em;
+          font-size: 1.6em;
         }
 
         .other-section-header {
@@ -1682,6 +1808,25 @@ color:#ebc0fc;
 
         .certification-details .pdf-container {
           height: 280px;
+        }
+        
+        /* Improve button sizing for small screens */
+        .custom-btn {
+          width: 120px;
+          height: 35px;
+          font-size: 14px;
+        }
+        
+        /* Better spacing for skill cards on small phones */
+        .skill-card {
+          padding: 20px;
+          margin: 15px 0;
+        }
+        
+        .interests_item {
+          padding: 0 8px;
+          line-height: 28px;
+          font-size: 14px;
         }
       }
 
