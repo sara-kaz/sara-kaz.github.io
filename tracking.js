@@ -18,9 +18,9 @@
   // CONFIGURATION
   // ============================================================================
   
-  // Replace this with your webhook URL or API endpoint
-  // For testing, you can use: https://webhook.site/your-unique-id
-  const WEBHOOK_URL = 'https://webhook.site/c8c2c1eb-f3f8-43ae-858a-cde6d5ca03ab';
+  // Replace this with your own webhook URL or backend endpoint.
+  // Do not commit real/temporary URLs; keep this placeholder and set it per environment.
+  const WEBHOOK_URL = 'YOUR_WEBHOOK_URL_HERE';
   
   // Set to true to enable console logging for debugging
   const DEBUG = true;
@@ -177,7 +177,9 @@
           url: window.location.href
         }
       });
-      navigator.sendBeacon(WEBHOOK_URL, data);
+      // Wrap in Blob so sendBeacon sends it as application/json
+      const blob = new Blob([data], { type: 'application/json' });
+      navigator.sendBeacon(WEBHOOK_URL, blob);
     }
   });
 
