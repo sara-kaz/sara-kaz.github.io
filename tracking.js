@@ -20,10 +20,13 @@
   
   // Replace this with your own webhook URL or backend endpoint.
   // Do not commit real/temporary URLs; keep this placeholder and set it per environment.
-  const WEBHOOK_URL = 'YOUR_WEBHOOK_URL_HERE';
+  const WEBHOOK_URL = 'https://webhook.site/f80f7d25-34c8-48d0-b163-2a9b2f8b0197';
   
   // Set to true to enable console logging for debugging
   const DEBUG = true;
+  
+  // Set to true to enable test mode (logs data to console even without webhook)
+  const TEST_MODE = true;
 
   // ============================================================================
   // TRACKING FUNCTION
@@ -108,9 +111,23 @@
   // ============================================================================
 
   function sendTrackingData(data) {
+    const payload = {
+      event: 'profile_view',
+      data: data
+    };
+
+    // In test mode, always log the data to console
+    if (TEST_MODE) {
+      console.log('📊 Tracking Data Collected:', payload);
+    }
+
     // Don't send if webhook URL is not configured
     if (!WEBHOOK_URL || WEBHOOK_URL === 'YOUR_WEBHOOK_URL_HERE') {
-      if (DEBUG) console.warn('Webhook URL not configured. Please set WEBHOOK_URL in tracking.js');
+      if (DEBUG || TEST_MODE) {
+        console.warn('⚠️ Webhook URL not configured. Tracking data collected but not sent.');
+        console.info('💡 To enable tracking, set WEBHOOK_URL in tracking.js');
+        console.info('   Options: webhook.site, Formspree, or your own backend endpoint');
+      }
       return;
     }
 
@@ -120,22 +137,29 @@
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        event: 'profile_view',
-        data: data
-      })
+      body: JSON.stringify(payload)
     })
     .then(response => {
-      if (DEBUG) console.log('Tracking data sent successfully:', response);
+      if (response.ok) {
+        if (DEBUG) console.log('✅ Tracking data sent successfully');
+        return response;
+      } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
     })
     .catch(error => {
-      if (DEBUG) console.error('Error sending tracking data:', error);
+      if (DEBUG) console.error('❌ Error sending tracking data:', error);
     });
   }
 
   // ============================================================================
   // INITIALIZE TRACKING
   // ============================================================================
+
+  // Initialize tracking
+  if (DEBUG || TEST_MODE) {
+    console.log('🔍 Tracking script loaded and initialized');
+  }
 
   // Track when page loads
   if (document.readyState === 'loading') {
@@ -153,11 +177,22 @@
         event: 'page_return',
         url: window.location.href
       };
+      
+      if (TEST_MODE) {
+        console.log('📊 Page Return Event:', returnData);
+      }
+      
       if (WEBHOOK_URL && WEBHOOK_URL !== 'YOUR_WEBHOOK_URL_HERE') {
         fetch(WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ event: 'page_return', data: returnData })
+        })
+        .then(response => {
+          if (DEBUG && response.ok) console.log('✅ Page return tracked');
+        })
+        .catch(error => {
+          if (DEBUG) console.error('❌ Error tracking page return:', error);
         });
       }
     }
@@ -167,16 +202,23 @@
   let startTime = Date.now();
   window.addEventListener('beforeunload', function() {
     const timeSpent = Math.round((Date.now() - startTime) / 1000); // in seconds
+    const exitData = {
+      event: 'page_exit',
+      data: {
+        timestamp: new Date().toISOString(),
+        timeSpentSeconds: timeSpent,
+        url: window.location.href
+      }
+    };
+    
+    if (TEST_MODE) {
+      // Log to console (may not always show due to page unload)
+      console.log('📊 Page Exit Event:', exitData);
+    }
+    
     if (WEBHOOK_URL && WEBHOOK_URL !== 'YOUR_WEBHOOK_URL_HERE') {
       // Use sendBeacon for more reliable delivery on page unload
-      const data = JSON.stringify({
-        event: 'page_exit',
-        data: {
-          timestamp: new Date().toISOString(),
-          timeSpentSeconds: timeSpent,
-          url: window.location.href
-        }
-      });
+      const data = JSON.stringify(exitData);
       // Wrap in Blob so sendBeacon sends it as application/json
       const blob = new Blob([data], { type: 'application/json' });
       navigator.sendBeacon(WEBHOOK_URL, blob);
