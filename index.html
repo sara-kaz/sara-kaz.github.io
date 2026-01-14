@@ -3758,11 +3758,21 @@ a .btn-8 {
       return Promise.resolve();
     }
 
+    // Wait for EmailJS SDK to be available
+    if (typeof emailjs === 'undefined') {
+      if (DEBUG) {
+        console.warn('⚠️ EmailJS SDK not loaded yet. Retrying in 1 second...');
+      }
+      // Retry after a short delay
+      setTimeout(() => sendEmailNotification(data), 1000);
+      return Promise.resolve();
+    }
+
     // Initialize EmailJS if not already initialized
-    if (typeof emailjs !== 'undefined') {
+    try {
       emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-    } else {
-      if (DEBUG) console.warn('⚠️ EmailJS SDK not loaded');
+    } catch (initError) {
+      if (DEBUG) console.error('❌ Error initializing EmailJS:', initError);
       return Promise.resolve();
     }
 
@@ -3800,14 +3810,25 @@ a .btn-8 {
       emailParams
     )
     .then(function(response) {
-      if (DEBUG) console.log('✅ Email notification sent successfully', response.status, response.text);
+      if (DEBUG) {
+        console.log('✅ Email notification sent successfully');
+        console.log('Response status:', response.status);
+        console.log('Response text:', response.text);
+      }
     })
     .catch(function(error) {
       if (DEBUG) {
         console.error('❌ Error sending email notification:', error);
+        console.error('Error details:', {
+          status: error.status,
+          text: error.text,
+          message: error.message
+        });
         
         // Check for Gmail API authentication errors
-        if (error.status === 412 || (error.text && error.text.includes('insufficient authentication scopes'))) {
+        if (error.status === 412 || 
+            (error.text && error.text.includes('insufficient authentication scopes')) ||
+            (error.text && error.text.includes('412Gmail_API'))) {
           console.error('🔐 Gmail API Authentication Error (412)');
           console.warn('⚠️ Your Gmail service in EmailJS needs to be re-authorized.');
           console.info('📋 To fix this:');
@@ -3820,6 +3841,13 @@ a .btn-8 {
           console.info('');
           console.info('💡 Alternative: Switch to a different email service provider');
           console.info('   (SendGrid, Mailgun, or SMTP) in EmailJS dashboard');
+        } else if (error.status === 400) {
+          console.error('❌ Bad Request (400) - Check your template parameters');
+          console.info('💡 Make sure all template variables match your EmailJS template');
+          console.info('   Template variables used:', Object.keys(emailParams));
+        } else if (error.status === 403) {
+          console.error('❌ Forbidden (403) - Check your Public Key and Service ID');
+          console.info('💡 Verify your EmailJS configuration is correct');
         }
       }
     });
@@ -3936,16 +3964,63 @@ a .btn-8 {
   // INITIALIZE TRACKING
   // ============================================================================
 
-  // Initialize tracking
-  if (DEBUG || TEST_MODE) {
-    console.log('🔍 Tracking script loaded and initialized');
+  // Wait for EmailJS SDK to load before initializing
+  function waitForEmailJS(callback, maxAttempts = 10) {
+    if (typeof emailjs !== 'undefined') {
+      if (DEBUG) console.log('✅ EmailJS SDK loaded');
+      callback();
+    } else if (maxAttempts > 0) {
+      setTimeout(() => waitForEmailJS(callback, maxAttempts - 1), 500);
+    } else {
+      if (DEBUG) console.warn('⚠️ EmailJS SDK failed to load after 5 seconds');
+      callback(); // Continue anyway, email will retry
+    }
   }
 
-  // Track when page loads
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', trackVisitor);
-  } else {
-    trackVisitor();
+  // Initialize tracking
+  if (DEBUG || TEST_MODE) {
+    console.log('🔍 Tracking script loaded');
+    console.log('📧 EmailJS Config:', {
+      SERVICE_ID: EMAILJS_CONFIG.SERVICE_ID,
+      TEMPLATE_ID: EMAILJS_CONFIG.TEMPLATE_ID,
+      PUBLIC_KEY: EMAILJS_CONFIG.PUBLIC_KEY ? 'Set' : 'Not Set',
+      TO_EMAIL: EMAILJS_CONFIG.TO_EMAIL
+    });
+  }
+
+  // Wait for EmailJS and then track visitor
+  waitForEmailJS(() => {
+    // Track when page loads
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', trackVisitor);
+    } else {
+      trackVisitor();
+    }
+  });
+
+  // Expose test function for debugging (only in DEBUG mode)
+  if (DEBUG && typeof window !== 'undefined') {
+    window.testEmailJS = function() {
+      console.log('🧪 Testing EmailJS...');
+      const testData = {
+        timestamp: new Date().toISOString(),
+        url: window.location.href,
+        referrer: 'Test',
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        screenResolution: `${window.screen.width}x${window.screen.height}`,
+        viewportSize: `${window.innerWidth}x${window.innerHeight}`,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        ipAddress: 'Test IP',
+        location: {
+          city: 'Test City',
+          region: 'Test Region',
+          country: 'Test Country'
+        }
+      };
+      sendEmailNotification(testData);
+    };
+    console.log('💡 Test function available: Run window.testEmailJS() in console to test email sending');
   }
 
   // Track page visibility changes (when user switches tabs and comes back)
