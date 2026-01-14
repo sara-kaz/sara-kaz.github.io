@@ -154,6 +154,23 @@
         text-decoration: none;
       }
 
+      /* Projects cards: allow 3 buttons to fit nicely */
+      #projects .button-container {
+        width: calc(100% - 40px);
+        margin: 10px 20px 20px;
+      }
+
+      #projects .button-container a.custom-btn {
+        width: auto;              /* override fixed .custom-btn width */
+        min-width: 110px;
+        flex: 1 1 110px;          /* shrink/wrap cleanly inside cards */
+      }
+
+      /* Keep the animated border aligned to the button edges */
+      #projects .button-container a.custom-btn span {
+        white-space: nowrap;
+      }
+
       /* Link preview styling for external links */
       .link-preview {
         display: flex;
