@@ -1457,7 +1457,7 @@
             top: 50%;
             transform: translateY(-50%);
             background: transparent; /* transparent fill */
-            border: 2px solid #bb6eda;
+            border: none; /* remove circle outline */
             cursor: pointer;
             padding: 10px;
             border-radius: 50%;
@@ -1474,7 +1474,6 @@
 
         .nav-button:hover {
             background: transparent; /* keep fill transparent on hover */
-            border-color: #cb7eea;
             color: #cb7eea;
             transform: translateY(-50%) translateY(-2px);
             box-shadow: var(--btn-shadow-hover);
@@ -1491,6 +1490,12 @@
 
         .next {
             right: 10px;
+        }
+
+        /* Work slider: keep content away from arrows */
+        #work .slide {
+          padding-left: 70px;
+          padding-right: 70px;
         }
 
 	
@@ -1735,6 +1740,12 @@
   .slide {
     padding: 15px; /* Better mobile padding */
   }
+
+  /* Keep work slide text clear of arrows on mobile */
+  #work .slide {
+    padding-left: 55px;
+    padding-right: 55px;
+  }
   
   .slide h4 {
     font-size: 1.2em; /* Smaller heading for mobile */
@@ -1962,6 +1973,12 @@
         
         section {
           padding: 20px 10px; /* Tighter padding for small phones */
+        }
+
+        /* Keep work slide text clear of arrows on small phones */
+        #work .slide {
+          padding-left: 45px;
+          padding-right: 45px;
         }
         
         h2, h3 {
