@@ -712,8 +712,22 @@
         position: relative; /* For proper PDF positioning */
       }
 
+      /* Unified button design (matches "View Certificate") */
+      :root {
+        --btn-grad: linear-gradient(135deg, #8c64d0, #bb6eda);
+        --btn-grad-hover: linear-gradient(135deg, #9d74e0, #cb7eea);
+        --btn-shadow: 0 4px 15px rgba(140, 100, 208, 0.3);
+        --btn-shadow-hover: 0 6px 20px rgba(140, 100, 208, 0.4);
+      }
+
+      /* Make anchor-based buttons look/behave like buttons */
+      a.custom-btn {
+        text-decoration: none;
+      }
+
+      .custom-btn,
       .certification-details summary {
-        background: linear-gradient(135deg, #8c64d0, #bb6eda);
+        background: var(--btn-grad);
         color: white;
         padding: 15px 30px;
         border-radius: 30px;
@@ -721,23 +735,48 @@
         font-weight: 600;
         text-align: center;
         transition: all 0.3s ease;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         font-size: 1.1em;
-        box-shadow: 0 4px 15px rgba(140, 100, 208, 0.3);
+        box-shadow: var(--btn-shadow);
         border: none;
         outline: none;
-        margin-bottom: 20px; /* Add space below button */
+        box-sizing: border-box;
+        line-height: 1.1;
       }
 
+      /* Ensure button labels don't inherit global <span> styling */
+      .custom-btn span {
+        color: inherit;
+        font: inherit;
+      }
+
+      .custom-btn:hover,
       .certification-details summary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(140, 100, 208, 0.4);
-        background: linear-gradient(135deg, #9d74e0, #cb7eea);
+        box-shadow: var(--btn-shadow-hover);
+        background: var(--btn-grad-hover);
       }
 
+      .custom-btn:active,
+      .certification-details summary:active {
+        transform: translateY(-1px) scale(0.99);
+      }
+
+      .custom-btn:focus,
       .certification-details summary:focus {
         outline: 2px solid #8c64d0;
         outline-offset: 2px;
+      }
+
+      /* Keep summary clean (no default disclosure marker) */
+      .certification-details summary {
+        margin-bottom: 20px; /* Space below button */
+        list-style: none;
+      }
+      .certification-details summary::-webkit-details-marker {
+        display: none;
       }
 
       .certification-details .pdf-container {
@@ -1302,134 +1341,16 @@
 }
 	
 
-.custom-btn {
-  width: 130px;
-  height: 40px;
-  color: #fff;
-  border-radius: 5px;
-  padding: 10px 25px;
-  font-family: 'Lato', sans-serif;
-  font-weight: 500;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
-  outline: none;
-  box-sizing: border-box; /* Ensure proper sizing */
-  vertical-align: middle; /* Align buttons properly */
-}
-
+/* (legacy) btn-8 used to have its own border animation; now it is just an alias */
 .btn-8 {
-  background-color: #f0ecfc;
-  background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
-  line-height: 40px;
-  padding: 0;
-  border: none;
-  overflow: hidden; /* Contain animation within button boundaries */
-  box-sizing: border-box; /* Ensure proper sizing */
-  display: inline-flex; /* Keep consistent alignment for <a> and <button> */
-  align-items: center;
-  justify-content: center;
-}
-.btn-8 span {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  color: #fff;
-  transition: color 0.3s ease;
-  z-index: 2;
-  box-sizing: border-box; /* Ensure proper sizing */
-  padding: 0; /* Remove any default padding */
-}
-/* Ensure anchor tags wrapping buttons don't cause layout issues */
-.button-container a,
-.button-container a.custom-btn {
-  display: inline-block;
-  vertical-align: middle;
-  text-decoration: none;
+  background: transparent;
 }
 .btn-8:before,
-.btn-8:after {
-  position: absolute;
-  content: "";
-  right: 0;
-  bottom: 0;
-  background: #c797eb;
-  transition: all 0.3s ease;
-  z-index: 1;
-  box-sizing: border-box; /* Ensure proper sizing */
-}
-.btn-8:before{
-   height: 0%;
-   width: 2px;
-   transform-origin: bottom right; /* Animation starts from bottom-right */
-}
-.btn-8:after {
-  width: 0%;
-  height: 2px;
-  transform-origin: bottom right; /* Animation starts from bottom-right */
-}
-.btn-8:hover:before,
-.btn-8:active:before {
-  height: 100%;
-}
-.btn-8:hover:after,
-.btn-8:active:after {
-  width: 100%;
-}
-.btn-8:hover,
-.btn-8:active {
-  background: transparent;
-}
-.btn-8:hover span,
-.btn-8:active span,
-.btn-8:hover a span,
-.btn-8:active a span {
-  color: #c797eb;
-}
+.btn-8:after,
 .btn-8 span:before,
 .btn-8 span:after {
-  position: absolute;
-  content: "";
-  left: 0;
-  top: 0;
-  background: #c797eb;
-  /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
-              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-    inset -4px -4px 6px 0 rgba(255,255,255,.5),
-    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
-  transition: all 0.3s ease;
-  z-index: 1;
-  box-sizing: border-box; /* Ensure proper sizing */
-}
-.btn-8 span:before {
-  width: 2px;
-  height: 0%;
-  transform-origin: top left; /* Animation starts from top-left */
-}
-.btn-8 span:after {
-  height: 2px;
-  width: 0%;
-  transform-origin: top left; /* Animation starts from top-left */
-}
-.btn-8:hover span:before,
-.btn-8:active span:before {
-  height: 100%;
-}
-.btn-8:hover span:after,
-.btn-8:active span:after {
-  width: 100%;
-}
-.btn-8:active {
-  transform: scale(0.98);
-  transform-origin: center center; /* Ensure scaling happens from center */
+  content: none !important;
+  display: none !important;
 }
 
 /* Slider Container */
@@ -1482,7 +1403,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
+            background: var(--btn-grad);
             border: none;
             cursor: pointer;
             padding: 10px;
@@ -1494,18 +1415,19 @@
             justify-content: center;
             transition: all 0.3s ease;
             font-size: 18px;
-            color: #c797eb;
+            color: #fff;
+            box-shadow: var(--btn-shadow);
         }
 
         .nav-button:hover {
-            background-color: rgba(199, 151, 235, 0.9);
-            color: #fff;
-            transform: translateY(-50%) scale(1.1);
+            background: var(--btn-grad-hover);
+            transform: translateY(-50%) translateY(-2px);
+            box-shadow: var(--btn-shadow-hover);
         }
 
         .nav-button:active {
-            transform: translateY(-50%) scale(0.95);
-            background-color: rgba(199, 151, 235, 1);
+            transform: translateY(-50%) translateY(-1px) scale(0.99);
+            background: var(--btn-grad-hover);
         }
 
         .prev {
@@ -1808,7 +1730,8 @@
           z-index: 5; /* Ensure proper z-index on mobile */
         }
 
-        .certification-details summary {
+        .certification-details summary,
+        .custom-btn {
           padding: 12px 25px;
           font-size: 1em;
         }
@@ -2006,7 +1929,8 @@
           padding: 15px;
         }
 
-        .certification-details summary {
+        .certification-details summary,
+        .custom-btn {
           padding: 8px 16px;
           font-size: 0.9em;
         }
@@ -2019,13 +1943,6 @@
 
         .certification-details .pdf-container {
           height: 280px;
-        }
-        
-        /* Improve button sizing for small screens */
-        .custom-btn {
-          width: 120px;
-          height: 35px;
-          font-size: 14px;
         }
         
         /* Better spacing for skill cards on small phones */
@@ -2120,7 +2037,8 @@
           font-size: 0.85em; /* Even smaller font for small phones */
         }
 
-        .certification-details summary {
+        .certification-details summary,
+        .custom-btn {
           padding: 8px 16px; /* Smaller button for small phones */
           font-size: 0.9em; /* Smaller font for small phones */
         }
@@ -3571,15 +3489,7 @@
                   <div style="font-size: 3em; margin-bottom: 20px;">📄</div>
                   <h3>PDF Could Not Load</h3>
                   <p>Please try refreshing the page or check your internet connection.</p>
-                  <button onclick="location.reload()" style="
-                    background: linear-gradient(135deg, #8c64d0, #bb6eda);
-                    color: white;
-                    border: none;
-                    padding: 10px 20px;
-                    border-radius: 20px;
-                    cursor: pointer;
-                    margin-top: 15px;
-                  ">Retry</button>
+                  <button class="custom-btn" onclick="location.reload()" style="margin-top: 15px;">Retry</button>
                 </div>
               `;
             };
