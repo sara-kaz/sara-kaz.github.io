@@ -149,6 +149,11 @@
         align-items: center; /* Ensure buttons align properly */
       }
 
+      /* Button links should behave like buttons (no underline/blue link styles) */
+      .button-container a.custom-btn {
+        text-decoration: none;
+      }
+
       /* Link preview styling for external links */
       .link-preview {
         display: flex;
@@ -1304,15 +1309,20 @@
 .btn-8 {
   background-color: #f0ecfc;
   background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
-  line-height: 42px;
+  line-height: 40px;
   padding: 0;
   border: none;
   overflow: hidden; /* Contain animation within button boundaries */
   box-sizing: border-box; /* Ensure proper sizing */
+  display: inline-flex; /* Keep consistent alignment for <a> and <button> */
+  align-items: center;
+  justify-content: center;
 }
 .btn-8 span {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   color: #fff;
@@ -1321,52 +1331,9 @@
   box-sizing: border-box; /* Ensure proper sizing */
   padding: 0; /* Remove any default padding */
 }
-.btn-8 a {
- text-decoration: none;
- position: relative;
- color: inherit;
- display: block;
- width: 100%;
- height: 100%;
- box-sizing: border-box; /* Ensure proper sizing */
-}
-/* Ensure hover works when button is inside anchor tag */
-a:hover .btn-8:before,
-a:active .btn-8:before {
-  height: 100%;
-}
-a:hover .btn-8:after,
-a:active .btn-8:after {
-  width: 100%;
-}
-a:hover .btn-8,
-a:active .btn-8 {
-  background: transparent;
-}
-a:hover .btn-8 span,
-a:active .btn-8 span {
-  color: #c797eb;
-}
-a:hover .btn-8 span:before,
-a:active .btn-8 span:before,
-a:hover .btn-8 span:after,
-a:active .btn-8 span:after {
-  height: 100%;
-  width: 100%;
-}
-a:active .btn-8 {
-  transform: scale(0.98);
-  transform-origin: center center; /* Ensure scaling happens from center */
-}
-/* Ensure anchor tags don't interfere with button positioning */
-a .btn-8 {
-  position: relative; /* Maintain relative positioning */
-  display: inline-block; /* Maintain block display */
-  vertical-align: middle; /* Align properly */
-}
 /* Ensure anchor tags wrapping buttons don't cause layout issues */
 .button-container a,
-a .btn-8 {
+.button-container a.custom-btn {
   display: inline-block;
   vertical-align: middle;
   text-decoration: none;
@@ -1436,10 +1403,11 @@ a .btn-8 {
   transform-origin: top left; /* Animation starts from top-left */
 }
 .btn-8:hover span:before,
-.btn-8:active span:before,
+.btn-8:active span:before {
+  height: 100%;
+}
 .btn-8:hover span:after,
 .btn-8:active span:after {
-  height: 100%;
   width: 100%;
 }
 .btn-8:active {
@@ -2869,11 +2837,9 @@ a .btn-8 {
       </div>
 
       <!-- Resume Button -->
-      <button class="custom-btn btn-8">
-        <a href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/view?usp=sharing">
-          <span>Resume</span>
-        </a>
-      </button>
+      <a class="custom-btn btn-8" href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/view?usp=sharing" target="_blank" rel="noopener">
+        <span>Resume</span>
+      </a>
     </section>
 
     <!-- =============================================================================
@@ -2970,15 +2936,9 @@ a .btn-8 {
 
         <!-- Project Links -->
         <div class="button-container">
-          <a href="https://www.csun.edu/~pbishay/projects.php" target="_blank">
-            <button class="custom-btn btn-8"><span>Project Site</span></button>
-          </a>
-          <a href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank">
-            <button class="custom-btn btn-8"><span>Report</span></button>
-          </a>
-          <a href="https://drive.google.com/file/d/17OoT9koCpqH9PGj35ya8RFIaFsZ9H9zN/preview" target="_blank">
-            <button class="custom-btn btn-8"><span>Flowcharts</span></button>
-          </a>
+          <a class="custom-btn btn-8" href="https://www.csun.edu/~pbishay/projects.php" target="_blank" rel="noopener"><span>Project Site</span></a>
+          <a class="custom-btn btn-8" href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank" rel="noopener"><span>Report</span></a>
+          <a class="custom-btn btn-8" href="https://drive.google.com/file/d/17OoT9koCpqH9PGj35ya8RFIaFsZ9H9zN/preview" target="_blank" rel="noopener"><span>Flowcharts</span></a>
         </div>
 
         <div class="card-data">
@@ -3011,12 +2971,8 @@ a .btn-8 {
 
         <!-- Project Links -->
         <div class="button-container">
-          <a href="https://drive.google.com/file/d/1JI9QK4zPidZLYTMg1YQxxda2uzVStjWH/preview" target="_blank">
-            <button class="custom-btn btn-8"><span>Outline</span></button>
-          </a>
-          <a href="https://drive.google.com/file/d/1nKk8F7ppGmHeNGtD6ScAxxu0h6OUEoQZ/preview" target="_blank">
-            <button class="custom-btn btn-8"><span>Report</span></button>
-          </a>
+          <a class="custom-btn btn-8" href="https://drive.google.com/file/d/1JI9QK4zPidZLYTMg1YQxxda2uzVStjWH/preview" target="_blank" rel="noopener"><span>Outline</span></a>
+          <a class="custom-btn btn-8" href="https://drive.google.com/file/d/1nKk8F7ppGmHeNGtD6ScAxxu0h6OUEoQZ/preview" target="_blank" rel="noopener"><span>Report</span></a>
         </div>
 
         <div class="card-data">
@@ -3233,12 +3189,8 @@ a .btn-8 {
         
         <!-- Education Document Links -->
         <div class="education-buttons">
-          <a href="https://drive.google.com/file/d/1QjrFzWFWrzer3bw5xy2_jNyv7GuzGw3W/preview" target="_blank">
-            <button class="custom-btn btn-8"><span>Diploma</span></button>
-          </a>
-          <a href="https://drive.google.com/file/d/1KSEZqqeRLfNL1Y9_D0JOmDpthqvLvgKs/preview" target="_blank">
-            <button class="custom-btn btn-8"><span>Transcript</span></button>
-          </a>
+          <a class="custom-btn btn-8" href="https://drive.google.com/file/d/1QjrFzWFWrzer3bw5xy2_jNyv7GuzGw3W/preview" target="_blank" rel="noopener"><span>Diploma</span></a>
+          <a class="custom-btn btn-8" href="https://drive.google.com/file/d/1KSEZqqeRLfNL1Y9_D0JOmDpthqvLvgKs/preview" target="_blank" rel="noopener"><span>Transcript</span></a>
         </div>
       </div>
     </section>
