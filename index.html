@@ -2601,6 +2601,7 @@ a:active .btn-8 {
               <span class="interests_item">GitHub</span>
               <span class="interests_item">Django</span>
               <span class="interests_item">Vivado</span>
+              <span class="interests_item">Synopsys VCS</span> 
             </div>
           </div>
         </div>
@@ -2641,6 +2642,7 @@ a:active .btn-8 {
               <span class="interests_item">ESP32­ WROOM­ 32</span>
               <span class="interests_item">Zedboard</span>
               <span class="interests_item">Zybo</span>
+              <span class="interests_item">PCM1052A</span>
             </div>
           </div>
         </div>
@@ -3119,7 +3121,7 @@ a:active .btn-8 {
             </li>
             <li>
               <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000" alt="Award">
-              <span>Dean's List: Fall 2025</span>
+              <span>Dean's List: Spring 2025 - Fall 2025</span>
             </li>
             <li>
               <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000" alt="Award">
@@ -3146,6 +3148,7 @@ a:active .btn-8 {
             <span class="coursework-tag">SoC Design</span>
             <span class="coursework-tag">FPGA/ASIC Design</span>
             <span class="coursework-tag">ASIC Development</span>
+            <span class="coursework-tag">Machine Learning</span>
           </div>
         </div>
       </div>
@@ -3592,11 +3595,15 @@ a:active .btn-8 {
       });
     </script>
     
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
     <!-- Visitor Tracking Script -->
     <script>
 /**
  * Visitor Tracking System
  * Tracks who viewed the profile, from where, when, etc.
+ * Sends email notifications and stores data in Google Sheets for reporting.
  */
 
 (function() {
@@ -3606,7 +3613,25 @@ a:active .btn-8 {
   // CONFIGURATION
   // ============================================================================
   
-  const WEBHOOK_URL = 'https://webhook.site/f80f7d25-34c8-48d0-b163-2a9b2f8b0197';
+  // EmailJS Configuration - Get these from https://www.emailjs.com/
+  // After signing up, you'll get:
+  // 1. SERVICE_ID - Your EmailJS service ID
+  // 2. TEMPLATE_ID - Your email template ID
+  // 3. PUBLIC_KEY - Your EmailJS public key
+  const EMAILJS_CONFIG = {
+    SERVICE_ID: 'service_38rphlo',        // Replace with your EmailJS service ID
+    TEMPLATE_ID: 'template_s45a4gl',      // Replace with your EmailJS template ID
+    PUBLIC_KEY: 'wFlW3vlv_jjBbMCRj',        // Replace with your EmailJS public key
+    TO_EMAIL: 'sarakhaled.kaz@gmail.com'  // Your email address
+  };
+
+  // Google Sheets Configuration - For storing visitor data
+  // You'll need to set up a Google Apps Script Web App (see SETUP.md)
+  const GOOGLE_SHEETS_WEB_APP_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL'; // Replace with your Google Apps Script Web App URL
+
+  // Optional: Keep webhook for backup/other integrations
+  const WEBHOOK_URL = ''; // Optional: Add webhook URL if needed
+  
   const DEBUG = true;
   const TEST_MODE = true;
 
@@ -3689,7 +3714,172 @@ a:active .btn-8 {
   }
 
   // ============================================================================
-  // SEND DATA TO WEBHOOK
+  // SEND EMAIL NOTIFICATION
+  // ============================================================================
+
+  function sendEmailNotification(data) {
+    // Check if EmailJS is configured
+    if (!EMAILJS_CONFIG.SERVICE_ID || EMAILJS_CONFIG.SERVICE_ID === 'YOUR_SERVICE_ID' ||
+        !EMAILJS_CONFIG.TEMPLATE_ID || EMAILJS_CONFIG.TEMPLATE_ID === 'YOUR_TEMPLATE_ID' ||
+        !EMAILJS_CONFIG.PUBLIC_KEY || EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+      if (DEBUG) {
+        console.warn('⚠️ EmailJS not configured. Email notifications disabled.');
+        console.info('💡 To enable email notifications, configure EMAILJS_CONFIG in the tracking script.');
+      }
+      return Promise.resolve();
+    }
+
+    // Initialize EmailJS if not already initialized
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+    } else {
+      if (DEBUG) console.warn('⚠️ EmailJS SDK not loaded');
+      return Promise.resolve();
+    }
+
+    // Format visitor data for email
+    const locationInfo = data.location ? 
+      `${data.location.city}, ${data.location.region}, ${data.location.country}` : 
+      'Unknown';
+    
+    const emailParams = {
+      to_email: EMAILJS_CONFIG.TO_EMAIL,
+      subject: `New Visitor to Your Portfolio - ${locationInfo}`,
+      visitor_ip: data.ipAddress || 'Unknown',
+      visitor_location: locationInfo,
+      visitor_time: new Date(data.timestamp).toLocaleString(),
+      visitor_referrer: data.referrer || 'Direct',
+      visitor_device: data.userAgent || 'Unknown',
+      visitor_screen: data.screenResolution || 'Unknown',
+      visitor_timezone: data.timezone || 'Unknown',
+      visitor_language: data.language || 'Unknown',
+      visitor_url: data.url || window.location.href,
+      message: `A new visitor has viewed your portfolio!\n\n` +
+               `Location: ${locationInfo}\n` +
+               `IP Address: ${data.ipAddress || 'Unknown'}\n` +
+               `Time: ${new Date(data.timestamp).toLocaleString()}\n` +
+               `Referrer: ${data.referrer || 'Direct'}\n` +
+               `Device: ${data.userAgent || 'Unknown'}\n` +
+               `Screen: ${data.screenResolution || 'Unknown'}\n` +
+               `Timezone: ${data.timezone || 'Unknown'}\n` +
+               `Language: ${data.language || 'Unknown'}`
+    };
+
+    return emailjs.send(
+      EMAILJS_CONFIG.SERVICE_ID,
+      EMAILJS_CONFIG.TEMPLATE_ID,
+      emailParams
+    )
+    .then(function(response) {
+      if (DEBUG) console.log('✅ Email notification sent successfully', response.status, response.text);
+    })
+    .catch(function(error) {
+      if (DEBUG) {
+        console.error('❌ Error sending email notification:', error);
+        
+        // Check for Gmail API authentication errors
+        if (error.status === 412 || (error.text && error.text.includes('insufficient authentication scopes'))) {
+          console.error('🔐 Gmail API Authentication Error (412)');
+          console.warn('⚠️ Your Gmail service in EmailJS needs to be re-authorized.');
+          console.info('📋 To fix this:');
+          console.info('   1. Go to https://dashboard.emailjs.com/');
+          console.info('   2. Navigate to "Email Services"');
+          console.info('   3. Find your Gmail service (service_38rphlo)');
+          console.info('   4. Click "Disconnect" and then "Add New Service" → "Gmail"');
+          console.info('   5. Re-authorize with your Gmail account');
+          console.info('   6. Make sure to grant ALL requested permissions');
+          console.info('');
+          console.info('💡 Alternative: Switch to a different email service provider');
+          console.info('   (SendGrid, Mailgun, or SMTP) in EmailJS dashboard');
+        }
+      }
+    });
+  }
+
+  // ============================================================================
+  // STORE DATA IN GOOGLE SHEETS
+  // ============================================================================
+
+  function storeInGoogleSheets(data) {
+    // Check if Google Sheets URL is configured
+    if (!GOOGLE_SHEETS_WEB_APP_URL || GOOGLE_SHEETS_WEB_APP_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
+      if (DEBUG) {
+        console.warn('⚠️ Google Sheets not configured. Data storage disabled.');
+        console.info('💡 To enable data storage, configure GOOGLE_SHEETS_WEB_APP_URL in the tracking script.');
+      }
+      return Promise.resolve();
+    }
+
+    // Prepare data for Google Sheets
+    const sheetData = {
+      timestamp: data.timestamp,
+      ip_address: data.ipAddress || 'Unknown',
+      city: data.location?.city || 'Unknown',
+      region: data.location?.region || 'Unknown',
+      country: data.location?.country || 'Unknown',
+      country_code: data.location?.countryCode || 'Unknown',
+      timezone: data.location?.timezone || data.timezone || 'Unknown',
+      isp: data.location?.isp || 'Unknown',
+      referrer: data.referrer || 'Direct',
+      user_agent: data.userAgent || 'Unknown',
+      screen_resolution: data.screenResolution || 'Unknown',
+      viewport_size: data.viewportSize || 'Unknown',
+      language: data.language || 'Unknown',
+      url: data.url || window.location.href
+    };
+
+    return fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+      method: 'POST',
+      mode: 'no-cors', // Google Apps Script requires no-cors
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(sheetData)
+    })
+    .then(() => {
+      if (DEBUG) console.log('✅ Data stored in Google Sheets');
+    })
+    .catch(error => {
+      if (DEBUG) console.error('❌ Error storing data in Google Sheets:', error);
+    });
+  }
+
+  // ============================================================================
+  // SEND DATA TO WEBHOOK (OPTIONAL BACKUP)
+  // ============================================================================
+
+  function sendToWebhook(data) {
+    if (!WEBHOOK_URL || WEBHOOK_URL === '') {
+      return Promise.resolve();
+    }
+
+    const payload = {
+      event: 'profile_view',
+      data: data
+    };
+
+    return fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => {
+      if (response.ok) {
+        if (DEBUG) console.log('✅ Data sent to webhook successfully');
+        return response;
+      } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    })
+    .catch(error => {
+      if (DEBUG) console.error('❌ Error sending data to webhook:', error);
+    });
+  }
+
+  // ============================================================================
+  // MAIN SEND TRACKING DATA FUNCTION
   // ============================================================================
 
   function sendTrackingData(data) {
@@ -3703,35 +3893,14 @@ a:active .btn-8 {
       console.log('📊 Tracking Data Collected:', payload);
     }
 
-    // Don't send if webhook URL is not configured
-    if (!WEBHOOK_URL || WEBHOOK_URL === 'YOUR_WEBHOOK_URL_HERE') {
-      if (DEBUG || TEST_MODE) {
-        console.warn('⚠️ Webhook URL not configured. Tracking data collected but not sent.');
-        console.info('💡 To enable tracking, set WEBHOOK_URL in tracking.js');
-        console.info('   Options: webhook.site, Formspree, or your own backend endpoint');
-      }
-      return;
-    }
+    // Send email notification
+    sendEmailNotification(data);
 
-    // Send data to webhook endpoint
-    fetch(WEBHOOK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload)
-    })
-    .then(response => {
-      if (response.ok) {
-        if (DEBUG) console.log('✅ Tracking data sent successfully');
-        return response;
-      } else {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-    })
-    .catch(error => {
-      if (DEBUG) console.error('❌ Error sending tracking data:', error);
-    });
+    // Store in Google Sheets for historical reporting
+    storeInGoogleSheets(data);
+
+    // Send to webhook if configured (optional backup)
+    sendToWebhook(data);
   }
 
   // ============================================================================
@@ -3764,7 +3933,13 @@ a:active .btn-8 {
         console.log('📊 Page Return Event:', returnData);
       }
       
-      if (WEBHOOK_URL && WEBHOOK_URL !== 'YOUR_WEBHOOK_URL_HERE') {
+      // Store return event in Google Sheets (optional - less critical than initial visit)
+      if (GOOGLE_SHEETS_WEB_APP_URL && GOOGLE_SHEETS_WEB_APP_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
+        storeInGoogleSheets(returnData).catch(() => {});
+      }
+      
+      // Send to webhook if configured
+      if (WEBHOOK_URL && WEBHOOK_URL !== '') {
         fetch(WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -3785,12 +3960,10 @@ a:active .btn-8 {
   window.addEventListener('beforeunload', function() {
     const timeSpent = Math.round((Date.now() - startTime) / 1000); // in seconds
     const exitData = {
+      timestamp: new Date().toISOString(),
       event: 'page_exit',
-      data: {
-        timestamp: new Date().toISOString(),
-        timeSpentSeconds: timeSpent,
-        url: window.location.href
-      }
+      timeSpentSeconds: timeSpent,
+      url: window.location.href
     };
     
     if (TEST_MODE) {
@@ -3798,10 +3971,16 @@ a:active .btn-8 {
       console.log('📊 Page Exit Event:', exitData);
     }
     
-    if (WEBHOOK_URL && WEBHOOK_URL !== 'YOUR_WEBHOOK_URL_HERE') {
-      // Use sendBeacon for more reliable delivery on page unload
+    // Store exit event in Google Sheets
+    if (GOOGLE_SHEETS_WEB_APP_URL && GOOGLE_SHEETS_WEB_APP_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
       const data = JSON.stringify(exitData);
-      // Wrap in Blob so sendBeacon sends it as application/json
+      const blob = new Blob([data], { type: 'application/json' });
+      navigator.sendBeacon(GOOGLE_SHEETS_WEB_APP_URL, blob);
+    }
+    
+    // Send to webhook if configured
+    if (WEBHOOK_URL && WEBHOOK_URL !== '') {
+      const data = JSON.stringify({ event: 'page_exit', data: exitData });
       const blob = new Blob([data], { type: 'application/json' });
       navigator.sendBeacon(WEBHOOK_URL, blob);
     }
