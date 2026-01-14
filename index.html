@@ -487,6 +487,61 @@
 	      position: relative;
 	      z-index: 1002;
       }
+
+      /* =============================================================================
+         RESUME DROPDOWN (NAV)
+         ============================================================================= */
+      nav li.nav-dropdown {
+        position: relative;
+      }
+      nav li.nav-dropdown > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      nav li.nav-dropdown > a::after {
+        content: "▾";
+        font-size: 0.9em;
+        opacity: 0.85;
+        transform: translateY(-1px);
+      }
+      nav li.nav-dropdown .nav-submenu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 220px;
+        padding: 8px 0;
+        margin: 0;
+        list-style: none;
+        background: rgba(0, 0, 0, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        z-index: 1003;
+      }
+      nav li.nav-dropdown:hover .nav-submenu,
+      nav li.nav-dropdown.open .nav-submenu {
+        display: block;
+      }
+      nav li.nav-dropdown .nav-submenu li {
+        display: block;
+        width: 100%;
+        flex: none;
+        justify-content: flex-start;
+        align-items: stretch;
+      }
+      nav li.nav-dropdown .nav-submenu a {
+        width: 100%;
+        padding: 12px 16px;
+        text-align: left;
+        text-transform: none;
+      }
+      nav li.nav-dropdown .nav-submenu a:hover {
+        background-color: rgba(140, 100, 208, 0.15);
+      }
 	
       li.logo a {
 	      color:black;
@@ -1342,9 +1397,7 @@
 	
 
 /* (legacy) btn-8 used to have its own border animation; now it is just an alias */
-.btn-8 {
-  background: transparent;
-}
+.btn-8 { }
 .btn-8:before,
 .btn-8:after,
 .btn-8 span:before,
@@ -1403,8 +1456,8 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: var(--btn-grad);
-            border: none;
+            background: transparent; /* transparent fill */
+            border: 2px solid #bb6eda;
             cursor: pointer;
             padding: 10px;
             border-radius: 50%;
@@ -1415,19 +1468,21 @@
             justify-content: center;
             transition: all 0.3s ease;
             font-size: 18px;
-            color: #fff;
+            color: #bb6eda;
             box-shadow: var(--btn-shadow);
         }
 
         .nav-button:hover {
-            background: var(--btn-grad-hover);
+            background: transparent; /* keep fill transparent on hover */
+            border-color: #cb7eea;
+            color: #cb7eea;
             transform: translateY(-50%) translateY(-2px);
             box-shadow: var(--btn-shadow-hover);
         }
 
         .nav-button:active {
             transform: translateY(-50%) translateY(-1px) scale(0.99);
-            background: var(--btn-grad-hover);
+            background: transparent;
         }
 
         .prev {
@@ -1483,6 +1538,23 @@
           height: auto;
           margin-bottom: 20px;
           padding: 0 10px; /* Add horizontal padding */
+        }
+
+        /* Resume dropdown on mobile: inline submenu */
+        nav li.nav-dropdown .nav-submenu {
+          position: static;
+          left: auto;
+          top: auto;
+          transform: none;
+          min-width: 0;
+          background: transparent;
+          border: none;
+          box-shadow: none;
+          padding: 0 0 10px 0;
+        }
+        nav li.nav-dropdown .nav-submenu a {
+          padding-left: 35px; /* Indent submenu items */
+          text-align: left;
         }
         
         .frame {
@@ -2466,7 +2538,17 @@
         <li><a data-id="edu">Education</a></li>
         <li><a data-id="other">Other</a></li>
         <li><a data-id="contact">Contact</a></li>
-        <li><a href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/view?usp=sharing" target="_blank">Resume</a></li>
+        <li class="nav-dropdown" id="resume-menu">
+          <a href="#" data-dropdown="resume">Resume</a>
+          <ul class="nav-submenu" aria-label="Resume submenu">
+            <li>
+              <a href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/view?usp=sharing" target="_blank" rel="noopener">Work Resume</a>
+            </li>
+            <li>
+              <a href="https://drive.google.com/file/d/1Cujv52DlEqEAn57MGDj9ULHh7LNjvLu3/view?usp=sharing" target="_blank" rel="noopener">PhD Resume</a>
+            </li>
+          </ul>
+        </li>
       </ul>
       <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
     </nav>
@@ -3441,19 +3523,46 @@
       function closeMobileMenu() {
         const mainNav = document.getElementById('main');
         const hamburger = document.querySelector('.hamburger');
+        const resumeDropdown = document.getElementById('resume-menu');
         
         if (mainNav.classList.contains('active')) {
           mainNav.classList.remove('active');
           hamburger.innerHTML = '&#9776;';
           hamburger.style.color = '#ebc0fc';
         }
+
+        // Always close resume submenu when closing nav
+        if (resumeDropdown) {
+          resumeDropdown.classList.remove('open');
+        }
       }
 
       // Add click listeners to navigation links to close mobile menu
       document.addEventListener('DOMContentLoaded', function() {
+        const resumeToggle = document.querySelector('#resume-menu > a[data-dropdown="resume"]');
+        if (resumeToggle) {
+          resumeToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const li = document.getElementById('resume-menu');
+            if (li) li.classList.toggle('open');
+          });
+        }
+
+        // Close mobile menu when clicking any real nav link (but not the Resume toggle)
         const navLinks = document.querySelectorAll('#main ul li a');
         navLinks.forEach(link => {
+          if (link.dataset && link.dataset.dropdown === 'resume') return;
           link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close the resume submenu when clicking outside
+        document.addEventListener('click', function(e) {
+          const li = document.getElementById('resume-menu');
+          if (!li) return;
+          if (!li.contains(e.target)) {
+            li.classList.remove('open');
+          }
         });
       });
 
