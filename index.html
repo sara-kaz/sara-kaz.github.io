@@ -15,16 +15,35 @@
       /* =============================================================================
          GLOBAL STYLES
          ============================================================================= */
-      
+
+      :root {
+        --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        --color-text: #2a2a32;
+        --color-text-muted: #5e5e6b;
+        --surface-subtle: #f6f5f9;
+        --shadow-card: 0 8px 28px rgba(18, 20, 30, 0.07);
+        --radius-md: 12px;
+        --btn-grad: linear-gradient(135deg, #8c64d0, #bb6eda);
+        --btn-grad-hover: linear-gradient(135deg, #9d74e0, #cb7eea);
+        --btn-shadow: 0 4px 16px rgba(140, 100, 208, 0.28);
+        --btn-shadow-hover: 0 6px 22px rgba(140, 100, 208, 0.36);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       /* Base body styles */
       body {
-        font-family: Arial, sans-serif;
+        font-family: var(--font-sans);
         background-color: #ffffff;
-        color: #333;
+        color: var(--color-text);
         margin: 0;
         padding: 0;
         line-height: 1.6;
         overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
       *,
@@ -39,17 +58,36 @@
       
       /* Header styling with background image */
       header {
+        position: relative;
         background: url('Documents/Pink and Purple Gradient Technology Business LinkedIn Banner.png');
         background-size: cover;
         background-position: center;
         color: rgb(255, 255, 255);
-        padding: 40px 20px;
+        padding: 48px 24px;
         text-align: center;
-        font-size: 2em;
-        min-height: 200px;
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+        min-height: 220px;
         display: flex;
         align-items: center;
         justify-content: center;
+      }
+
+      header::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(18, 15, 35, 0.28) 0%, rgba(18, 15, 35, 0.52) 100%);
+        pointer-events: none;
+      }
+
+      header h1 {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        font-weight: 300;
+        letter-spacing: 0.04em;
+        line-height: 1.25;
+        text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
       }
 
       /* Footer styling with background image */
@@ -90,12 +128,13 @@
       
       /* Gradient text effect */
       .gradient-text {
-        font-weight: bold; 
-        background: linear-gradient(90deg, #8c64d0, #bb6eda, #ebc0fc);
+        font-weight: 700;
+        background: linear-gradient(100deg, #7b56c4 0%, #9b6fd6 45%, #c9a3e8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         color: transparent;
+        letter-spacing: -0.02em;
       }
 
       /* =============================================================================
@@ -227,10 +266,10 @@
         height: 500px; /* Reduced height for better landscape certificate viewing */
         max-width: 1000px; /* Increased max-width for landscape certificates */
         margin: 20px auto;
-        border-radius: 12px;
+        border-radius: var(--radius-md);
         overflow: hidden;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        border: 2px solid #8c64d0;
+        box-shadow: var(--shadow-card);
+        border: 1px solid rgba(0, 0, 0, 0.08);
         background: #f8f9fa;
         position: relative; /* Ensure proper positioning */
         z-index: 5; /* Ensure PDF is above other elements but below navigation */
@@ -416,9 +455,8 @@
          HEADING STYLES
          ============================================================================= */
       h1 {
-	      color:white;
-        font-size: 7vw;
-        text-shadow: 3px 4px 0 rgba(0,0,0,0.2);
+        color: white;
+        font-size: clamp(1.75rem, 6vw, 2.75rem);
         margin: 0;
         line-height: 1.2;
       }
@@ -427,19 +465,20 @@
          NAVIGATION STYLES
          ============================================================================= */
       nav {
-	        background:rgba(0, 0, 0, 0.95);
-	        top:0;
+	        background: rgba(12, 12, 18, 0.97);
+	        top: 0;
 	        width: 100%;
-	        transition:all 0.5s;
+	        transition: all 0.35s ease;
 	        position: relative;
 	        z-index: 1000;
-	        backdrop-filter: blur(10px);
+	        backdrop-filter: blur(12px);
           max-width: 100vw;
           margin: 0 auto;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       }
       body.fixed-nav nav {
 	      position: fixed;
-	      box-shadow:0 5px 15px rgba(0,0,0,0.3);
+	      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 	      z-index: 1000;
 	      top: 0;
 	      left: 0;
@@ -471,13 +510,20 @@
       }
       nav a {
 	      text-decoration: none;
-	      padding:20px;
+	      padding: 18px 14px;
 	      display: inline-block;
-	      color:white !important;
-	      transition:all 0.2s;
+	      color: rgba(255, 255, 255, 0.92) !important;
+	      transition: color 0.2s ease, opacity 0.2s ease;
 	      text-transform: uppercase;
+	      font-size: 0.72rem;
+	      font-weight: 600;
+	      letter-spacing: 0.11em;
 	      position: relative;
 	      z-index: 1002;
+      }
+
+      nav a:hover {
+        color: #ebc0fc !important;
       }
 
       /* =============================================================================
@@ -556,7 +602,7 @@
          SECTION STYLES
          ============================================================================= */
       section {
-        font-family: "Rationale", sans-serif;
+        font-family: var(--font-sans);
         min-height: 100vh; /* Changed from height to min-height to prevent overlapping */
         background-size: cover;
         background-position: center;
@@ -566,8 +612,8 @@
         align-items: center;
         text-align: center;
         background: white;
-        color: black;
-        padding: 40px 20px; /* Reduced padding to minimize gaps */
+        color: var(--color-text);
+        padding: 48px 24px;
         box-sizing: border-box; /* Ensure padding is included in height calculation */
         position: relative; /* Ensure proper positioning */
         z-index: 1; /* Ensure sections are below navigation */
@@ -581,17 +627,17 @@
       
       /* About section styling */
       #about {
-        background-color: #ebc0fc;
-        padding: 40px 20px; /* Consistent padding with other sections */
-        overflow: hidden; /* Prevent content overflow */
-        min-height: auto; /* Allow content to determine height */
-        margin-bottom: 0; /* Remove space below section */
-        scroll-margin-top: 100px; /* Ensure proper scroll positioning */
+        background: linear-gradient(165deg, #f4ecfc 0%, #e8d4f7 42%, #ebc0fc 100%);
+        padding: 48px 24px;
+        overflow: hidden;
+        min-height: auto;
+        margin-bottom: 0;
+        scroll-margin-top: 100px;
       }
 
       /* Education section styling */
       #edu {
-        background-color: #E5E4E2;
+        background-color: #eeedeb;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -608,7 +654,7 @@
 
       /* Publications section styling */
       #publications {
-        background-color: #f0eef5;
+        background: linear-gradient(180deg, #f7f5fa 0%, #f0eef5 100%);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -626,28 +672,29 @@
       .publications-intro {
         max-width: 720px;
         margin: 0 auto 8px;
-        color: #555;
-        font-size: 1.05em;
-        line-height: 1.5;
+        color: var(--color-text-muted);
+        font-size: 1.02em;
+        line-height: 1.55;
       }
 
       .publication-card {
         width: 100%;
         max-width: 800px;
         background-color: #ffffff;
-        border-radius: 15px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-card);
+        border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 28px 36px;
         margin: 16px auto;
         text-align: left;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
         box-sizing: border-box;
         border-left: 4px solid #8c64d0;
       }
 
       .publication-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 36px rgba(18, 20, 30, 0.1);
       }
 
       /* In-page links from Projects land below the fixed nav */
@@ -776,6 +823,12 @@
 
       .project-card--viz-gradient .project-card__visual {
         background-image: linear-gradient(135deg, #283593 0%, #5c6bc0 40%, #8c64d0 100%);
+      }
+
+      /* Distributed ML (DDCA) — custom header image (Google Drive, public file) */
+      .project-card--viz-ddca .project-card__visual {
+        background-image: url('https://drive.google.com/thumbnail?id=1xYeh7yMGNv6ISAsKeGX4j5_oU_VFy669&sz=w2000');
+        background-color: #1a1f35;
       }
 
       .project-card--viz-prosthetic .project-card__visual {
@@ -931,20 +984,21 @@
       /* Work section styling */
       #work {
         min-height: auto; /* Allow content to determine height */
-        padding: 40px 20px;
+        padding: 48px 24px;
         position: relative;
         z-index: 1;
-        margin-bottom: 0; /* Remove space below section */
-        scroll-margin-top: 100px; /* Ensure proper scroll positioning */
+        margin-bottom: 0;
+        scroll-margin-top: 100px;
+        background: linear-gradient(180deg, #fafafc 0%, #f4f3f8 100%);
       }
 
       /* Other section styling */
       #other {
-        min-height: auto; /* Allow content to determine height */
-        padding: 40px 20px;
-        background-color: #f8f9fa; /* Light background for contrast */
-        margin-bottom: 0; /* Remove space below section */
-        scroll-margin-top: 100px; /* Ensure proper scroll positioning */
+        min-height: auto;
+        padding: 48px 24px;
+        background: linear-gradient(180deg, #f9f9fb 0%, #f0f2f6 100%);
+        margin-bottom: 0;
+        scroll-margin-top: 100px;
       }
 
       /* =============================================================================
@@ -986,7 +1040,7 @@
         align-items: center;
         margin-bottom: 30px;
         padding-bottom: 20px;
-        border-bottom: 2px solid #8c64d0;
+        border-bottom: 1px solid rgba(140, 100, 208, 0.35);
       }
 
       .other-icon {
@@ -1015,11 +1069,13 @@
 
       /* Certification card styling */
       .certification-card {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        border-radius: 12px;
+        background: linear-gradient(135deg, #fafbfc 0%, #f1f3f5 100%);
+        border-radius: var(--radius-md);
         padding: 25px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
         border-left: 4px solid #8c64d0;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: var(--shadow-card);
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
         position: relative;
         overflow: visible; /* Allow PDF container to extend */
         margin-bottom: 30px; /* Add space between cards */
@@ -1027,8 +1083,8 @@
       }
 
       .certification-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 36px rgba(18, 20, 30, 0.11);
       }
 
       /* Certification header */
@@ -1069,14 +1125,6 @@
         position: relative; /* For proper PDF positioning */
       }
 
-      /* Unified button design (matches "View Certificate") */
-      :root {
-        --btn-grad: linear-gradient(135deg, #8c64d0, #bb6eda);
-        --btn-grad-hover: linear-gradient(135deg, #9d74e0, #cb7eea);
-        --btn-shadow: 0 4px 15px rgba(140, 100, 208, 0.3);
-        --btn-shadow-hover: 0 6px 20px rgba(140, 100, 208, 0.4);
-      }
-
       /* Make anchor-based buttons look/behave like buttons */
       a.custom-btn {
         text-decoration: none;
@@ -1086,16 +1134,16 @@
       .certification-details summary {
         background: var(--btn-grad);
         color: white;
-        padding: 15px 30px;
-        border-radius: 30px;
+        padding: 12px 26px;
+        border-radius: var(--radius-md);
         cursor: pointer;
         font-weight: 600;
         text-align: center;
-        transition: all 0.3s ease;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.1em;
+        font-size: 0.98rem;
         box-shadow: var(--btn-shadow);
         border: none;
         outline: none;
@@ -1241,11 +1289,13 @@
 
       /* Activity card styling */
       .activity-card {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        border-radius: 12px;
+        background: linear-gradient(135deg, #fafbfc 0%, #f1f3f5 100%);
+        border-radius: var(--radius-md);
         padding: 25px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
         border-left: 4px solid #8c64d0;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: var(--shadow-card);
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1253,8 +1303,8 @@
       }
 
       .activity-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 36px rgba(18, 20, 30, 0.11);
       }
 
       /* Activity logo */
@@ -1287,15 +1337,9 @@
 	      color: gray;
 	      margin-left: 10px;
      }
-     img {
-	      width: 20px;
-	      height: 20px;
-	      margin-right: 5px;
-      }
-      #about {
-	      background-color: #ebc0fc;
-	      padding: 20px; /* Add padding for better spacing */
-        overflow: hidden; /* Prevent content overflow */
+      img {
+        max-width: 100%;
+        height: auto;
       }
 
       /* =============================================================================
@@ -1316,25 +1360,26 @@
         width: 100%;
         max-width: 800px;
         background-color: #ffffff;
-        border-radius: 15px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-card);
+        border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 40px;
         margin: 20px auto;
         text-align: left;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
         box-sizing: border-box; /* Include padding in width calculation */
       }
 
       .education-container:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        transform: translateY(-3px);
+        box-shadow: 0 14px 40px rgba(18, 20, 30, 0.1);
       }
 
       .degree-header {
         text-align: center;
         margin-bottom: 30px;
         padding-bottom: 20px;
-        border-bottom: 2px solid #8c64d0;
+        border-bottom: 1px solid rgba(140, 100, 208, 0.35);
       }
 
       .degree-header h3 {
@@ -1508,24 +1553,24 @@
       }
       .skill-card {
 	      background-color: #fff;
-	      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-	      border-radius: 20px;
+	      box-shadow: var(--shadow-card);
+	      border: 1px solid rgba(0, 0, 0, 0.06);
+	      border-radius: var(--radius-md);
 	      display: flex;
 	      flex-direction: column; /* Stack content vertically */
-	      padding: 30px;
+	      padding: 28px;
 	      max-width: 400px;
 	      min-height: 300px;
 	      margin: 20px 0;
-	      transition: all 0.5s ease;
+	      transition: transform 0.3s ease, box-shadow 0.3s ease;
 	      position: relative;
 	      box-sizing: border-box; /* Ensure padding/margin within dimensions */
      }
 
 .skill-card:hover {
-  box-shadow: 8px 28px 50px rgba(39, 44, 49, 0.07),
-    1px 6px 12px rgba(39, 44, 49, 0.04);
-  transform: translate3D(0, -1px, 0) scale(1.02);
-  transition: all 0.5s ease;
+  box-shadow: 0 14px 40px rgba(18, 20, 30, 0.1);
+  transform: translate3d(0, -2px, 0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile_img {
@@ -1579,13 +1624,16 @@
 }
 
 .interests_item {
-  padding: 0 15px;
-  margin-right: 5px;
-  line-height: 35px;
-  background-color: #e6e6e6;
-  border-radius: 5px;
+  padding: 0 14px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  line-height: 32px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
   display: inline-block;
-  margin-bottom: 5px; /* Space between items */
+  font-size: 0.88rem;
+  color: var(--color-text);
 }
 	
 
@@ -1604,9 +1652,12 @@
       position: relative;
       width: 100%;
       max-width: 800px; /* Adjust as needed */
-      margin: 60px auto;
+      margin: 48px auto;
       overflow: hidden;
-      border-radius: 10px; /* Optional: Rounded corners */
+      border-radius: var(--radius-md);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: var(--shadow-card);
   }
 
   .slides {
@@ -1920,11 +1971,6 @@
     font-size: 16px; /* Better readable font size */
     line-height: 1.6;
     margin-bottom: 15px;
-  }
-
-  img {
-    width: 15px; /* Adjust image size for smaller screens */
-    height: 15px;
   }
 
   i {
@@ -2751,7 +2797,7 @@
          HEADER SECTION
          ============================================================================= -->
     <header>
-      <h1 style="font-weight: lighter;">Sara Aly Portfolio</h1> 
+      <h1>Sara Aly · Portfolio</h1>
     </header>
 
     <!-- =============================================================================
@@ -3123,7 +3169,7 @@
             </div>
           </article>
 
-          <article class="project-card project-card--viz-gradient">
+          <article class="project-card project-card--viz-ddca">
             <div class="project-card__visual" aria-hidden="true"></div>
             <div class="project-card__body">
               <div class="project-card__meta">
