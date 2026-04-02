@@ -581,21 +581,36 @@
         background-color: rgba(140, 100, 208, 0.15);
       }
 	
+      /* Initials badge: full nav-row height, no dark nav peeking under text */
+      li.logo {
+        max-width: 0;
+        overflow: hidden;
+        background: #ebc0fc;
+        transition: max-width 0.5s ease;
+        font-weight: 700;
+        align-self: stretch;
+        display: flex;
+      }
       li.logo a {
-	      color:black;
-	      position: relative;
-	      z-index: 1002;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        min-height: 100%;
+        padding: 0 16px;
+        line-height: 1;
+        letter-spacing: 0.12em;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #14141c !important;
+        background: #ebc0fc;
+        text-transform: none;
+        position: relative;
+        z-index: 1002;
       }
       .fixed-nav li.logo {
-	      max-width:100px;
-      }
-      li.logo {
-	      max-width:0;
-	      overflow: hidden;
-	      background: #ebc0fc;
-	      transition: all 0.5s;
-	      font-weight: 600;
-	      font-size: 30px;
+        max-width: 100px;
       }
 	
       /* =============================================================================
