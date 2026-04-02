@@ -467,11 +467,20 @@
 	      padding:0;
 	      list-style: none;
 	      display:flex;
+	      flex-wrap: wrap;
+	      justify-content: center;
 	      position: relative;
 	      z-index: 1001;
       }
+      nav#main > ul.navigation > li {
+	      flex: 1 1 auto;
+	      min-width: fit-content;
+	      text-align: center;
+	      display: flex;
+	      justify-content: center;
+	      align-items: center;
+      }
       nav li {
-	      flex:1;
 	      text-align: center;
 	      display: flex;
 	      justify-content: center;
@@ -612,6 +621,105 @@
         scroll-margin-top: 100px; /* Ensure proper scroll positioning */
         width: 100%; /* Ensure full width */
         box-sizing: border-box; /* Include padding in width calculation */
+      }
+
+      /* Publications section styling */
+      #publications {
+        background-color: #f0eef5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 40px 20px;
+        text-align: center;
+        min-height: auto;
+        overflow: visible;
+        margin-bottom: 0;
+        scroll-margin-top: 100px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .publications-intro {
+        max-width: 720px;
+        margin: 0 auto 8px;
+        color: #555;
+        font-size: 1.05em;
+        line-height: 1.5;
+      }
+
+      .publication-card {
+        width: 100%;
+        max-width: 800px;
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        padding: 28px 36px;
+        margin: 16px auto;
+        text-align: left;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-sizing: border-box;
+        border-left: 4px solid #8c64d0;
+      }
+
+      .publication-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+      }
+
+      .publication-card .pub-authors {
+        font-size: 0.95em;
+        color: #666;
+        margin: 0 0 8px 0;
+      }
+
+      .publication-card .pub-title {
+        font-size: 1.15em;
+        color: #333;
+        font-weight: 600;
+        margin: 0 0 12px 0;
+        line-height: 1.35;
+      }
+
+      .publication-card .pub-venue {
+        font-size: 0.98em;
+        color: #444;
+        margin: 0 0 14px 0;
+        line-height: 1.45;
+      }
+
+      .pub-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .pub-links a.pub-link {
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #8c64d0, #bb6eda);
+        color: #fff !important;
+        text-decoration: none;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: opacity 0.2s ease;
+      }
+
+      .pub-links a.pub-link:hover {
+        opacity: 0.9;
+      }
+
+      .pub-status {
+        display: inline-block;
+        margin-left: 8px;
+        padding: 3px 10px;
+        border-radius: 999px;
+        background: #ede7f6;
+        color: #6a1b9a;
+        font-size: 0.82em;
+        font-weight: 600;
       }
 
       /* Projects section styling */
@@ -1912,7 +2020,8 @@
         }
 
         /* Education section mobile improvements */
-        #edu {
+        #edu,
+        #publications {
           padding: 30px 15px; /* Better mobile padding */
         }
 
@@ -2047,13 +2156,23 @@
         }
 
         /* Extra small screen education improvements */
-        #edu {
+        #edu,
+        #publications {
           padding: 20px 10px; /* Tighter padding for small phones */
         }
 
         .education-container {
           padding: 20px 15px; /* Tighter padding for small phones */
           margin: 10px auto; /* Tighter margins for small phones */
+        }
+
+        .publication-card {
+          padding: 22px 18px;
+          margin: 12px auto;
+        }
+
+        .publication-card .pub-title {
+          font-size: 1.05em;
         }
 
         .education-header h2 {
@@ -2553,6 +2672,7 @@
         <li><a data-id="work">Work</a></li>
         <li><a data-id="projects">Projects</a></li>
         <li><a data-id="edu">Education</a></li>
+        <li><a data-id="publications">Publications</a></li>
         <li><a data-id="other">Other</a></li>
         <li><a data-id="contact">Contact</a></li>
         <li class="nav-dropdown" id="resume-menu">
@@ -2563,6 +2683,9 @@
             </li>
             <li>
               <a href="https://drive.google.com/file/d/1Cujv52DlEqEAn57MGDj9ULHh7LNjvLu3/view?usp=sharing" target="_blank" rel="noopener">PhD Resume</a>
+            </li>
+            <li>
+              <a data-id="publications" href="#publications">Publications</a>
             </li>
           </ul>
         </li>
@@ -3234,6 +3357,59 @@
         </div>
       </div>
     </section>
+
+    <!-- =============================================================================
+         PUBLICATIONS SECTION
+         ============================================================================= -->
+    <section id="publications">
+      <div class="education-header">
+        <h2 class="gradient-text">Publications</h2>
+      </div>
+      <p class="publications-intro">
+        Peer-reviewed and forthcoming work in edge ML, distributed learning, assistive devices, and clinical ML.
+        Links are included where a permanent publication URL is available.
+      </p>
+
+      <article class="publication-card">
+        <p class="pub-authors">S. Aly and S. Mirzaei</p>
+        <h3 class="pub-title">Hardware-Aware Edge Deep Learning for Multimodal Biomedical Monitoring on Resource-Constrained SoCs</h3>
+        <p class="pub-venue">
+          <em>IEEE International Conference on Healthcare Informatics (ICHI)</em>, 2026
+          <span class="pub-status">Accepted</span>
+        </p>
+      </article>
+
+      <article class="publication-card">
+        <p class="pub-authors">M. Cho, S. Ali, et al.</p>
+        <h3 class="pub-title">Distributed Dual Coordinate Ascent in a Ring Network for Distributed Machine Learning</h3>
+        <p class="pub-venue">
+          In <em>Proc. Asilomar Conference on Signals, Systems &amp; Computers</em>, 2026
+          <span class="pub-status">Accepted</span>
+        </p>
+      </article>
+
+      <article class="publication-card">
+        <p class="pub-authors">
+          P.L. Bishay, G. Funes Alfaro, I. Sherrill, I. Reoyo, E. McMahon, C. Carter, C. Valdez, N.M. Riyaz, S. Ali, A. Lima, A. Nieto, J. Tirone
+        </p>
+        <h3 class="pub-title">The Foot Can Do It: Controlling the &ldquo;Persistence&rdquo; Prosthetic Arm Using the &ldquo;Infinity-2&rdquo; Foot Controller</h3>
+        <p class="pub-venue"><em>Technologies</em>, vol. 13, no. 3, p. 98, Mar. 2025</p>
+        <div class="pub-links">
+          <a class="pub-link" href="https://doi.org/10.3390/technologies13030098" target="_blank" rel="noopener">DOI (open access)</a>
+        </div>
+      </article>
+
+      <article class="publication-card">
+        <p class="pub-authors">S.K. Abdelhakeem, Z.M. Mustafa, H. Kadhem</p>
+        <h3 class="pub-title">Diagnosing Parkinson&apos;s Disease Based on Voice Recordings: Comparative Study Using Machine Learning Techniques</h3>
+        <p class="pub-venue">
+          In <em>Proc. 6th International Conference on AI &amp; Virtual Reality (AIVR 2022)</em>, Springer Nature, pp. 49&ndash;60, 2023
+        </p>
+        <div class="pub-links">
+          <a class="pub-link" href="https://link.springer.com/chapter/10.1007/978-981-19-7742-8_4" target="_blank" rel="noopener">Springer chapter</a>
+        </div>
+      </article>
+    </section>
     
     <!-- =============================================================================
          OTHER SECTION (CERTIFICATIONS & ACTIVITIES)
@@ -3469,8 +3645,11 @@
 
       // Smooth scroll to section function
       function scroll(e) {
-        const el = document.getElementById(e.target.dataset.id);
+        const id = e.target && e.target.dataset ? e.target.dataset.id : null;
+        if (!id) return;
+        const el = document.getElementById(id);
         if (el) {
+          e.preventDefault();
           const navHeight = nav.offsetHeight;
           const elementPosition = el.offsetTop - navHeight - 20; // Subtract nav height + extra offset
           
@@ -3479,7 +3658,6 @@
             behavior: "smooth"
           });
         }
-        console.log(e.target.dataset.id);
       }
 
       // Fixed navigation functionality
