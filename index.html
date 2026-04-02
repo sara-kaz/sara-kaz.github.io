@@ -992,162 +992,226 @@
         background: linear-gradient(180deg, #fafafc 0%, #f4f3f8 100%);
       }
 
-      /* Work carousel: one shared panel, slides swap content inside */
-      #work .work-slider-shell {
+      /* Work experience — vertical timeline (résumé-style, site palette) */
+      #work .work-timeline {
         position: relative;
         width: 100%;
-        max-width: 760px;
-        margin: 32px auto 16px;
+        max-width: 920px;
+        margin: 36px auto 8px;
+        padding: 24px 0 8px;
+        box-sizing: border-box;
+      }
+
+      #work .work-timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 100%;
+        top: 0;
+        background: linear-gradient(180deg, rgba(140, 100, 208, 0.35), rgba(140, 100, 208, 0.15));
+      }
+
+      #work .work-timeline ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      #work .work-timeline ul::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      #work .work-timeline li {
+        list-style: none;
+        position: relative;
+        width: 50%;
+        padding: 12px 36px 36px;
+        box-sizing: border-box;
+      }
+
+      #work .work-timeline li:nth-child(odd) {
+        float: left;
+        text-align: right;
+        clear: both;
+      }
+
+      #work .work-timeline li:nth-child(even) {
+        float: right;
+        text-align: left;
+        clear: both;
+      }
+
+      #work .work-timeline__card {
         background: #fff;
         border: 1px solid rgba(0, 0, 0, 0.07);
         border-radius: var(--radius-md);
         box-shadow: var(--shadow-card);
+        padding: 1.15rem 1.25rem 1.25rem;
+        text-align: inherit;
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
       }
 
-      #work .work-slider-viewport {
-        position: relative;
-        padding: 2rem 3.75rem 1.5rem;
-        min-height: 268px;
-      }
-
-      /* Nav buttons align to the content viewport, not the footer strip */
-      #work .work-slider-viewport .work-slider-nav {
-        top: 48%;
-      }
-
-      #work .slide {
-        display: none;
+      #work .work-timeline li:nth-child(odd) .work-timeline__card {
         text-align: left;
-        animation: workSlideIn 0.38s ease;
       }
 
-      #work .slide.is-active {
-        display: block;
+      #work .work-timeline__card:hover {
+        box-shadow: 0 12px 36px rgba(18, 20, 30, 0.1);
+        transform: translateY(-2px);
       }
 
-      @keyframes workSlideIn {
-        from {
-          opacity: 0;
-          transform: translateY(8px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      #work .work-slide-head {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-      }
-
-      #work .work-slide__logo-wrap {
-        flex-shrink: 0;
-        width: 56px;
-        height: 56px;
-        border-radius: 12px;
+      #work .work-timeline__brand {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
         background: #f4f5f8;
+        border: 1px solid rgba(0, 0, 0, 0.06);
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid rgba(0, 0, 0, 0.06);
+        margin-bottom: 10px;
       }
 
-      #work .work-slide__logo {
-        width: 44px;
-        height: 44px;
+      #work .work-timeline li:nth-child(odd) .work-timeline__brand {
+        margin-left: auto;
+      }
+
+      #work .work-timeline__logo {
+        width: 36px;
+        height: 36px;
         object-fit: contain;
       }
 
-      #work .work-slide__title {
-        margin: 0;
-        flex: 1;
-        min-width: 0;
-        font-size: 1.12rem;
-        font-weight: 600;
-        line-height: 1.38;
-        color: var(--color-text);
-      }
-
-      #work .work-slide__title em {
-        font-style: normal;
-        font-weight: 600;
-        color: #7b56c4;
-      }
-
-      #work .work-slide__list {
-        margin: 0;
-        padding-left: 1.25rem;
-        color: var(--color-text-muted);
-        font-size: 0.94rem;
-        line-height: 1.58;
-      }
-
-      #work .work-slide__list li {
-        margin-bottom: 0.4rem;
-      }
-
-      #work .work-slide__list li:last-child {
-        margin-bottom: 0;
-      }
-
-      #work .work-slider-nav {
+      #work .work-timeline li:nth-child(odd)::before,
+      #work .work-timeline li:nth-child(even)::before {
+        content: "";
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 42px;
-        height: 42px;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        background: #fff;
+        width: 12px;
+        height: 12px;
+        top: 28px;
+        background: #8c64d0;
         border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #7b56c4;
+        box-shadow: 0 0 0 4px rgba(140, 100, 208, 0.22);
+        z-index: 1;
+      }
+
+      #work .work-timeline li:nth-child(odd)::before {
+        right: -6px;
+      }
+
+      #work .work-timeline li:nth-child(even)::before {
+        left: -6px;
+      }
+
+      #work .work-timeline__title {
+        margin: 0 0 4px;
         font-size: 1.05rem;
-        line-height: 1;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-        transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-        z-index: 2;
-        padding: 0;
-        font-family: inherit;
+        font-weight: 700;
+        color: #6b4ea8;
+        line-height: 1.3;
       }
 
-      #work .work-slider-nav:hover {
-        background: #f8f6fc;
-        border-color: rgba(123, 86, 196, 0.35);
-        box-shadow: 0 4px 14px rgba(123, 86, 196, 0.15);
-      }
-
-      #work .work-slider-nav--prev {
-        left: 10px;
-      }
-
-      #work .work-slider-nav--next {
-        right: 10px;
-      }
-
-      #work .work-slider-meta {
-        text-align: center;
-        padding: 10px 12px 14px;
-        font-size: 0.78rem;
+      #work .work-timeline__org {
+        margin: 0 0 10px;
+        font-size: 0.88rem;
         font-weight: 600;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
         color: var(--color-text-muted);
-        border-top: 1px solid rgba(0, 0, 0, 0.06);
-        background: linear-gradient(180deg, #fcfcfd 0%, #fafafd 100%);
-        border-radius: 0 0 var(--radius-md) var(--radius-md);
+      }
+
+      #work .work-timeline__list {
+        margin: 0;
+        padding-left: 1.15rem;
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+        line-height: 1.55;
+        text-align: left;
+      }
+
+      #work .work-timeline__list li {
+        float: none;
+        width: auto;
+        padding: 0;
+        margin-bottom: 0.35rem;
+      }
+
+      #work .work-timeline__list li::before {
+        display: none;
+      }
+
+      #work .work-timeline__time {
+        position: absolute;
+        top: 22px;
+        padding: 8px 14px;
+        background: linear-gradient(135deg, #8c64d0, #9d74e0);
+        color: #fff;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        box-shadow: 0 2px 12px rgba(140, 100, 208, 0.35);
+        white-space: nowrap;
+        z-index: 2;
+      }
+
+      #work .work-timeline li:nth-child(odd) .work-timeline__time {
+        right: -12px;
+        transform: translateX(100%);
+      }
+
+      #work .work-timeline li:nth-child(even) .work-timeline__time {
+        left: -12px;
+        transform: translateX(-100%);
       }
 
       #work .work-actions {
         text-align: center;
-        margin-top: 12px;
+        margin-top: 28px;
+      }
+
+      @media (max-width: 900px) {
+        #work .work-timeline {
+          max-width: 100%;
+        }
+
+        #work .work-timeline li:nth-child(odd) .work-timeline__time,
+        #work .work-timeline li:nth-child(even) .work-timeline__time {
+          position: static;
+          transform: none;
+          display: inline-block;
+          margin-top: 10px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        #work .work-timeline::before {
+          left: 20px;
+          transform: none;
+        }
+
+        #work .work-timeline li:nth-child(odd),
+        #work .work-timeline li:nth-child(even) {
+          width: 100%;
+          float: none;
+          text-align: left;
+          padding: 0 12px 40px 56px;
+        }
+
+        #work .work-timeline li:nth-child(odd)::before,
+        #work .work-timeline li:nth-child(even)::before {
+          left: 14px;
+          right: auto;
+          top: 22px;
+        }
+
+        #work .work-timeline li:nth-child(odd) .work-timeline__brand,
+        #work .work-timeline li:nth-child(even) .work-timeline__brand {
+          margin-left: 0;
+        }
       }
 
       /* Other section styling */
@@ -2038,35 +2102,17 @@
     margin-left: 5px; /* Adjust spacing for icons */
   }
   
-  #work .work-slider-shell {
-    margin-top: 20px;
+  #work .work-timeline {
+    margin-top: 16px;
+    padding-top: 8px;
   }
 
-  #work .work-slider-viewport {
-    padding: 1.5rem 2.75rem 1.25rem;
-    min-height: 240px;
+  #work .work-timeline__title {
+    font-size: 0.98rem;
   }
 
-  #work .work-slide__title {
-    font-size: 1rem;
-  }
-
-  #work .work-slide__list {
-    font-size: 0.88rem;
-  }
-
-  #work .work-slider-nav {
-    width: 36px;
-    height: 36px;
-    font-size: 0.95rem;
-  }
-
-  #work .work-slider-nav--prev {
-    left: 6px;
-  }
-
-  #work .work-slider-nav--next {
-    right: 6px;
+  #work .work-timeline__list {
+    font-size: 0.86rem;
   }
 }
 
@@ -2991,125 +3037,124 @@
         <h2>Work Experience</h2>
       </div>
       
-      <div class="work-slider-shell">
-        <div class="work-slider-viewport">
-          <div class="work-slides">
-        <div class="slide">
-          <div class="work-slide-head">
-            <div class="work-slide__logo-wrap">
-              <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-slide__logo" width="44" height="44" loading="lazy" decoding="async">
+      <div class="work-timeline" aria-label="Work experience timeline">
+        <ul>
+          <li>
+            <div class="work-timeline__card">
+              <div class="work-timeline__brand">
+                <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              </div>
+              <h3 class="work-timeline__title">Graduate Research Assistant</h3>
+              <p class="work-timeline__org">California State University, Northridge</p>
+              <ul class="work-timeline__list">
+                <li>Analyzed effects of data and communication noise on distributed optimization convergence in multi-worker training systems.</li>
+                <li>Implemented and benchmarked Vision Transformer (ViT) models within Kubernetes clusters for scalable ML experimentation.</li>
+              </ul>
             </div>
-            <h3 class="work-slide__title">Graduate Research Assistant, <em>The University Corporation</em></h3>
-          </div>
-          <ul class="work-slide__list">
-            <li>Researched best models to enhance image denoising performance.</li>
-            <li>Implemented Uformer model in PyTorch to denoise images, achieving strong benchmark performance.</li>
-            <li><i>In progress</i></li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <div class="work-slide-head">
-            <div class="work-slide__logo-wrap">
-              <img src="https://arcs.center/wp-content/uploads/2021/03/arcs.jpg" alt="ARCS Foundation" class="work-slide__logo" width="44" height="44" loading="lazy" decoding="async">
+            <div class="work-timeline__time"><span>Sep 2024 – Present</span></div>
+          </li>
+          <li>
+            <div class="work-timeline__card">
+              <div class="work-timeline__brand">
+                <img src="https://arcs.center/wp-content/uploads/2021/03/arcs.jpg" alt="ARCS Foundation" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              </div>
+              <h3 class="work-timeline__title">Research Assistant — ARCS Research Program</h3>
+              <p class="work-timeline__org">California State University, Northridge</p>
+              <ul class="work-timeline__list">
+                <li>Designed fault-tolerant backup control architecture for autonomous drone navigation inspired by the NASA Mars Helicopter.</li>
+                <li>Modeled failure scenarios and hardware redundancy mechanisms to improve robustness under embedded hardware faults.</li>
+              </ul>
             </div>
-            <h3 class="work-slide__title">Research Assistant, <em>ARCS CSUN</em></h3>
-          </div>
-          <ul class="work-slide__list">
-            <li>Developed a backup system for the Mars Helicopter to prevent crashes during system failure, researching hardware and system code to identify optimal solutions.</li>
-            <li>Conducted in-depth analysis of Mars Helicopter components and failure modes, ensuring compatibility and robustness of backup protocols.</li>
-            <li><i>In progress</i></li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <div class="work-slide-head">
-            <div class="work-slide__logo-wrap">
-              <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-slide__logo" width="44" height="44" loading="lazy" decoding="async">
+            <div class="work-timeline__time"><span>Sep 2024 – Present</span></div>
+          </li>
+          <li>
+            <div class="work-timeline__card">
+              <div class="work-timeline__brand">
+                <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              </div>
+              <h3 class="work-timeline__title">Research Assistant — MOSAIC Lab</h3>
+              <p class="work-timeline__org">California State University, Northridge</p>
+              <ul class="work-timeline__list">
+                <li>Implemented distributed dual coordinate ascent algorithms in a ring-network topology for multi-node ML optimization.</li>
+                <li>Developed mathematical convergence models for distributed training under data and communication noise; results accepted to Asilomar 2025.</li>
+              </ul>
             </div>
-            <h3 class="work-slide__title">Research Assistant, <em>California State University, Northridge</em></h3>
-          </div>
-          <ul class="work-slide__list">
-            <li>Analyzed the impact of noise on a machine learning algorithm for optimizing data usage across multiple local workers, differentiating between data noise and communication noise.</li>
-            <li>Performed mathematical modeling to assess and predict the effects of noise on optimization outcomes, enhancing system reliability and accuracy in distributed data environments.</li>
-            <li><i>In progress</i></li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <div class="work-slide-head">
-            <div class="work-slide__logo-wrap">
-              <img src="https://www.google.com/s2/favicons?domain=conxtech.com&amp;sz=128" alt="ConXtech" class="work-slide__logo" width="44" height="44" loading="lazy" decoding="async">
+            <div class="work-timeline__time"><span>Aug 2024 – Jan 2026</span></div>
+          </li>
+          <li>
+            <div class="work-timeline__card">
+              <div class="work-timeline__brand">
+                <img src="https://www.google.com/s2/favicons?domain=conxtech.com&amp;sz=128" alt="ConXtech" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              </div>
+              <h3 class="work-timeline__title">Data Analyst Intern</h3>
+              <p class="work-timeline__org">ConXtech</p>
+              <ul class="work-timeline__list">
+                <li>Designed Power BI dashboards analyzing historical project cost estimates, reducing manual reporting overhead.</li>
+                <li>Built automated data pipelines using Excel, Access, and DAX formulas for real-time project analytics.</li>
+                <li>Created interactive visualizations used by engineering and project management for faster decisions.</li>
+              </ul>
             </div>
-            <h3 class="work-slide__title">Data Analyst Intern, <em>ConXtech</em></h3>
-          </div>
-          <ul class="work-slide__list">
-            <li>Created a system database with Access, Excel, and Power BI to capture and analyze data from previous estimates and awarded projects.</li>
-            <li>Built dynamic visuals and DAX algorithms with slicers in Power BI for quick and effective data analysis.</li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <div class="work-slide-head">
-            <div class="work-slide__logo-wrap">
-              <img src="https://www.google.com/s2/favicons?domain=productmanagerinterview.com&amp;sz=128" alt="PM Accelerator" class="work-slide__logo" width="44" height="44" loading="lazy" decoding="async">
+            <div class="work-timeline__time"><span>Sep 2024 – Feb 2025</span></div>
+          </li>
+          <li>
+            <div class="work-timeline__card">
+              <div class="work-timeline__brand">
+                <img src="https://www.google.com/s2/favicons?domain=productmanagerinterview.com&amp;sz=128" alt="PM Accelerator" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              </div>
+              <h3 class="work-timeline__title">AI/ML Engineer Intern</h3>
+              <p class="work-timeline__org">PM Accelerator</p>
+              <ul class="work-timeline__list">
+                <li>Built scalable backend architecture using AWS RDS, PostgreSQL, and Django supporting multi-user data exchange.</li>
+                <li>Developed dynamic scheduling and mentorship tracking frontend using React.</li>
+              </ul>
             </div>
-            <h3 class="work-slide__title">AI/ML Engineer, <em>PM Accelerator</em></h3>
-          </div>
-          <ul class="work-slide__list">
-            <li>Built a robust system database using AWS RDS, pgAdmin, Django, and PostgreSQL to facilitate seamless data exchange between frontend and backend components.</li>
-            <li>Developed a dynamic scheduling calendar with React, enabling students and mentors to automatically track sessions and progress along customized learning paths.</li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <div class="work-slide-head">
-            <div class="work-slide__logo-wrap">
-              <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-slide__logo" width="44" height="44" loading="lazy" decoding="async">
+            <div class="work-timeline__time"><span>Sep 2024 – Dec 2024</span></div>
+          </li>
+          <li>
+            <div class="work-timeline__card">
+              <div class="work-timeline__brand">
+                <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              </div>
+              <h3 class="work-timeline__title">Teaching Assistant</h3>
+              <p class="work-timeline__org">California State University, Northridge</p>
+              <ul class="work-timeline__list">
+                <li>Assisted with grading assignments and constructive feedback to support student growth.</li>
+                <li>Monitored student progress and reported observations to the lead professor.</li>
+                <li>Provided one-on-one support for course concepts and assignments.</li>
+              </ul>
             </div>
-            <h3 class="work-slide__title">Teaching Assistant, <em>California State University, Northridge</em></h3>
-          </div>
-          <ul class="work-slide__list">
-            <li>Assisted with grading over 100 assignments per week, providing detailed and constructive feedback that contributed to improved class performance.</li>
-            <li>Monitored progress and behavior for over 30 students, offering timely feedback to the lead instructor.</li>
-            <li>Provided one-on-one assistance to students to support assignment completion and comprehension of core concepts.</li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <div class="work-slide-head">
-            <div class="work-slide__logo-wrap">
-              <img src="https://www.google.com/s2/favicons?domain=unipal.io&amp;sz=128" alt="Unipal" class="work-slide__logo" width="44" height="44" loading="lazy" decoding="async">
+            <div class="work-timeline__time"><span>Aug 2023 – May 2024</span></div>
+          </li>
+          <li>
+            <div class="work-timeline__card">
+              <div class="work-timeline__brand">
+                <img src="https://www.google.com/s2/favicons?domain=unipal.io&amp;sz=128" alt="Unipal" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              </div>
+              <h3 class="work-timeline__title">Data Analyst</h3>
+              <p class="work-timeline__org">Unipal</p>
+              <ul class="work-timeline__list">
+                <li>Developed structured datasets covering universities, retail, and student services to support product launch.</li>
+                <li>Translated survey responses into statistical insights and visual dashboards for product and business teams.</li>
+              </ul>
             </div>
-            <h3 class="work-slide__title">Data Analyst, <em>Unipal</em></h3>
-          </div>
-          <ul class="work-slide__list">
-            <li>Enhanced data analysis techniques by implementing advanced algorithms, improving data accuracy and processing speed by 25%.</li>
-            <li>Designed visually appealing infographics using graphic design software, increasing sponsor engagement by 30%.</li>
-            <li>Developed a structured database of universities, retail, and student services in Abu Dhabi to support product launch.</li>
-            <li>Analyzed and translated survey responses into statistical insights and visual dashboards for product and business teams.</li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <div class="work-slide-head">
-            <div class="work-slide__logo-wrap">
-              <img src="https://www.google.com/s2/favicons?domain=thenourishers.com&amp;sz=128" alt="The Nourishers" class="work-slide__logo" width="44" height="44" loading="lazy" decoding="async">
+            <div class="work-timeline__time"><span>Jan 2021 – Jan 2022</span></div>
+          </li>
+          <li>
+            <div class="work-timeline__card">
+              <div class="work-timeline__brand">
+                <img src="https://www.google.com/s2/favicons?domain=thenourishers.com&amp;sz=128" alt="The Nourishers" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              </div>
+              <h3 class="work-timeline__title">Marketing Intern</h3>
+              <p class="work-timeline__org">The Nourishers · Bahrain</p>
+              <ul class="work-timeline__list">
+                <li>Automated the monthly newsletter and email workflows; improved subscriber engagement.</li>
+                <li>Collected and analyzed data on organizations and health-sector companies across the Gulf region.</li>
+                <li>Ran email and marketing campaigns with automation tools to grow sponsor participation.</li>
+              </ul>
             </div>
-            <h3 class="work-slide__title">Marketing Intern, <em>The Nourishers</em></h3>
-          </div>
-          <ul class="work-slide__list">
-            <li>Developed and automated the monthly newsletter email system, increasing subscriber engagement by 40%.</li>
-            <li>Implemented data collection scripts to gather and analyze information on 100+ organizations in Bahrain and neighboring countries.</li>
-            <li>Used data analysis tools to evaluate information on 50+ companies related to physical and mental health in the Gulf.</li>
-            <li>Ran email campaigns with marketing automation tools, increasing sponsor participation by 20%.</li>
-          </ul>
-        </div>
-        </div>
-        <button type="button" class="work-slider-nav work-slider-nav--prev" aria-label="Previous role" onclick="moveWorkSlide(-1)">&#10094;</button>
-        <button type="button" class="work-slider-nav work-slider-nav--next" aria-label="Next role" onclick="moveWorkSlide(1)">&#10095;</button>
-        </div>
-        <div class="work-slider-meta" aria-live="polite"><span id="work-slide-current">1</span> / <span id="work-slide-total">8</span></div>
+            <div class="work-timeline__time"><span>Earlier experience</span></div>
+          </li>
+        </ul>
       </div>
 
       <div class="work-actions">
@@ -3706,36 +3751,6 @@
 
       // Add scroll event listener for fixed navigation
       window.addEventListener("scroll", fixNav);
-
-      // =============================================================================
-      // WORK EXPERIENCE CAROUSEL (single shared panel)
-      // =============================================================================
-
-      let workSlideIndex = 0;
-
-      function updateWorkSlides() {
-        const slides = document.querySelectorAll("#work .slide");
-        const curEl = document.getElementById("work-slide-current");
-        const totalEl = document.getElementById("work-slide-total");
-        if (!slides.length) return;
-        workSlideIndex = ((workSlideIndex % slides.length) + slides.length) % slides.length;
-        slides.forEach(function (el, i) {
-          el.classList.toggle("is-active", i === workSlideIndex);
-        });
-        if (curEl) curEl.textContent = String(workSlideIndex + 1);
-        if (totalEl) totalEl.textContent = String(slides.length);
-      }
-
-      function moveWorkSlide(delta) {
-        workSlideIndex += delta;
-        updateWorkSlides();
-      }
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", updateWorkSlides);
-      } else {
-        updateWorkSlides();
-      }
 
       // =============================================================================
       // MOBILE MENU TOGGLE
