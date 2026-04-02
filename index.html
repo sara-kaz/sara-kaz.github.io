@@ -154,23 +154,6 @@
         text-decoration: none;
       }
 
-      /* Projects cards: allow 3 buttons to fit nicely */
-      #projects .button-container {
-        width: calc(100% - 40px);
-        margin: 10px 20px 20px;
-      }
-
-      #projects .button-container a.custom-btn {
-        width: auto;              /* override fixed .custom-btn width */
-        min-width: 110px;
-        flex: 1 1 110px;          /* shrink/wrap cleanly inside cards */
-      }
-
-      /* Keep the animated border aligned to the button edges */
-      #projects .button-container a.custom-btn span {
-        white-space: nowrap;
-      }
-
       /* Link preview styling for external links */
       .link-preview {
         display: flex;
@@ -727,16 +710,236 @@
         font-weight: 600;
       }
 
-      /* Projects section styling */
+      /* Projects section — professional layout */
       #projects {
-        flex-direction: row;
-        justify-content: space-evenly;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background: linear-gradient(180deg, #121520 0%, #1a1f2e 50%, #15192a 100%);
+        min-height: auto;
+        padding: 56px 24px 72px;
+        margin-bottom: 0;
+        scroll-margin-top: 100px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .projects-inner {
+        width: 100%;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+
+      .projects-header {
+        text-align: center;
+        margin-bottom: 40px;
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .projects-header__title {
+        font-size: clamp(1.75rem, 4vw, 2.35rem);
+        font-weight: 600;
+        margin: 0 0 12px;
+        letter-spacing: -0.02em;
+      }
+
+      .projects-header__lead {
+        margin: 0;
+        font-size: 1.05rem;
+        line-height: 1.55;
+        color: rgba(255, 255, 255, 0.72);
+        font-weight: 400;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+        gap: 1.75rem;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .project-card {
+        display: flex;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+        transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+      }
+
+      .project-card:hover {
+        border-color: rgba(140, 100, 208, 0.45);
+        box-shadow: 0 22px 48px rgba(0, 0, 0, 0.42);
+        transform: translateY(-2px);
+      }
+
+      .project-card__visual {
+        height: 132px;
+        background-size: cover;
+        background-position: center;
+        background-color: #252b3d;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .project-card--viz-gradient .project-card__visual {
+        background-image: linear-gradient(135deg, #283593 0%, #5c6bc0 40%, #8c64d0 100%);
+      }
+
+      .project-card--viz-prosthetic .project-card__visual {
+        background-image: url('https://www.csun.edu/~pbishay/img/Smart_Prosthetics_Team_2023_24.jpg');
+      }
+
+      .project-card--viz-ml .project-card__visual {
+        background-image: linear-gradient(135deg, #004d40 0%, #00897b 45%, #4db6ac 100%);
+      }
+
+      .project-card--viz-sys .project-card__visual {
+        background-image: linear-gradient(135deg, #4a148c 0%, #7b1fa2 55%, #ba68c8 100%);
+      }
+
+      .project-card--viz-traffic .project-card__visual {
+        background-image: linear-gradient(135deg, #e65100 0%, #ff9800 50%, #ffb74d 100%);
+      }
+
+      .project-card__body {
+        padding: 1.35rem 1.35rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        text-align: left;
+      }
+
+      .project-card__meta {
+        display: flex;
         flex-wrap: wrap;
-        background-color: #1a1e2F;
-        min-height: auto; /* Allow content to determine height */
-        padding: 40px 20px;
-        margin-bottom: 0; /* Remove space below section */
-        scroll-margin-top: 100px; /* Ensure proper scroll positioning */
+        align-items: center;
+        gap: 8px 12px;
+        margin-bottom: 10px;
+      }
+
+      .project-card__badge {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 5px 10px;
+        border-radius: 6px;
+        background: rgba(140, 100, 208, 0.22);
+        color: #e8d9fc;
+        border: 1px solid rgba(140, 100, 208, 0.35);
+      }
+
+      .project-card__badge--progress {
+        background: rgba(255, 193, 7, 0.15);
+        color: #ffe082;
+        border-color: rgba(255, 193, 7, 0.35);
+      }
+
+      .project-card__badge--course {
+        background: rgba(129, 212, 250, 0.12);
+        color: #b3e5fc;
+        border-color: rgba(129, 212, 250, 0.3);
+      }
+
+      .project-card__period {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      .project-card__title {
+        font-size: 1.15rem;
+        font-weight: 600;
+        line-height: 1.35;
+        margin: 0 0 12px;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+      }
+
+      .project-card__summary {
+        margin: 0 0 14px;
+        font-size: 0.92rem;
+        line-height: 1.6;
+        color: rgba(200, 210, 230, 0.92);
+        flex: 1;
+      }
+
+      .project-card__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        list-style: none;
+        padding: 0;
+        margin: 0 0 16px;
+      }
+
+      .project-card__tags a,
+      .project-card__tags span {
+        display: inline-block;
+        font-size: 0.78rem;
+        padding: 5px 11px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.28);
+        color: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        text-decoration: none;
+        transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      }
+
+      .project-card__tags a:hover {
+        background: rgba(140, 100, 208, 0.28);
+        border-color: rgba(140, 100, 208, 0.5);
+        color: #fff;
+      }
+
+      .project-card__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: auto;
+        padding-top: 4px;
+      }
+
+      .project-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.82rem;
+        font-weight: 600;
+        padding: 10px 16px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
+        border: 1px solid transparent;
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      .project-btn--primary {
+        background: linear-gradient(135deg, #8c64d0, #6c4cb5);
+        color: #fff !important;
+      }
+
+      .project-btn--primary:hover {
+        filter: brightness(1.08);
+      }
+
+      .project-btn--ghost {
+        background: transparent;
+        color: rgba(255, 255, 255, 0.92) !important;
+        border-color: rgba(255, 255, 255, 0.28);
+      }
+
+      .project-btn--ghost:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.45);
       }
 
       /* Work section styling */
@@ -1301,116 +1504,7 @@
 	      align-items:center;
       }
     
-      /* Flex Container */
-      .card {
-	      position: relative;
-	      display: block;
-	      width: 30%;
-	      margin: 6% 10px;
-	      border-top: 6px solid #8c64d0;
-	      background-color: #18223F;
-	      -webkit-box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.25);
-	      -moz-box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.25);
-	      box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.25);
-        z-index: 1; /* Ensure cards are below navigation */
-      }
-      .card.active {
-	      border-color: #0f7552;
-      }
-      .card-img {
-	      width: 100%;
-	      height: 230px;
-	      opacity: 0.3;
-	      background-color: rgb(0,	120,	241);
-	      background: rgba(29,29,29,1);
-	      background-blend-mode: screen;
-	      background-size: cover;
-	      opacity: 0.6;
-	      z-index: 0;
-	      -webkit-transition: opacity 0.3s ease-in-out;
-	      -moz-transition: opacity 0.3s ease-in-out;
-	      -ms-transition: opacity 0.3s ease-in-out;
-	      -o-transition: opacity 0.3s ease-in-out;
-	      transition: opacity 0.3s ease-in-out;
-      }
-      .card-img:hover {
-	      opacity: 1;
-      }
-      .card-img-1{
-	      background-image: url('hhttps://www.csun.edu/~pbishay/img/Smart_Prosthetics_Team_2023_24.jpg');
-      }
-      .card-img-2{
-	      background-image: url('https://source.unsplash.com/800x600/?wate');
-      }
-      .card-img-3{
-	      background-image: url('https://source.unsplash.com/800x600/?sea');
-      }
-      .card-img-4{
-	      background-image: url('https://source.unsplash.com/800x600/?database');
-      }
-      .card-img-5{
-	      background-image: url('https://source.unsplash.com/800x600/?traffic');
-      }
-      .card-deets {
-	      position: relative;
-	      color: #fff;
-	      z-index: 2;
-	      margin-top: -95px;
-        padding: 0 20px; /* Add padding to prevent text overflow */
-      }
-      .card-info {
-	      margin: 10px 20px;
-      }
-      .card-title {
-	      clear: both;
-	      float: left;
-	      margin-top: 0;
-	      margin-bottom: 0;
-	      background-color: transparent;
-        position: relative;
-        z-index: 3; /* Ensure title is above other elements */
-      }
-      .card-title h1 {
-	      letter-spacing: 0.1em;
-        font-size: 1.5em; /* Reduce font size to prevent overflow */
-        line-height: 1.2; /* Improve line height */
-        margin-bottom: 10px; /* Add space below title */
-      }
-      .card-description {
-	    clear: both;
-	    padding-top: 54px;
-	    color: #c8d2eF;
-	    margin: 0 20px 20px 20px;
-	    font-size: 0.9em;
-	    font-weight: 300;
-	    line-height: 1.5;
-	    letter-spacing: 0.04em;
-	    background-color: transparent;
-      }
-      .card-data {
-	    width: 100%;
-	    margin-bottom: 20px;
-	    color: #c8d2eF;
-	    display: flex;
-	    justify-content: center;
-      }
-      .card-data   div {
-	    padding: 5px;
-	    margin-bottom: 20px;
-	    float: left;
-	    width: 33.333339%;
-	    text-align: center;
-      }
-      .card-data a {
-	    text-decoration: none;
-	    color:white;
-      }
-      .card-data a:hover {
-	    color:#8c64d0;
-      }
-    .card-data div h6 { opacity:0.35 }
-    .card-data div p { letter-spacing: 0.02em;}
-    span {
+      span {
 	    font-family: "Avenir";
 	    font-size: 14px;
 	    color: rgba(34, 34, 34, 0.5);
@@ -1792,18 +1886,6 @@
     padding: 0 10px; /* Reduce padding for smaller screens */
     line-height: 30px; /* Adjust line height */
   }
-	.card {
-    width: 100%; /* Make the cards take full width */
-    margin: 20px 0; /* Adjust margin for stacked layout */
-  }
-
-  .card-data div {
-    width: 100%; /* Make card data sections stack vertically */
-  }
-
-  .card-description {
-    padding-top: 20px; /* Reduce padding for smaller screens */
-  }
 	  section {
     height: auto; /* Auto height to prevent overlap */
     padding: 30px 15px; /* Better padding for mobile */
@@ -1812,10 +1894,33 @@
   }
 
   #projects {
-    flex-direction: column; /* Stack the project sections vertically */
-    justify-content: center; /* Center-align content */
-    align-items: center; /* Center content on the page */
-    padding: 30px 15px; /* Better mobile padding */
+    padding: 40px 16px 56px;
+  }
+
+  .projects-header__lead {
+    font-size: 0.98rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .project-card__visual {
+    height: 120px;
+  }
+
+  .project-card__body {
+    padding: 1.15rem 1.1rem 1.1rem;
+  }
+
+  .project-card__title {
+    font-size: 1.05rem;
+  }
+
+  .project-btn {
+    padding: 9px 14px;
+    font-size: 0.8rem;
   }
 
   /* Improve text readability on mobile */
@@ -3008,222 +3113,155 @@
          PROJECTS SECTION
          ============================================================================= -->
     <section id="projects">
-      <!-- Edge Intelligence for Multimodal Biomedical Monitoring Project -->
-      <div class="card">
-        <div class="card-img card-img-2"></div>
-        <div class="card-deets">
-          <div class="card-info card-title">
-            <div class="gradient-text">
-              <h2>Hardware-Accelerated Deep Learning for Multimodal Biomedical
-                Monitoring with On-Device Adaptive Learning on Resource-Constrained
-                SoC</h2>
+      <div class="projects-inner">
+        <header class="projects-header">
+          <h2 class="projects-header__title gradient-text">Selected projects</h2>
+          <p class="projects-header__lead">
+            Research and engineering across embedded AI, distributed ML, FPGA design, and full-stack tools.
+          </p>
+        </header>
+
+        <div class="projects-grid">
+          <article class="project-card project-card--viz-gradient">
+            <div class="project-card__visual" aria-hidden="true"></div>
+            <div class="project-card__body">
+              <div class="project-card__meta">
+                <span class="project-card__badge project-card__badge--progress">In progress</span>
+                <span class="project-card__badge">Thesis</span>
+              </div>
+              <h3 class="project-card__title">Hardware-accelerated deep learning for multimodal biomedical monitoring</h3>
+              <p class="project-card__summary">
+                On-device adaptive learning on a resource-constrained SoC with Python and C++.
+                <em> M.S. thesis work.</em>
+              </p>
+              <ul class="project-card__tags" aria-label="Technologies">
+                <li><a href="https://github.com/sara-kaz/multimodal-biomedical-monitoring" target="_blank" rel="noopener">Python</a></li>
+                <li><span>C++</span></li>
+              </ul>
+              <div class="project-card__actions">
+                <a class="project-btn project-btn--primary" href="#pub-ichi">Publication</a>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <p class="card-info card-description">
-          <i>In Progress</i>
-        </p>
-
-        <div class="button-container">
-          <a class="custom-btn btn-8" href="#pub-ichi"><span>Publication</span></a>
-        </div>
-      
-        <div class="card-data">
-          <div>
-            <h6>Language</h6>
-            <p>
-              <a href="https://github.com/sara-kaz/multimodal-biomedical-monitoring" target="_blank">Python, C++</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    
-      <!-- DDCA in Ring Network Project -->
-      <div class="card">
-        <div class="card-img card-img-2"></div>
-        <div class="card-deets">
-          <div class="card-info card-title">
-            <div class="gradient-text">
-              <h2>DDCA in a Ring Network for Distributed Machine Learning Process</h2>
+          <article class="project-card project-card--viz-gradient">
+            <div class="project-card__visual" aria-hidden="true"></div>
+            <div class="project-card__body">
+              <div class="project-card__meta">
+                <span class="project-card__badge">Research</span>
+              </div>
+              <h3 class="project-card__title">DDCA in a ring network for distributed machine learning</h3>
+              <p class="project-card__summary">
+                Distributed dual coordinate ascent in a ring topology for multi-node optimization,
+                implemented and analyzed in MATLAB.
+              </p>
+              <ul class="project-card__tags" aria-label="Technologies">
+                <li><span>MATLAB</span></li>
+              </ul>
+              <div class="project-card__actions">
+                <a class="project-btn project-btn--primary" href="#pub-asilomar">Publication</a>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <p class="card-info card-description">
-          Developed a distributed machine learning process using the DDCA algorithm in a ring network, 
-          enabling efficient training of machine learning models across multiple nodes. The DDCA algorithm 
-          is a distributed optimization algorithm that can be used to train machine learning models in a 
-          distributed environment.
-        </p>
-
-        <div class="button-container">
-          <a class="custom-btn btn-8" href="#pub-asilomar"><span>Publication</span></a>
-        </div>
-      
-        <div class="card-data">
-          <div>
-            <h6>Language</h6>
-            <p>
-              <a>MATLAB</a>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Smart Prosthetic Arm Project -->
-      <div class="card">
-        <div class="card-img card-img-1"></div>
-        <div class="card-deets">
-          <div class="card-info card-title">
-            <div class="gradient-text">
-              <h2>Smart Prosthetic Arm [2023-24]</h2>
+          <article class="project-card project-card--viz-prosthetic">
+            <div class="project-card__visual" aria-hidden="true"></div>
+            <div class="project-card__body">
+              <div class="project-card__meta">
+                <span class="project-card__badge">Research</span>
+                <span class="project-card__period">2023–24</span>
+              </div>
+              <h3 class="project-card__title">Smart prosthetic arm &amp; foot controller</h3>
+              <p class="project-card__summary">
+                Bluetooth-enabled foot controller integration with a biomechanical prosthetic prototype:
+                embedded C++ firmware and low-latency wireless links between controllers and the arm.
+              </p>
+              <ul class="project-card__tags" aria-label="Technologies">
+                <li><a href="https://github.com/sara-kaz/Smart-Prosthesis-7th-Cohort" target="_blank" rel="noopener">C / C++</a></li>
+              </ul>
+              <div class="project-card__actions">
+                <a class="project-btn project-btn--primary" href="#pub-prosthetic">Publication</a>
+                <a class="project-btn project-btn--ghost" href="https://www.csun.edu/~pbishay/projects.php" target="_blank" rel="noopener">Lab site</a>
+                <a class="project-btn project-btn--ghost" href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank" rel="noopener">Report</a>
+                <a class="project-btn project-btn--ghost" href="https://drive.google.com/file/d/17OoT9koCpqH9PGj35ya8RFIaFsZ9H9zN/preview" target="_blank" rel="noopener">Flowcharts</a>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <p class="card-info card-description">
-          Utilized C++ to implement Bluetooth technology, enhancing the integration of a foot controller 
-          into the Biomechanical Smart Prosthetic Arm, thereby improving user interface functionality 
-          and accessibility. In addition, implemented wireless communication protocols in C++ to establish 
-          seamless connectivity between foot controller microcontrollers, ensuring efficient data 
-          transmission and           synchronization.
-        </p>
-
-        <!-- Project Links -->
-        <div class="button-container">
-          <a class="custom-btn btn-8" href="https://www.csun.edu/~pbishay/projects.php" target="_blank" rel="noopener"><span>Project Site</span></a>
-          <a class="custom-btn btn-8" href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank" rel="noopener"><span>Report</span></a>
-          <a class="custom-btn btn-8" href="https://drive.google.com/file/d/17OoT9koCpqH9PGj35ya8RFIaFsZ9H9zN/preview" target="_blank" rel="noopener"><span>Flowcharts</span></a>
-          <a class="custom-btn btn-8" href="#pub-prosthetic"><span>Publication</span></a>
-        </div>
-
-        <div class="card-data">
-          <div>
-            <h6>Language</h6>
-            <p>
-              <a href="https://github.com/sara-kaz/Smart-Prosthesis-7th-Cohort" target="_blank">C/C++</a>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- AES-128 Algorithm Implementation Project -->
-      <div class="card">
-        <div class="card-img card-img-2"></div>
-        <div class="card-deets">
-          <div class="card-info card-title">
-            <div class="gradient-text">
-              <h2>AES-128 Algorithm Implementation</h2>
+          <article class="project-card project-card--viz-sys">
+            <div class="project-card__visual" aria-hidden="true"></div>
+            <div class="project-card__body">
+              <div class="project-card__meta">
+                <span class="project-card__badge project-card__badge--course">FPGA</span>
+              </div>
+              <h3 class="project-card__title">AES-128 hardware implementation</h3>
+              <p class="project-card__summary">
+                Efficient AES-128 in Verilog with simulation and FPGA verification—focused on throughput and
+                correct, robust operation in hardware.
+              </p>
+              <ul class="project-card__tags" aria-label="Technologies">
+                <li><a href="https://github.com/sara-kaz/AES-128" target="_blank" rel="noopener">SystemVerilog</a></li>
+              </ul>
+              <div class="project-card__actions">
+                <a class="project-btn project-btn--ghost" href="https://drive.google.com/file/d/1JI9QK4zPidZLYTMg1YQxxda2uzVStjWH/preview" target="_blank" rel="noopener">Outline</a>
+                <a class="project-btn project-btn--ghost" href="https://drive.google.com/file/d/1nKk8F7ppGmHeNGtD6ScAxxu0h6OUEoQZ/preview" target="_blank" rel="noopener">Report</a>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <p class="card-info card-description">
-          Engineered and implemented a Verilog algorithm prioritizing efficiency and robustness, 
-          optimizing performance across diverse applications. Also, developed a secure encryption 
-          solution in Verilog tailored for versatile application scenarios, ensuring robust data 
-          confidentiality and integrity.
-        </p>
-
-        <!-- Project Links -->
-        <div class="button-container">
-          <a class="custom-btn btn-8" href="https://drive.google.com/file/d/1JI9QK4zPidZLYTMg1YQxxda2uzVStjWH/preview" target="_blank" rel="noopener"><span>Outline</span></a>
-          <a class="custom-btn btn-8" href="https://drive.google.com/file/d/1nKk8F7ppGmHeNGtD6ScAxxu0h6OUEoQZ/preview" target="_blank" rel="noopener"><span>Report</span></a>
-        </div>
-
-        <div class="card-data">
-          <div>
-            <h6>Language</h6>
-            <p>
-              <a href="https://github.com/sara-kaz/AES-128" target="_blank">System Verilog</a>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Parkinson's Disease Diagnosis Project -->
-      <div class="card">
-        <div class="card-img card-img-3"></div>
-        <div class="card-deets">
-          <div class="card-info card-title">
-            <div class="gradient-text">
-              <h2>Parkinson's Disease Diagnosis using Machine Learning</h2>
+          <article class="project-card project-card--viz-ml">
+            <div class="project-card__visual" aria-hidden="true"></div>
+            <div class="project-card__body">
+              <div class="project-card__meta">
+                <span class="project-card__badge">Machine learning</span>
+              </div>
+              <h3 class="project-card__title">Parkinson&rsquo;s disease screening from voice</h3>
+              <p class="project-card__summary">
+                Comparative study of classifiers in MATLAB on voice biomarkers for early detection,
+                with analysis of model accuracy and tradeoffs.
+              </p>
+              <ul class="project-card__tags" aria-label="Technologies">
+                <li><a href="https://github.com/sara-kaz/Machine-Learning" target="_blank" rel="noopener">MATLAB</a></li>
+              </ul>
+              <div class="project-card__actions">
+                <a class="project-btn project-btn--primary" href="#pub-parkinson">Publication</a>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <p class="card-info card-description">
-          Engineered a machine learning model in MATLAB to facilitate early diagnosis of Parkinson's 
-          Disease through analysis of voice recordings. Employed advanced machine learning techniques 
-          to extract and classify voice features associated with Parkinson's Disease diagnosis.
-        </p>
-
-        <div class="button-container">
-          <a class="custom-btn btn-8" href="#pub-parkinson"><span>Publication</span></a>
-        </div>
-
-        <div class="card-data">
-          <div>
-            <h6>Language</h6>
-            <p>
-              <a href="https://github.com/sara-kaz/Machine-Learning" target="_blank">MATLAB</a>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Lost and Found System Project -->
-      <div class="card">
-        <div class="card-img card-img-4"></div>
-        <div class="card-deets">
-          <div class="card-info card-title">
-            <div class="gradient-text">
-              <h2>Lost and Found System</h2>
+          <article class="project-card project-card--viz-gradient">
+            <div class="project-card__visual" aria-hidden="true"></div>
+            <div class="project-card__body">
+              <div class="project-card__meta">
+                <span class="project-card__badge project-card__badge--course">Application</span>
+              </div>
+              <h3 class="project-card__title">Lost &amp; found management system</h3>
+              <p class="project-card__summary">
+                JavaFX client for reporting and claiming items with a Java persistence layer for reliable
+                storage and retrieval.
+              </p>
+              <ul class="project-card__tags" aria-label="Technologies">
+                <li><a href="https://github.com/sara-kaz/Lost-Found" target="_blank" rel="noopener">Java / JavaFX</a></li>
+              </ul>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <p class="card-info card-description">
-          Developed a JavaFX-based user interface (UI) for seamlessly reporting lost items and 
-          claiming found items, prioritizing intuitive navigation and user experience. Implemented 
-          robust database functionality in Java to ensure efficient storage and retrieval of lost 
-          and found item records, optimizing system performance and reliability.
-        </p>
-
-        <div class="card-data">
-          <div>
-            <h6>Language</h6>
-            <p>
-              <a href="https://github.com/sara-kaz/Lost-Found" target="_blank">Java/JavaFX</a>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Traffic Light System Project -->
-      <div class="card">
-        <div class="card-img card-img-5"></div>
-        <div class="card-deets">
-          <div class="card-info card-title">
-            <div class="gradient-text">
-              <h2>Traffic Light System</h2>
+          <article class="project-card project-card--viz-traffic">
+            <div class="project-card__visual" aria-hidden="true"></div>
+            <div class="project-card__body">
+              <div class="project-card__meta">
+                <span class="project-card__badge project-card__badge--course">FPGA</span>
+              </div>
+              <h3 class="project-card__title">Sensor-driven traffic light controller</h3>
+              <p class="project-card__summary">
+                VHDL design with live sensor inputs and adaptive timing, deployed and verified on Xilinx
+                FPGA hardware.
+              </p>
+              <ul class="project-card__tags" aria-label="Technologies">
+                <li><span>VHDL</span></li>
+              </ul>
             </div>
-          </div>
-        </div>
-
-        <p class="card-info card-description">
-          Designed and implemented a customized traffic light system using VHDL and integrated sensors, 
-          ensuring efficient operation and responsiveness. Developed algorithms in VHDL to regulate 
-          traffic flow and optimize signal timings dynamically based on real-time sensor data, 
-          enhancing overall traffic management efficiency.
-        </p>
-
-        <div class="card-data">
-          <div>
-            <h6>Language</h6>
-            <p>VHDL</p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
