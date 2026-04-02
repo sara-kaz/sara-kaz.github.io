@@ -731,27 +731,13 @@
         margin: 0 auto;
       }
 
-      .projects-header {
+      #projects .projects-inner > .gradient-text {
         text-align: center;
-        margin-bottom: 40px;
-        max-width: 640px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-bottom: 36px;
       }
 
-      .projects-header__title {
-        font-size: clamp(1.75rem, 4vw, 2.35rem);
-        font-weight: 600;
-        margin: 0 0 12px;
-        letter-spacing: -0.02em;
-      }
-
-      .projects-header__lead {
+      #projects .projects-inner > .gradient-text h2 {
         margin: 0;
-        font-size: 1.05rem;
-        line-height: 1.55;
-        color: rgba(255, 255, 255, 0.72);
-        font-weight: 400;
       }
 
       .projects-grid {
@@ -1895,10 +1881,6 @@
 
   #projects {
     padding: 40px 16px 56px;
-  }
-
-  .projects-header__lead {
-    font-size: 0.98rem;
   }
 
   .projects-grid {
@@ -3114,12 +3096,9 @@
          ============================================================================= -->
     <section id="projects">
       <div class="projects-inner">
-        <header class="projects-header">
-          <h2 class="projects-header__title gradient-text">Selected projects</h2>
-          <p class="projects-header__lead">
-            Research and engineering across embedded AI, distributed ML, FPGA design, and full-stack tools.
-          </p>
-        </header>
+        <div class="gradient-text">
+          <h2>Projects</h2>
+        </div>
 
         <div class="projects-grid">
           <article class="project-card project-card--viz-gradient">
