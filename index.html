@@ -1013,35 +1013,35 @@
         background: linear-gradient(180deg, rgba(140, 100, 208, 0.35), rgba(140, 100, 208, 0.15));
       }
 
-      #work .work-timeline ul {
+      /* Only the outer track is unstyled; nested bullet lists stay normal lists */
+      #work .work-timeline > ul {
         list-style: none;
         margin: 0;
         padding: 0;
       }
 
-      #work .work-timeline ul::after {
+      #work .work-timeline > ul::after {
         content: "";
         display: table;
         clear: both;
       }
 
-      #work .work-timeline li {
+      #work .work-timeline > ul > li {
         list-style: none;
         position: relative;
         width: 50%;
         padding: 12px 36px 36px;
         box-sizing: border-box;
+        text-align: left;
       }
 
-      #work .work-timeline li:nth-child(odd) {
+      #work .work-timeline > ul > li:nth-child(odd) {
         float: left;
-        text-align: right;
         clear: both;
       }
 
-      #work .work-timeline li:nth-child(even) {
+      #work .work-timeline > ul > li:nth-child(even) {
         float: right;
-        text-align: left;
         clear: both;
       }
 
@@ -1051,12 +1051,8 @@
         border-radius: var(--radius-md);
         box-shadow: var(--shadow-card);
         padding: 1.15rem 1.25rem 1.25rem;
-        text-align: inherit;
-        transition: box-shadow 0.25s ease, transform 0.25s ease;
-      }
-
-      #work .work-timeline li:nth-child(odd) .work-timeline__card {
         text-align: left;
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
       }
 
       #work .work-timeline__card:hover {
@@ -1064,20 +1060,26 @@
         transform: translateY(-2px);
       }
 
+      #work .work-timeline__meta-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
       #work .work-timeline__brand {
         width: 48px;
         height: 48px;
+        flex-shrink: 0;
         border-radius: 10px;
         background: #f4f5f8;
         border: 1px solid rgba(0, 0, 0, 0.06);
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 10px;
-      }
-
-      #work .work-timeline li:nth-child(odd) .work-timeline__brand {
-        margin-left: auto;
+        margin: 0;
       }
 
       #work .work-timeline__logo {
@@ -1086,65 +1088,8 @@
         object-fit: contain;
       }
 
-      #work .work-timeline li:nth-child(odd)::before,
-      #work .work-timeline li:nth-child(even)::before {
-        content: "";
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        top: 28px;
-        background: #8c64d0;
-        border-radius: 50%;
-        box-shadow: 0 0 0 4px rgba(140, 100, 208, 0.22);
-        z-index: 1;
-      }
-
-      #work .work-timeline li:nth-child(odd)::before {
-        right: -6px;
-      }
-
-      #work .work-timeline li:nth-child(even)::before {
-        left: -6px;
-      }
-
-      #work .work-timeline__title {
-        margin: 0 0 4px;
-        font-size: 1.05rem;
-        font-weight: 700;
-        color: #6b4ea8;
-        line-height: 1.3;
-      }
-
-      #work .work-timeline__org {
-        margin: 0 0 10px;
-        font-size: 0.88rem;
-        font-weight: 600;
-        color: var(--color-text-muted);
-      }
-
-      #work .work-timeline__list {
-        margin: 0;
-        padding-left: 1.15rem;
-        color: var(--color-text-muted);
-        font-size: 0.9rem;
-        line-height: 1.55;
-        text-align: left;
-      }
-
-      #work .work-timeline__list li {
-        float: none;
-        width: auto;
-        padding: 0;
-        margin-bottom: 0.35rem;
-      }
-
-      #work .work-timeline__list li::before {
-        display: none;
-      }
-
       #work .work-timeline__time {
-        position: absolute;
-        top: 22px;
+        margin-left: auto;
         padding: 8px 14px;
         background: linear-gradient(135deg, #8c64d0, #9d74e0);
         color: #fff;
@@ -1154,18 +1099,72 @@
         letter-spacing: 0.06em;
         text-transform: uppercase;
         box-shadow: 0 2px 12px rgba(140, 100, 208, 0.35);
-        white-space: nowrap;
-        z-index: 2;
+        text-align: right;
+        line-height: 1.3;
+        max-width: 62%;
       }
 
-      #work .work-timeline li:nth-child(odd) .work-timeline__time {
-        right: -12px;
-        transform: translateX(100%);
+      #work .work-timeline > ul > li:nth-child(odd)::before,
+      #work .work-timeline > ul > li:nth-child(even)::before {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        top: 32px;
+        background: #8c64d0;
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px rgba(140, 100, 208, 0.22);
+        z-index: 1;
       }
 
-      #work .work-timeline li:nth-child(even) .work-timeline__time {
-        left: -12px;
-        transform: translateX(-100%);
+      #work .work-timeline > ul > li:nth-child(odd)::before {
+        right: -6px;
+      }
+
+      #work .work-timeline > ul > li:nth-child(even)::before {
+        left: -6px;
+      }
+
+      #work .work-timeline__title {
+        margin: 0 0 4px;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #6b4ea8;
+        line-height: 1.3;
+        text-align: left;
+      }
+
+      #work .work-timeline__org {
+        margin: 0 0 10px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        text-align: left;
+      }
+
+      #work .work-timeline__list {
+        margin: 0.25rem 0 0;
+        padding-left: 1.2rem;
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+        line-height: 1.55;
+        text-align: left;
+        list-style: disc;
+        list-style-position: outside;
+      }
+
+      #work .work-timeline__list li {
+        display: list-item;
+        margin: 0 0 0.4rem 0;
+        padding: 0;
+        width: auto;
+        float: none;
+        position: static;
+        text-align: left;
+      }
+
+      #work .work-timeline__list li:last-child {
+        margin-bottom: 0;
       }
 
       #work .work-actions {
@@ -1178,12 +1177,8 @@
           max-width: 100%;
         }
 
-        #work .work-timeline li:nth-child(odd) .work-timeline__time,
-        #work .work-timeline li:nth-child(even) .work-timeline__time {
-          position: static;
-          transform: none;
-          display: inline-block;
-          margin-top: 10px;
+        #work .work-timeline__time {
+          max-width: 70%;
         }
       }
 
@@ -1193,24 +1188,30 @@
           transform: none;
         }
 
-        #work .work-timeline li:nth-child(odd),
-        #work .work-timeline li:nth-child(even) {
+        #work .work-timeline > ul > li:nth-child(odd),
+        #work .work-timeline > ul > li:nth-child(even) {
           width: 100%;
           float: none;
-          text-align: left;
           padding: 0 12px 40px 56px;
         }
 
-        #work .work-timeline li:nth-child(odd)::before,
-        #work .work-timeline li:nth-child(even)::before {
+        #work .work-timeline > ul > li:nth-child(odd)::before,
+        #work .work-timeline > ul > li:nth-child(even)::before {
           left: 14px;
           right: auto;
-          top: 22px;
+          top: 24px;
         }
 
-        #work .work-timeline li:nth-child(odd) .work-timeline__brand,
-        #work .work-timeline li:nth-child(even) .work-timeline__brand {
+        #work .work-timeline__meta-row {
+          flex-wrap: wrap;
+        }
+
+        #work .work-timeline__time {
+          max-width: 100%;
+          width: 100%;
           margin-left: 0;
+          text-align: center;
+          box-sizing: border-box;
         }
       }
 
@@ -3041,8 +3042,11 @@
         <ul>
           <li>
             <div class="work-timeline__card">
-              <div class="work-timeline__brand">
-                <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              <div class="work-timeline__meta-row">
+                <div class="work-timeline__brand">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+                </div>
+                <div class="work-timeline__time"><span>Sep 2024 – Present</span></div>
               </div>
               <h3 class="work-timeline__title">Graduate Research Assistant</h3>
               <p class="work-timeline__org">California State University, Northridge</p>
@@ -3051,12 +3055,14 @@
                 <li>Implemented and benchmarked Vision Transformer (ViT) models within Kubernetes clusters for scalable ML experimentation.</li>
               </ul>
             </div>
-            <div class="work-timeline__time"><span>Sep 2024 – Present</span></div>
           </li>
           <li>
             <div class="work-timeline__card">
-              <div class="work-timeline__brand">
-                <img src="https://arcs.center/wp-content/uploads/2021/03/arcs.jpg" alt="ARCS Foundation" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              <div class="work-timeline__meta-row">
+                <div class="work-timeline__brand">
+                  <img src="https://arcs.center/wp-content/uploads/2021/03/arcs.jpg" alt="ARCS Foundation" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+                </div>
+                <div class="work-timeline__time"><span>Sep 2024 – Present</span></div>
               </div>
               <h3 class="work-timeline__title">Research Assistant — ARCS Research Program</h3>
               <p class="work-timeline__org">California State University, Northridge</p>
@@ -3065,12 +3071,14 @@
                 <li>Modeled failure scenarios and hardware redundancy mechanisms to improve robustness under embedded hardware faults.</li>
               </ul>
             </div>
-            <div class="work-timeline__time"><span>Sep 2024 – Present</span></div>
           </li>
           <li>
             <div class="work-timeline__card">
-              <div class="work-timeline__brand">
-                <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              <div class="work-timeline__meta-row">
+                <div class="work-timeline__brand">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+                </div>
+                <div class="work-timeline__time"><span>Aug 2024 – Jan 2026</span></div>
               </div>
               <h3 class="work-timeline__title">Research Assistant — MOSAIC Lab</h3>
               <p class="work-timeline__org">California State University, Northridge</p>
@@ -3079,12 +3087,14 @@
                 <li>Developed mathematical convergence models for distributed training under data and communication noise; results accepted to Asilomar 2025.</li>
               </ul>
             </div>
-            <div class="work-timeline__time"><span>Aug 2024 – Jan 2026</span></div>
           </li>
           <li>
             <div class="work-timeline__card">
-              <div class="work-timeline__brand">
-                <img src="https://www.google.com/s2/favicons?domain=conxtech.com&amp;sz=128" alt="ConXtech" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              <div class="work-timeline__meta-row">
+                <div class="work-timeline__brand">
+                  <img src="https://www.google.com/s2/favicons?domain=conxtech.com&amp;sz=128" alt="ConXtech" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+                </div>
+                <div class="work-timeline__time"><span>Sep 2024 – Feb 2025</span></div>
               </div>
               <h3 class="work-timeline__title">Data Analyst Intern</h3>
               <p class="work-timeline__org">ConXtech</p>
@@ -3094,12 +3104,14 @@
                 <li>Created interactive visualizations used by engineering and project management for faster decisions.</li>
               </ul>
             </div>
-            <div class="work-timeline__time"><span>Sep 2024 – Feb 2025</span></div>
           </li>
           <li>
             <div class="work-timeline__card">
-              <div class="work-timeline__brand">
-                <img src="https://www.google.com/s2/favicons?domain=productmanagerinterview.com&amp;sz=128" alt="PM Accelerator" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              <div class="work-timeline__meta-row">
+                <div class="work-timeline__brand">
+                  <img src="https://www.google.com/s2/favicons?domain=productmanagerinterview.com&amp;sz=128" alt="PM Accelerator" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+                </div>
+                <div class="work-timeline__time"><span>Sep 2024 – Dec 2024</span></div>
               </div>
               <h3 class="work-timeline__title">AI/ML Engineer Intern</h3>
               <p class="work-timeline__org">PM Accelerator</p>
@@ -3108,12 +3120,14 @@
                 <li>Developed dynamic scheduling and mentorship tracking frontend using React.</li>
               </ul>
             </div>
-            <div class="work-timeline__time"><span>Sep 2024 – Dec 2024</span></div>
           </li>
           <li>
             <div class="work-timeline__card">
-              <div class="work-timeline__brand">
-                <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              <div class="work-timeline__meta-row">
+                <div class="work-timeline__brand">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+                </div>
+                <div class="work-timeline__time"><span>Aug 2023 – May 2024</span></div>
               </div>
               <h3 class="work-timeline__title">Teaching Assistant</h3>
               <p class="work-timeline__org">California State University, Northridge</p>
@@ -3123,12 +3137,14 @@
                 <li>Provided one-on-one support for course concepts and assignments.</li>
               </ul>
             </div>
-            <div class="work-timeline__time"><span>Aug 2023 – May 2024</span></div>
           </li>
           <li>
             <div class="work-timeline__card">
-              <div class="work-timeline__brand">
-                <img src="https://www.google.com/s2/favicons?domain=unipal.io&amp;sz=128" alt="Unipal" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              <div class="work-timeline__meta-row">
+                <div class="work-timeline__brand">
+                  <img src="https://www.google.com/s2/favicons?domain=unipal.io&amp;sz=128" alt="Unipal" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+                </div>
+                <div class="work-timeline__time"><span>Jan 2021 – Jan 2022</span></div>
               </div>
               <h3 class="work-timeline__title">Data Analyst</h3>
               <p class="work-timeline__org">Unipal</p>
@@ -3137,12 +3153,14 @@
                 <li>Translated survey responses into statistical insights and visual dashboards for product and business teams.</li>
               </ul>
             </div>
-            <div class="work-timeline__time"><span>Jan 2021 – Jan 2022</span></div>
           </li>
           <li>
             <div class="work-timeline__card">
-              <div class="work-timeline__brand">
-                <img src="https://www.google.com/s2/favicons?domain=thenourishers.com&amp;sz=128" alt="The Nourishers" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+              <div class="work-timeline__meta-row">
+                <div class="work-timeline__brand">
+                  <img src="https://www.google.com/s2/favicons?domain=thenourishers.com&amp;sz=128" alt="The Nourishers" class="work-timeline__logo" width="36" height="36" loading="lazy" decoding="async">
+                </div>
+                <div class="work-timeline__time"><span>Earlier experience</span></div>
               </div>
               <h3 class="work-timeline__title">Marketing Intern</h3>
               <p class="work-timeline__org">The Nourishers · Bahrain</p>
@@ -3152,7 +3170,6 @@
                 <li>Ran email and marketing campaigns with automation tools to grow sponsor participation.</li>
               </ul>
             </div>
-            <div class="work-timeline__time"><span>Earlier experience</span></div>
           </li>
         </ul>
       </div>
