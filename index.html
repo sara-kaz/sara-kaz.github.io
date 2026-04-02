@@ -992,6 +992,92 @@
         background: linear-gradient(180deg, #fafafc 0%, #f4f3f8 100%);
       }
 
+      #work .work-list {
+        width: 100%;
+        max-width: 820px;
+        margin: 28px auto 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.15rem;
+        text-align: left;
+      }
+
+      #work .work-entry {
+        display: flex;
+        gap: 1.2rem;
+        align-items: flex-start;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.07);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-card);
+        padding: 1.25rem 1.35rem;
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
+      }
+
+      #work .work-entry:hover {
+        box-shadow: 0 12px 36px rgba(18, 20, 30, 0.1);
+        transform: translateY(-1px);
+      }
+
+      #work .work-entry__logo-wrap {
+        flex-shrink: 0;
+        width: 58px;
+        height: 58px;
+        border-radius: 10px;
+        background: #f4f5f8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      #work .work-entry__logo {
+        width: 46px;
+        height: 46px;
+        object-fit: contain;
+      }
+
+      #work .work-entry__body {
+        flex: 1;
+        min-width: 0;
+      }
+
+      #work .work-entry__title {
+        margin: 0 0 0.4rem;
+        font-size: 1.08rem;
+        font-weight: 600;
+        color: var(--color-text);
+        line-height: 1.35;
+      }
+
+      #work .work-entry__title em {
+        font-style: normal;
+        font-weight: 600;
+        color: #7b56c4;
+      }
+
+      #work .work-entry__list {
+        margin: 0;
+        padding-left: 1.2rem;
+        color: var(--color-text-muted);
+        font-size: 0.94rem;
+        line-height: 1.55;
+      }
+
+      #work .work-entry__list li {
+        margin-bottom: 0.35rem;
+      }
+
+      #work .work-entry__list li:last-child {
+        margin-bottom: 0;
+      }
+
+      #work .work-actions {
+        text-align: center;
+        margin-top: 8px;
+      }
+
       /* Other section styling */
       #other {
         min-height: auto;
@@ -1647,103 +1733,6 @@
   display: none !important;
 }
 
-/* Slider Container */
-  .slider {
-      position: relative;
-      width: 100%;
-      max-width: 800px; /* Adjust as needed */
-      margin: 48px auto;
-      overflow: hidden;
-      border-radius: var(--radius-md);
-      background: #fff;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      box-shadow: var(--shadow-card);
-  }
-
-  .slides {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      width: 100%;
-  }
-
-  .slide {
-      min-width: 100%; /* Full width */
-      box-sizing: border-box;
-      padding: 20px;
-  }
-	.slide ul {
-		margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.slide ul li {
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  padding:10px;
-}
-
-.slide ul li:last-child {
-  border-bottom: 0;
-}
-.slide img {
-	width: 50px;
-	height: auto;
-}
-        .img-responsive {
-            width: 100%;
-            height: auto;
-            border-radius: 10px; /* Optional: Rounded corners */
-        }
-
-        /* Navigation Buttons */
-        .nav-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: transparent; /* transparent fill */
-            border: none; /* remove circle outline */
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            font-size: 18px;
-            color: #bb6eda;
-            box-shadow: var(--btn-shadow);
-        }
-
-        .nav-button:hover {
-            background: transparent; /* keep fill transparent on hover */
-            color: #cb7eea;
-            transform: translateY(-50%) translateY(-2px);
-            box-shadow: var(--btn-shadow-hover);
-        }
-
-        .nav-button:active {
-            transform: translateY(-50%) translateY(-1px) scale(0.99);
-            background: transparent;
-        }
-
-        .prev {
-            left: 10px;
-        }
-
-        .next {
-            right: 10px;
-        }
-
-        /* Work slider: keep content away from arrows */
-        #work .slide {
-          padding-left: 70px;
-          padding-right: 70px;
-        }
-
-	
-
 /* Hamburger icon - hidden by default on larger screens */
 .hamburger {
   display: none;
@@ -1977,48 +1966,21 @@
     margin-left: 5px; /* Adjust spacing for icons */
   }
   
-  /* Mobile slider improvements */
-  .slider {
-    margin: 30px 15px; /* Better mobile margins */
-    max-width: 100%; /* Full width on mobile */
-  }
-  
-  .slide {
-    padding: 15px; /* Better mobile padding */
+  #work .work-list {
+    margin-top: 20px;
   }
 
-  /* Keep work slide text clear of arrows on mobile */
-  #work .slide {
-    padding-left: 55px;
-    padding-right: 55px;
+  #work .work-entry {
+    padding: 1.1rem 1rem;
+    gap: 1rem;
   }
-  
-  .slide h4 {
-    font-size: 1.2em; /* Smaller heading for mobile */
-    line-height: 1.3;
-    margin-bottom: 10px;
+
+  #work .work-entry__title {
+    font-size: 1rem;
   }
-  
-  .slide ul {
-    padding-left: 20px; /* Better list indentation */
-  }
-  
-  .slide ul li {
-    font-size: 14px; /* Better readable list items */
-    line-height: 1.5;
-    margin-bottom: 8px;
-  }
-  
-  .slide img {
-    width: 40px; /* Smaller company logos for mobile */
-    height: 40px;
-    margin-bottom: 10px;
-  }
-  
-  /* Navigation buttons for mobile */
-  .nav-button {
-    padding: 8px;
-    font-size: 18px;
+
+  #work .work-entry__list {
+    font-size: 0.9rem;
   }
 }
 
@@ -2222,12 +2184,6 @@
           padding: 20px 10px; /* Tighter padding for small phones */
         }
 
-        /* Keep work slide text clear of arrows on small phones */
-        #work .slide {
-          padding-left: 45px;
-          padding-right: 45px;
-        }
-        
         h2, h3 {
           font-size: 1.5em; /* Smaller headings for small phones */
         }
@@ -2949,192 +2905,125 @@
         <h2>Work Experience</h2>
       </div>
       
-      <!-- Work Experience Slider -->
-      <div class="slider">
-        <div class="slides">
-          <!-- Graduate Research Assistant -->
-          <div class="slide">
-            <img id="reference" 
-                 src="https://media.licdn.com/dms/image/v2/C4D0BAQEUo9n8Sb30dg/company-logo_200_200/company-logo_200_200/0/1631301586279?e=2147483647&v=beta&t=Qsn4--mffYG0PGd_WEedZKSgPUC0Nr-cONOTPi4yMnE" 
-                 class="img-responsive" 
-                 alt="The University Corporation Logo">
-            <h4>Graduate Research Assistant, <i>The University Corporation</i></h4>
-            <ul>
-              <li>
-                Researched best models to enchance image denoising performance.
-              </li>
-              <li>
-                Implemented Uformer model in PyTorch to denoise images, achieving state-of-the-art performance.
-              </li>
-              <li><i>In Progress</i></li>
+      <div class="work-list">
+        <article class="work-entry">
+          <div class="work-entry__logo-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-entry__logo" width="46" height="46" loading="lazy" decoding="async">
+          </div>
+          <div class="work-entry__body">
+            <h3 class="work-entry__title">Graduate Research Assistant, <em>The University Corporation</em></h3>
+            <ul class="work-entry__list">
+              <li>Researched best models to enhance image denoising performance.</li>
+              <li>Implemented Uformer model in PyTorch to denoise images, achieving strong benchmark performance.</li>
+              <li><i>In progress</i></li>
             </ul>
           </div>
+        </article>
 
-          <!-- Research Assistant - ARCS CSUN -->
-          <div class="slide">
-            <img id="reference" 
-                 src="https://media.licdn.com/dms/image/v2/D560BAQG9eo028LHzAQ/company-logo_200_200/company-logo_200_200/0/1716488300349?e=2147483647&v=beta&t=WQGK4luRMLRWE_BnfuQsCokITVIwNJL9pBhseWU9QAA" 
-                 class="img-responsive" 
-                 alt="ARCS CSUN Logo">
-            <h4>Research Assistant, <i>ARCS CSUN</i></h4>
-            <ul>
-              <li>
-                Developed a backup system for the Mars Helicopter to prevent crashes during system failure, 
-                researching hardware and system code to identify optimal solutions.
-              </li>
-              <li>
-                Conducted in-depth analysis of Mars Helicopter components and failure modes, ensuring 
-                compatibility and robustness of backup protocols.
-              </li>
-              <li><i>In Progress</i></li>
+        <article class="work-entry">
+          <div class="work-entry__logo-wrap">
+            <img src="https://arcs.center/wp-content/uploads/2021/03/arcs.jpg" alt="ARCS Foundation" class="work-entry__logo" width="46" height="46" loading="lazy" decoding="async">
+          </div>
+          <div class="work-entry__body">
+            <h3 class="work-entry__title">Research Assistant, <em>ARCS CSUN</em></h3>
+            <ul class="work-entry__list">
+              <li>Developed a backup system for the Mars Helicopter to prevent crashes during system failure, researching hardware and system code to identify optimal solutions.</li>
+              <li>Conducted in-depth analysis of Mars Helicopter components and failure modes, ensuring compatibility and robustness of backup protocols.</li>
+              <li><i>In progress</i></li>
             </ul>
           </div>
+        </article>
 
-          <!-- Research Assistant - CSUN -->
-          <div class="slide">
-            <img id="reference" 
-                 src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/CSUNS.svg/800px-CSUNS.svg.png" 
-                 class="img-responsive" 
-                 alt="CSUN Logo">
-            <h4>Research Assistant, <i>California State University Northridge</i></h4>
-            <ul>
-              <li>
-                Analyzed the impact of noise on a machine learning algorithm for optimizing data usage 
-                across multiple local workers, differentiating between data noise and communication noise.
-              </li>
-              <li>
-                Performed mathematical modeling to assess and predict the effects of noise on optimization 
-                outcomes, enhancing system reliability and accuracy in distributed data environments.
-              </li>
-              <li><i>In Progress</i></li>
+        <article class="work-entry">
+          <div class="work-entry__logo-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-entry__logo" width="46" height="46" loading="lazy" decoding="async">
+          </div>
+          <div class="work-entry__body">
+            <h3 class="work-entry__title">Research Assistant, <em>California State University, Northridge</em></h3>
+            <ul class="work-entry__list">
+              <li>Analyzed the impact of noise on a machine learning algorithm for optimizing data usage across multiple local workers, differentiating between data noise and communication noise.</li>
+              <li>Performed mathematical modeling to assess and predict the effects of noise on optimization outcomes, enhancing system reliability and accuracy in distributed data environments.</li>
+              <li><i>In progress</i></li>
             </ul>
           </div>
+        </article>
 
-          <!-- Data Analyst Intern - ConXtech -->
-          <div class="slide">
-            <img id="reference" 
-                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKvvQw9diwaFSnhGjLMiJvnuCyNop71C9rHQ&s" 
-                 class="img-responsive" 
-                 alt="ConXtech Logo">
-            <h4>Data Analyst Intern, <i>ConXtech</i></h4>
-            <ul>
-              <li>
-                Created a system database with Access, Excel, and Power BI to capture and analyze data 
-                from previous estimates and awarded projects.
-              </li>
-              <li>
-                Built dynamic visuals and DAX algorithms with slicers in Power BI for quick and 
-                effective data analysis.
-              </li>
+        <article class="work-entry">
+          <div class="work-entry__logo-wrap">
+            <img src="https://www.google.com/s2/favicons?domain=conxtech.com&amp;sz=128" alt="ConXtech" class="work-entry__logo" width="46" height="46" loading="lazy" decoding="async">
+          </div>
+          <div class="work-entry__body">
+            <h3 class="work-entry__title">Data Analyst Intern, <em>ConXtech</em></h3>
+            <ul class="work-entry__list">
+              <li>Created a system database with Access, Excel, and Power BI to capture and analyze data from previous estimates and awarded projects.</li>
+              <li>Built dynamic visuals and DAX algorithms with slicers in Power BI for quick and effective data analysis.</li>
             </ul>
           </div>
+        </article>
 
-          <!-- AI/ML Engineer - PM Accelerator -->
-          <div class="slide">
-            <img id="reference" 
-                 src="https://media.licdn.com/dms/image/v2/C560BAQERjWEoRZ15Tg/company-logo_200_200/company-logo_200_200/0/1656545579397/productmanagerinterview_logo?e=2147483647&v=beta&t=x54gWmD8-qQcBwCxttUih9FrSCKKpa-Az-0q7URRN80" 
-                 class="img-responsive" 
-                 alt="PM Accelerator Logo">
-            <h4>AI/ML Engineer, <i>PM Accelerator</i></h4>
-            <ul>
-              <li>
-                Built a robust system database using AWS RDS, pgAdmin, Django, and PostgreSQL to 
-                facilitate seamless data exchange between frontend and backend components.
-              </li>
-              <li>
-                Developed a dynamic scheduling calendar with React, enabling students and mentors to 
-                automatically track sessions and progress along customized learning paths.
-              </li>
+        <article class="work-entry">
+          <div class="work-entry__logo-wrap">
+            <img src="https://www.google.com/s2/favicons?domain=productmanagerinterview.com&amp;sz=128" alt="PM Accelerator" class="work-entry__logo" width="46" height="46" loading="lazy" decoding="async">
+          </div>
+          <div class="work-entry__body">
+            <h3 class="work-entry__title">AI/ML Engineer, <em>PM Accelerator</em></h3>
+            <ul class="work-entry__list">
+              <li>Built a robust system database using AWS RDS, pgAdmin, Django, and PostgreSQL to facilitate seamless data exchange between frontend and backend components.</li>
+              <li>Developed a dynamic scheduling calendar with React, enabling students and mentors to automatically track sessions and progress along customized learning paths.</li>
             </ul>
           </div>
+        </article>
 
-          <!-- Teacher Assistant - CSUN -->
-          <div class="slide">
-            <img id="reference" 
-                 src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/CSUNS.svg/800px-CSUNS.svg.png" 
-                 class="img-responsive" 
-                 alt="CSUN Logo">
-            <h4>Teacher Assistant, <i>California State University Northridge</i></h4>
-            <ul>
-              <li>
-                Assisted with grading over 100 assignments per week, providing detailed and constructive 
-                feedback that resulted in a 20% improvement in overall class performance.
-              </li>
-              <li>
-                Monitored progress and behavior for over 30 students, offering timely feedback to the 
-                lead teacher, which contributed to a 15% reduction in behavioral incidents.
-              </li>
-              <li>
-                Provided one-on-one assistance to 10 students per week, leading to a 25% increase in 
-                the assignment completion rate and comprehension of key concepts.
-              </li>
+        <article class="work-entry">
+          <div class="work-entry__logo-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/CSUNS.svg" alt="CSUN" class="work-entry__logo" width="46" height="46" loading="lazy" decoding="async">
+          </div>
+          <div class="work-entry__body">
+            <h3 class="work-entry__title">Teaching Assistant, <em>California State University, Northridge</em></h3>
+            <ul class="work-entry__list">
+              <li>Assisted with grading over 100 assignments per week, providing detailed and constructive feedback that contributed to improved class performance.</li>
+              <li>Monitored progress and behavior for over 30 students, offering timely feedback to the lead instructor.</li>
+              <li>Provided one-on-one assistance to students to support assignment completion and comprehension of core concepts.</li>
             </ul>
           </div>
+        </article>
 
-          <!-- Data Analyst - Unipal -->
-          <div class="slide">
-            <img id="reference" 
-                 src="https://play-lh.googleusercontent.com/fRrSFHsVbROTFn5yMVm5m0H34Gi2rZxjaBbDNfKwxtkujx4ywwSVDTRgjeXUH76Ewo8=w240-h480-rw" 
-                 class="img-responsive" 
-                 alt="Unipal Logo">
-            <h4>Data Analyst, <i>Unipal</i></h4>
-            <ul>
-              <li>
-                Enhanced data analysis techniques by implementing advanced algorithms, improving data 
-                accuracy and processing speed by 25%.
-              </li>
-              <li>
-                Designed visually appealing infographics using graphic design software, increasing 
-                sponsor engagement by 30%.
-              </li>
-              <li>
-                Developed a comprehensive database of universities, popular shops, and discount apps 
-                in Abu Dhabi to support Unipal's launch, streamlining data access and usability.
-              </li>
-              <li>
-                Analyzed and translated survey responses into actionable statistical data and charts, 
-                enhancing data interpretation efficiency by 20%.
-              </li>
+        <article class="work-entry">
+          <div class="work-entry__logo-wrap">
+            <img src="https://www.google.com/s2/favicons?domain=unipal.io&amp;sz=128" alt="Unipal" class="work-entry__logo" width="46" height="46" loading="lazy" decoding="async">
+          </div>
+          <div class="work-entry__body">
+            <h3 class="work-entry__title">Data Analyst, <em>Unipal</em></h3>
+            <ul class="work-entry__list">
+              <li>Enhanced data analysis techniques by implementing advanced algorithms, improving data accuracy and processing speed by 25%.</li>
+              <li>Designed visually appealing infographics using graphic design software, increasing sponsor engagement by 30%.</li>
+              <li>Developed a structured database of universities, retail, and student services in Abu Dhabi to support product launch.</li>
+              <li>Analyzed and translated survey responses into statistical insights and visual dashboards for product and business teams.</li>
             </ul>
           </div>
+        </article>
 
-          <!-- Marketing Intern - The Nourishers -->
-          <div class="slide">
-            <img id="reference" 
-                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd7U2NkJvN4TPBS7HLqHimprZUJHcCE5xXeg&s" 
-                 class="img-responsive" 
-                 alt="The Nourishers Logo">
-            <h4>Marketing Intern, <i>The Nourishers</i></h4>
-            <ul>
-              <li>
-                Developed and automated the monthly newsletter email system for The Nourishers, 
-                increasing subscriber engagement by 40%.
-              </li>
-              <li>
-                Implemented data collection scripts to gather and analyze information on 100+ 
-                organizations in Bahrain and neighboring countries, enhancing database accuracy by 30%.
-              </li>
-              <li>
-                Utilized data analysis tools to evaluate information on 50+ companies related to 
-                physical and mental health in the Gulf, improving market insights by 25%.
-              </li>
-              <li>
-                Programmed and executed email campaigns using marketing automation software, 
-                increasing sponsor participation by 20%.
-              </li>
+        <article class="work-entry">
+          <div class="work-entry__logo-wrap">
+            <img src="https://www.google.com/s2/favicons?domain=thenourishers.com&amp;sz=128" alt="The Nourishers" class="work-entry__logo" width="46" height="46" loading="lazy" decoding="async">
+          </div>
+          <div class="work-entry__body">
+            <h3 class="work-entry__title">Marketing Intern, <em>The Nourishers</em></h3>
+            <ul class="work-entry__list">
+              <li>Developed and automated the monthly newsletter email system, increasing subscriber engagement by 40%.</li>
+              <li>Implemented data collection scripts to gather and analyze information on 100+ organizations in Bahrain and neighboring countries.</li>
+              <li>Used data analysis tools to evaluate information on 50+ companies related to physical and mental health in the Gulf.</li>
+              <li>Ran email campaigns with marketing automation tools, increasing sponsor participation by 20%.</li>
             </ul>
           </div>
-        </div>
-
-        <!-- Slider Navigation Buttons -->
-        <button class="nav-button prev" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="nav-button next" onclick="moveSlide(1)">&#10095;</button>
+        </article>
       </div>
 
-      <!-- Resume Button -->
-      <a class="custom-btn btn-8" href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/view?usp=sharing" target="_blank" rel="noopener">
-        <span>Resume</span>
-      </a>
+      <div class="work-actions">
+        <a class="custom-btn btn-8" href="https://drive.google.com/file/d/1DcXMjZfQH4ihWEBIqXp2KVo6ZJ9dK_3a/view?usp=sharing" target="_blank" rel="noopener">
+          <span>Resume</span>
+        </a>
+      </div>
     </section>
 
     <!-- =============================================================================
@@ -3724,38 +3613,6 @@
 
       // Add scroll event listener for fixed navigation
       window.addEventListener("scroll", fixNav);
-
-      // =============================================================================
-      // WORK EXPERIENCE SLIDER FUNCTIONALITY
-      // =============================================================================
-      
-      let slideIndex = 0;
-      showSlide(slideIndex);
-
-      // Move to next/previous slide
-      function moveSlide(n) {
-        showSlide(slideIndex += n);
-      }
-
-      // Display specific slide
-      function showSlide(n) {
-        const slides = document.querySelectorAll('.slide');
-        
-        // Loop back to first slide if at end
-        if (n >= slides.length) {
-          slideIndex = 0;
-        }
-        
-        // Loop back to last slide if at beginning
-        if (n < 0) {
-          slideIndex = slides.length - 1;
-        }
-        
-        // Show current slide, hide others
-        slides.forEach((slide, index) => {
-          slide.style.display = index === slideIndex ? 'block' : 'none';
-        });
-      }
 
       // =============================================================================
       // MOBILE MENU TOGGLE
