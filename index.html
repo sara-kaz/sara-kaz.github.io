@@ -667,6 +667,11 @@
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
       }
 
+      /* In-page links from Projects land below the fixed nav */
+      .publication-card[id] {
+        scroll-margin-top: 110px;
+      }
+
       .publication-card .pub-authors {
         font-size: 0.95em;
         color: #666;
@@ -3019,6 +3024,10 @@
         <p class="card-info card-description">
           <i>In Progress</i>
         </p>
+
+        <div class="button-container">
+          <a class="custom-btn btn-8" href="#pub-ichi"><span>Publication</span></a>
+        </div>
       
         <div class="card-data">
           <div>
@@ -3047,6 +3056,10 @@
           is a distributed optimization algorithm that can be used to train machine learning models in a 
           distributed environment.
         </p>
+
+        <div class="button-container">
+          <a class="custom-btn btn-8" href="#pub-asilomar"><span>Publication</span></a>
+        </div>
       
         <div class="card-data">
           <div>
@@ -3074,27 +3087,12 @@
           into the Biomechanical Smart Prosthetic Arm, thereby improving user interface functionality 
           and accessibility. In addition, implemented wireless communication protocols in C++ to establish 
           seamless connectivity between foot controller microcontrollers, ensuring efficient data 
-          transmission and synchronization.
+          transmission and           synchronization.
         </p>
-
-        <!-- Research Paper Link -->
-        <a href="https://www.mdpi.com/2227-7080/13/3/98" class="link-preview" target="_blank">
-          <img src="https://www.mdpi.com/technologies/technologies-13-00098/article_deploy/html/images/technologies-13-00098-g005-550.jpg" 
-               alt="Smart Prosthetic Arm Research Paper">
-          <div class="content">
-            <div class="title">
-              "The Foot Can Do It": Controlling the "Persistence" Prosthetic Arm Using the "Infinity-2" Foot Controller
-            </div>
-            <div class="description">
-              This paper is about "Infinity" foot controller for controlling prosthetic arms improvements, 
-              including a foot sleeve that enables barefoot use, an improved sensor-controller unit design, 
-              and a more intuitive control scheme that allows gradual control of finger actuation.
-            </div>
-          </div>
-        </a>
 
         <!-- Project Links -->
         <div class="button-container">
+          <a class="custom-btn btn-8" href="#pub-prosthetic"><span>Publication</span></a>
           <a class="custom-btn btn-8" href="https://www.csun.edu/~pbishay/projects.php" target="_blank" rel="noopener"><span>Project Site</span></a>
           <a class="custom-btn btn-8" href="https://drive.google.com/file/d/1Ra1j9wJJoI2VARu8SF9L42KTdrLBAW1o/preview" target="_blank" rel="noopener"><span>Report</span></a>
           <a class="custom-btn btn-8" href="https://drive.google.com/file/d/17OoT9koCpqH9PGj35ya8RFIaFsZ9H9zN/preview" target="_blank" rel="noopener"><span>Flowcharts</span></a>
@@ -3161,21 +3159,9 @@
           to extract and classify voice features associated with Parkinson's Disease diagnosis.
         </p>
 
-        <!-- Research Paper Link -->
-        <a href="https://link.springer.com/chapter/10.1007/978-981-19-7742-8_4" class="link-preview" target="_blank">
-          <img src="https://media.springernature.com/full/springer-static/cover-hires/book/978-981-19-7742-8?as=webp" 
-               alt="Parkinson's Disease Research Paper">
-          <div class="content">
-            <div class="title">
-              Diagnosing Parkinson's Disease Based on Voice Recordings: Comparative Study Using Machine Learning Techniques
-            </div>
-            <div class="description">
-              This paper focuses on applying and evaluating different machine learning techniques to 
-              predict Parkinson's disease based on patient's voice data. The various algorithms in 
-              MATLAB were used to train models, and the better performing models among them were chosen.
-            </div>
-          </div>
-        </a>
+        <div class="button-container">
+          <a class="custom-btn btn-8" href="#pub-parkinson"><span>Publication</span></a>
+        </div>
 
         <div class="card-data">
           <div>
@@ -3370,7 +3356,7 @@
         Links are included where a permanent publication URL is available.
       </p>
 
-      <article class="publication-card">
+      <article id="pub-ichi" class="publication-card">
         <p class="pub-authors">S. Aly and S. Mirzaei</p>
         <h3 class="pub-title">Hardware-Aware Edge Deep Learning for Multimodal Biomedical Monitoring on Resource-Constrained SoCs</h3>
         <p class="pub-venue">
@@ -3379,7 +3365,7 @@
         </p>
       </article>
 
-      <article class="publication-card">
+      <article id="pub-asilomar" class="publication-card">
         <p class="pub-authors">M. Cho, S. Ali, et al.</p>
         <h3 class="pub-title">Distributed Dual Coordinate Ascent in a Ring Network for Distributed Machine Learning</h3>
         <p class="pub-venue">
@@ -3388,7 +3374,7 @@
         </p>
       </article>
 
-      <article class="publication-card">
+      <article id="pub-prosthetic" class="publication-card">
         <p class="pub-authors">
           P.L. Bishay, G. Funes Alfaro, I. Sherrill, I. Reoyo, E. McMahon, C. Carter, C. Valdez, N.M. Riyaz, S. Ali, A. Lima, A. Nieto, J. Tirone
         </p>
@@ -3399,7 +3385,7 @@
         </div>
       </article>
 
-      <article class="publication-card">
+      <article id="pub-parkinson" class="publication-card">
         <p class="pub-authors">S.K. Abdelhakeem, Z.M. Mustafa, H. Kadhem</p>
         <h3 class="pub-title">Diagnosing Parkinson&apos;s Disease Based on Voice Recordings: Comparative Study Using Machine Learning Techniques</h3>
         <p class="pub-venue">
