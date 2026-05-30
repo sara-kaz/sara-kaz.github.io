@@ -772,6 +772,11 @@
         font-weight: 600;
       }
 
+      .pub-status--award {
+        background: #fff8e1;
+        color: #f57f17;
+      }
+
       /* Projects section — professional layout */
       #projects {
         display: flex;
@@ -905,6 +910,12 @@
         background: rgba(129, 212, 250, 0.12);
         color: #b3e5fc;
         border-color: rgba(129, 212, 250, 0.3);
+      }
+
+      .project-card__badge--award {
+        background: rgba(255, 193, 7, 0.2);
+        color: #ffd54f;
+        border-color: rgba(255, 193, 7, 0.45);
       }
 
       .project-card__period {
@@ -3216,6 +3227,7 @@
               <div class="project-card__meta">
                 <span class="project-card__badge project-card__badge--progress">In progress</span>
                 <span class="project-card__badge">Thesis</span>
+                <span class="project-card__badge project-card__badge--award">ICHI 2026 Best Paper</span>
               </div>
               <h3 class="project-card__title">Hardware-accelerated deep learning for multimodal biomedical monitoring</h3>
               <p class="project-card__summary">
@@ -3240,13 +3252,15 @@
                 <span class="project-card__badge project-card__badge--progress">In progress</span>
                 <span class="project-card__badge">Research</span>
               </div>
-              <h3 class="project-card__title">VERA: Closed-Loop Feedback for Grounded Vision-Action Policies via Experience and Reasoning</h3>
+              <h3 class="project-card__title">TERM: Trustworthy Embodied Robotics Modeling</h3>
               <p class="project-card__summary">
-                Exploring reinforcement learning as a conditioning signal for a vision-language-action (VLA-style) policy:
-                multimodal perception, language grounding, and action outputs under RL feedback.
+                A vision-language-action (VLA) model that closes all five feedback channels used in human skill learning—vision,
+                instruction, consequence grounding, action memory, and reward—via language-grounded tokens at every timestep.
+                Evaluated on Language-Table and CALVIN; TERM-RL adds a visual domain adapter for reinforcement-learning fine-tuning.
               </p>
               <ul class="project-card__tags" aria-label="Technologies">
                 <li><span>PyTorch</span></li>
+                <li><span>VLA</span></li>
                 <li><span>RL</span></li>
                 <li><span>Python</span></li>
               </ul>
@@ -3418,6 +3432,10 @@
               </li>
               <li>
                 <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000" alt="Award">
+                <span>IEEE ICHI 2026: Best Paper Award</span>
+              </li>
+              <li>
+                <img src="https://img.icons8.com/?size=100&id=61584&format=png&color=000000" alt="Award">
                 <span>CSUNposium 2026: 1st Place for M.S. thesis project (<a href="https://drive.google.com/file/d/1ioXXkbWJEXuhwQ9275mLR2xLEV0HVhHk/view?usp=sharing" target="_blank" rel="noopener">Poster</a>)</span>
               </li>
               <li>
@@ -3517,6 +3535,7 @@
         <p class="pub-venue">
           <em>IEEE International Conference on Healthcare Informatics (ICHI)</em>, 2026
           <span class="pub-status">Accepted</span>
+          <span class="pub-status pub-status--award">Best Paper Award</span>
         </p>
       </article>
 
