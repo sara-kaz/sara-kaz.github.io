@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="M.S. Thesis — Hardware-Aware Edge Deep Learning for Multimodal Biomedical Monitoring">
+    <meta name="description" content="M.S. Thesis — Hardware-Accelerated Deep Learning for Multimodal Biomedical Monitoring with On-Device Adaptive Learning">
     <meta name="author" content="Sara Aly">
     <title>Thesis · Sara Aly</title>
     <style>
@@ -210,8 +210,11 @@
 
       .photo-grid img {
         width: 100%;
-        height: 220px;
-        object-fit: cover;
+        height: auto;
+        min-height: 180px;
+        max-height: 320px;
+        object-fit: contain;
+        background: #faf9fc;
         border-radius: 10px;
         border: 1px solid rgba(0, 0, 0, 0.06);
       }
@@ -320,11 +323,40 @@
         background: #fff;
       }
 
-      .patent-summary {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 24px;
-        align-items: start;
+      .pdf-viewport {
+        width: 100%;
+        overflow: hidden;
+        background: #fff;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .pdf-viewport--poster {
+        aspect-ratio: 4 / 3;
+        max-height: min(72vh, 720px);
+      }
+
+      .pdf-viewport--poster .pdf-frame {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        display: block;
+      }
+
+      .patent-diagram {
+        margin-top: 28px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(140, 100, 208, 0.18);
+        text-align: center;
+      }
+
+      .patent-diagram img {
+        width: 100%;
+        max-width: 680px;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        background: #0a0a0a;
       }
 
       .patent-points {
@@ -386,23 +418,23 @@
 
       @media (max-width: 768px) {
         .section-card { padding: 24px 20px; }
-        .patent-summary { grid-template-columns: 1fr; }
-        .photo-grid img { height: 180px; }
+        .photo-grid img { min-height: 140px; max-height: 240px; }
       }
     </style>
   </head>
   <body>
     <header>
       <div class="header-inner">
-        <h1>Hardware-Aware Edge Deep Learning for Multimodal Biomedical Monitoring</h1>
+        <h1>Hardware-Accelerated Deep Learning for Multimodal Biomedical Monitoring</h1>
         <p>
-          M.S. thesis research on running a compact multimodal neural network entirely on an ESP32-S3 —
-          jointly predicting activity, stress, and arrhythmia from wrist sensors with no cloud connection.
+          With on-device adaptive learning on a resource-constrained system-on-chip.
+          A CNN–Transformer multi-task model fuses ECG, PPG, and IMU signals to predict activity, stress,
+          and arrhythmia locally on an ESP32-S3 — with motion-aware alerting and feedback-driven head adaptation.
         </p>
         <div class="badge-row">
           <span class="badge">M.S. Thesis · CSUN 2026</span>
-          <span class="badge badge--award">IEEE ICHI 2026 Best Paper</span>
-          <span class="badge">Edge AI · ESP32-S3</span>
+          <span class="badge badge--award">CSUNposium 2026 · 1st Place</span>
+          <span class="badge">112,552 params · ESP32-S3</span>
         </div>
       </div>
     </header>
@@ -414,7 +446,7 @@
         <li><a href="#deployment">Deployment</a></li>
         <li><a href="#benchmarks">Benchmarks</a></li>
         <li><a href="#documents">Documents</a></li>
-        <li><a href="#patent">Patent</a></li>
+        <li><a href="#patent">EdgeGuard</a></li>
         <li><a href="https://github.com/sara-kaz/edge-biomedical-monitoring" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
     </nav>
@@ -430,67 +462,84 @@
         <section id="architecture" class="section-card">
           <h2 class="gradient-text">Architecture</h2>
           <p class="section-intro">
-            A single compact CNN backbone with squeeze-excitation blocks and lightweight task heads processes
-            10-second windows of 11-channel biosensor data at 100&nbsp;Hz. At deployment, the Transformer encoder
-            is bypassed, reducing the deployed model to 15,758 parameters (~61.6&nbsp;KB FP32) while preserving
-            multi-task inference on the microcontroller.
+            The system uses a compact CNN–Transformer multi-task model with 112,552 parameters (~450&nbsp;KB FP32)
+            to predict activity (4 classes), stress (binary), and arrhythmia (binary) from 10-second windows at
+            100&nbsp;Hz. Each window is a unified <strong>5&nbsp;×&nbsp;1,000</strong> tensor (ECG, PPG, AccX, AccY, AccZ).
+            The full training model — CNN front-end, SE attention, 2-layer Transformer encoder, and three 3-layer task heads —
+            is deployed on the ESP32-S3 without compression; the training model is identical to the deployed model.
           </p>
 
           <div class="figure-block">
-            <img src="thesis/assets/model-arch-overall.png" alt="Overall model architecture pipeline from sensors to task heads">
-            <p class="figure-caption">End-to-end pipeline: multimodal sensor input → multi-scale temporal CNN → residual SE blocks → three parallel task heads.</p>
+            <img src="thesis/assets/model-arch-overall.png" alt="Overall thesis model architecture pipeline">
+            <p class="figure-caption">Figure: end-to-end pipeline from multimodal sensor input through CNN, SE attention, Transformer-Lite encoder, and three parallel task heads.</p>
           </div>
 
           <div class="figure-block">
-            <img src="thesis/assets/model-arch-details.png" alt="Detailed model architecture components">
-            <p class="figure-caption">Architecture components: multi-scale temporal convolution, RCB-SE blocks, and improved task-specific MLP heads.</p>
+            <img src="thesis/assets/model-arch-details.png" alt="Detailed thesis model architecture components">
+            <p class="figure-caption">Figure: multi-scale temporal convolution, RCB-SE blocks, Transformer-Lite encoder, and improved task-specific MLP heads.</p>
           </div>
 
           <div class="figure-block">
-            <img src="https://raw.githubusercontent.com/sara-kaz/edge-biomedical-monitoring/main/figures/hardware_wiring_diagram.png" alt="Hardware wiring diagram for ESP32-S3 and sensors">
-            <p class="figure-caption">Hardware wiring: AD8232 ECG, MAX30102 PPG, MPU6050 accelerometer, and Grove GSR connected to ESP32-S3 over ADC and I²C.</p>
+            <img src="thesis/assets/hardware-wiring-diagram.png" alt="Thesis hardware wiring diagram for ESP32-S3 and sensors">
+            <p class="figure-caption">Figure: hardware wiring for AD8232 ECG, MAX30102 PPG, MPU6050 accelerometer, and Grove GSR on ESP32-S3 (ADC and I²C).</p>
+          </div>
+
+          <div class="figure-block">
+            <img src="thesis/assets/esp32-pin-layout.png" alt="ESP32-S3 DevKitC pin layout">
+            <p class="figure-caption">Figure: ESP32-S3-DevKitC-1 pin layout used for sensor interfacing and firmware deployment.</p>
           </div>
         </section>
 
         <section id="deployment" class="section-card">
           <h2 class="gradient-text">ESP32 Deployment</h2>
           <p class="section-intro">
-            The system was built and validated on an ESP32-S3 development board with four wearable sensors.
-            Firmware handles acquisition, filtering, sliding-window buffering, on-device inference, and a
-            motion-aware alert layer that suppresses false stress alerts during exercise.
+            The prototype was validated on ESP32-S3-N8R8 hardware with ECG, PPG, and IMU sensors active.
+            Firmware performs acquisition, IIR filtering, sliding-window buffering, multi-task inference, and
+            motion-aware alerting. EDA/GSR is retained in the live sensing pipeline as supplementary autonomic context;
+            the deployed inference tensor uses the five core channels listed below.
           </p>
 
           <div class="photo-grid">
+            <figure>
+              <img src="thesis/assets/esp32-sensors-off.png" alt="ESP32 prototype before sensors are connected">
+              <figcaption class="figure-caption">Prototype board before sensor assembly.</figcaption>
+            </figure>
             <figure>
               <img src="thesis/assets/esp32-sensors-connected.png" alt="ESP32 prototype with biomedical sensors connected">
               <figcaption class="figure-caption">Prototype with all sensors connected for live acquisition.</figcaption>
             </figure>
             <figure>
               <img src="thesis/assets/esp32-deployment-310.png" alt="ESP32 deployment board setup">
-              <figcaption class="figure-caption">On-device deployment setup used for inference benchmarking.</figcaption>
+              <figcaption class="figure-caption">On-device deployment setup used for measured inference benchmarks.</figcaption>
             </figure>
           </div>
 
           <div class="results-grid" style="margin-top: 24px;">
             <div class="metric-card">
-              <h3>On-Device Performance</h3>
+              <h3>Measured On-Device Performance</h3>
               <ul>
-                <li>Deployed parameters: 15,758 (~61.6 KB FP32)</li>
-                <li>Inference time: 298 ms / 10 s window</li>
-                <li>Duty cycle: 3%</li>
-                <li>Power draw: 0.53 W (5.23 V @ 0.1 A)</li>
-                <li>Flash footprint: 370 KB sketch</li>
-                <li>Heap free: 315 KB · PSRAM free: 8.18 MB</li>
+                <li>Total parameters: 112,552 (~450 KB FP32)</li>
+                <li>Inference time: 2,338 ms / 10 s window</li>
+                <li>Duty cycle: 23.4% · Energy: 1,263 mJ/inference</li>
+                <li>Power draw: 0.54 W (5.23 V @ 0.1 A)</li>
+                <li>Program flash: 750 KB sketch (767,936 B)</li>
+                <li>Heap free/min: 293.7 / 288.5 KB</li>
+                <li>PSRAM free/min: ~7.3 / ~7.2 MB</li>
+                <li>Adaptive training episodes: 10–24 ms (mean 16 ms)</li>
               </ul>
             </div>
             <div class="metric-card">
-              <h3>Sensor Stack</h3>
+              <h3>Deployed Input Channels</h3>
               <ul>
-                <li>AD8232 — ECG (ADC, ch 0)</li>
-                <li>MAX30102 — PPG (I²C 0x57, ch 1)</li>
-                <li>MPU6050 — Accelerometer X/Y/Z (I²C 0x68, ch 2–4)</li>
-                <li>Grove GSR v1.2 — EDA (ADC, ch 5)</li>
+                <li>Ch 0 — ECG (AD8232, ADC)</li>
+                <li>Ch 1 — PPG (MAX30102, I²C 0x57)</li>
+                <li>Ch 2 — Accel X (MPU6050, I²C 0x68)</li>
+                <li>Ch 3 — Accel Y</li>
+                <li>Ch 4 — Accel Z</li>
               </ul>
+              <p style="margin: 12px 0 0; font-size: 0.92rem; color: var(--color-text-muted);">
+                Live pipeline also acquires Grove GSR/EDA; motion-aware alerts use accelerometer statistics directly.
+              </p>
             </div>
           </div>
         </section>
@@ -498,32 +547,13 @@
         <section id="benchmarks" class="section-card">
           <h2 class="gradient-text">Benchmark Results</h2>
           <p class="section-intro">
-            Models were evaluated with 5-fold subject-wise cross-validation and on a held-out test set of
-            13 unseen subjects (3,803 windows). Results below summarize the primary classification and
-            alert-benchmark performance reported in the thesis and ICHI paper.
+            Training used PPG-DaLiA, WESAD, and MIT-BIH (21,704 windows, 65 subjects) with strict subject-wise splits.
+            Primary evaluation is on a held-out test set of <strong>13 unseen subjects (10,134 windows)</strong>,
+            plus a four-case motion-aware alert benchmark (100 samples per case).
           </p>
 
-          <h3 style="margin-top: 0; color: #5a3f96;">5-Fold Subject-Wise Cross-Validation</h3>
-          <table class="results-table" aria-label="Cross-validation results">
-            <thead>
-              <tr>
-                <th>Task</th>
-                <th>Accuracy</th>
-                <th>F1 Macro</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Activity (8-class)</td><td>52.3% ± 1.8%</td><td>31.1% ± 2.0%</td></tr>
-              <tr><td>Stress (4-class)</td><td>69.4% ± 4.2%</td><td>49.9% ± 4.5%</td></tr>
-              <tr><td>Arrhythmia (2-class)</td><td><strong>75.0% ± 6.6%</strong></td><td><strong>74.7% ± 6.4%</strong></td></tr>
-            </tbody>
-          </table>
-          <p class="section-intro" style="margin-bottom: 0;">
-            Arrhythmia AUC-ROC: <strong>0.843 ± 0.077</strong> · Sensitivity: 70.3% · Specificity: 80.1%
-          </p>
-
-          <h3 style="color: #5a3f96;">Held-Out Test Set (13 unseen subjects)</h3>
-          <table class="results-table" aria-label="Held-out test set results">
+          <h3 style="margin-top: 0; color: #5a3f96;">Held-Out Test Set (Model A, 13 subjects, 10,134 windows)</h3>
+          <table class="results-table" aria-label="Held-out test set results from thesis">
             <thead>
               <tr>
                 <th>Task</th>
@@ -532,41 +562,88 @@
                 <th>Precision</th>
                 <th>Recall</th>
                 <th>F1</th>
+                <th>AUC</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Activity (8-class)</td><td>2,672</td><td>55.9%</td><td>34.3%</td><td>36.1%</td><td>34.8%</td></tr>
-              <tr><td>Stress (4-class)</td><td>254</td><td>73.2%</td><td>56.4%</td><td>36.0%</td><td>40.4%</td></tr>
-              <tr><td>Arrhythmia (2-class)</td><td>877</td><td>72.3%</td><td>62.0%</td><td>59.1%</td><td>59.7%</td></tr>
+              <tr><td>Activity (4 cls)</td><td>5,251</td><td><strong>94.1%</strong></td><td>95.3%*</td><td>—</td><td>25.9%†</td><td>0.731</td></tr>
+              <tr><td>Stress (2 cls)</td><td>1,283</td><td><strong>87.1%</strong></td><td>88.1%*</td><td>81.9%†</td><td>81.9%†</td><td><strong>0.975</strong></td></tr>
+              <tr><td>Arrhythmia (2 cls)</td><td>3,600</td><td><strong>90.8%</strong></td><td>91.0%*</td><td>64.6%†</td><td>64.6%†</td><td>0.879</td></tr>
+            </tbody>
+          </table>
+          <p class="section-intro" style="margin-bottom: 16px;">
+            *F1-weighted precision · †F1-macro recall/F1. Per-subject consistency: activity 93.9%&nbsp;±&nbsp;1.3%;
+            arrhythmia 90.9%&nbsp;±&nbsp;14.1% across 10 MIT-BIH test subjects.
+          </p>
+
+          <h3 style="color: #5a3f96;">Arrhythmia Clinical Metrics (Held-Out Test Set)</h3>
+          <table class="results-table" aria-label="Arrhythmia clinical metrics from thesis">
+            <thead>
+              <tr><th>Metric</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sensitivity</td><td>36.0%</td></tr>
+              <tr><td>Specificity</td><td><strong>94.7%</strong></td></tr>
+              <tr><td>AUC-ROC</td><td>0.879 [0.862, 0.894]</td></tr>
+              <tr><td>PPV</td><td>32.6%</td></tr>
+              <tr><td>NPV</td><td>95.4%</td></tr>
+            </tbody>
+          </table>
+          <p class="section-intro" style="margin-bottom: 16px;">
+            At the default threshold (0.50), the model prioritizes specificity for low-false-alarm screening.
+            At the Youden-optimal threshold (0.11), recall rises to 87.4% with 77.6% specificity.
+          </p>
+
+          <h3 style="color: #5a3f96;">Four-Case Motion-Aware Alert Benchmark</h3>
+          <table class="results-table" aria-label="Four-case alert benchmark from thesis">
+            <thead>
+              <tr>
+                <th>Case</th>
+                <th>Stress Acc.</th>
+                <th>Arrhy. Acc.</th>
+                <th>Alert Acc.</th>
+                <th>Alert Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Case 1: Stress + Sedentary</td><td>99%</td><td>—</td><td><strong>96%</strong></td><td>100%</td></tr>
+              <tr><td>Case 2: Stress + Exercise</td><td>89%</td><td>—</td><td><strong>97%</strong> (suppression)</td><td>3%</td></tr>
+              <tr><td>Case 3: Arrhythmia + Sedentary</td><td>—</td><td>87%</td><td><strong>82%</strong></td><td>99%</td></tr>
+              <tr><td>Case 4: Arrhythmia + Motion</td><td>—</td><td>93%</td><td><strong>88%</strong></td><td>88%</td></tr>
+            </tbody>
+          </table>
+          <p class="section-intro" style="margin-bottom: 16px;">
+            Calibrated thresholds: τ<sub>a</sub>&nbsp;=&nbsp;0.70 (arrhythmia), τ<sub>s</sub>&nbsp;=&nbsp;0.35 (stress).
+            Average alert accuracy (Cases 1, 3, 4): <strong>91.3%</strong> · False alert rate (Case 2): <strong>3%</strong>.
+          </p>
+
+          <h3 style="color: #5a3f96;">Sensor Ablation (Model A, Held-Out Test Set)</h3>
+          <table class="results-table" aria-label="Sensor ablation study from thesis">
+            <thead>
+              <tr><th>Configuration</th><th>Activity</th><th>Stress</th><th>Arrhythmia</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Full model</strong></td><td><strong>94.1%</strong></td><td><strong>87.1%</strong></td><td><strong>90.8%</strong></td></tr>
+              <tr><td>w/o ECG</td><td>88.7% (−5.4)</td><td>76.8% (−10.3)</td><td>6.6% (−84.2)</td></tr>
+              <tr><td>w/o PPG</td><td>93.2% (−0.9)</td><td>73.1% (−14.0)</td><td>90.8% (±0.0)</td></tr>
+              <tr><td>w/o ACC (all axes)</td><td>70.3% (−23.9)</td><td>29.2% (−57.9)</td><td>91.2% (+0.4)</td></tr>
+              <tr><td>w/o SE attention</td><td>79.4% (−14.8)</td><td>36.9% (−50.1)</td><td>86.9% (−3.9)</td></tr>
             </tbody>
           </table>
 
-          <h3 style="color: #5a3f96;">Motion-Aware Alert Benchmark</h3>
-          <table class="results-table" aria-label="Alert benchmark results">
-            <thead>
-              <tr>
-                <th>Scenario</th>
-                <th>Stress Acc.</th>
-                <th>Arr. Acc.</th>
-                <th>Alert Acc.</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Stress + Sedentary</td><td>85%</td><td>99%</td><td><strong>85%</strong></td></tr>
-              <tr><td>Stress + Exercise</td><td>82%</td><td>88%</td><td>Suppressed (12% false alerts)</td></tr>
-              <tr><td>Arrhythmia + Sedentary</td><td>57%</td><td>94%</td><td><strong>94%</strong></td></tr>
-              <tr><td>Arrhythmia + High Motion</td><td>72%</td><td>95%</td><td><strong>95%</strong></td></tr>
-            </tbody>
-          </table>
+          <div class="figure-block">
+            <iframe class="pdf-frame" src="thesis/assets/confusion-matrices.pdf" title="Confusion matrices for held-out test set" style="height: 520px; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px;"></iframe>
+            <p class="figure-caption">Figure: confusion matrices for activity, stress, and arrhythmia heads on the held-out test set (13 unseen subjects).</p>
+          </div>
 
           <div class="chart-grid">
             <figure>
-              <img src="thesis/assets/benchmark-model-efficiency.png" alt="Model efficiency benchmark chart">
-              <figcaption class="figure-caption">Model size, latency, and resource efficiency on ESP32-S3.</figcaption>
+              <img src="thesis/assets/benchmark-model-efficiency.png" alt="Task-matched model efficiency comparison from thesis">
+              <figcaption class="figure-caption">Figure: task-matched model efficiency — accuracy vs. parameter count (log scale).</figcaption>
             </figure>
             <figure>
-              <img src="thesis/assets/benchmark-alert-metrics.png" alt="Motion-aware alert benchmark metrics">
-              <figcaption class="figure-caption">Alert accuracy across synthetic stress and arrhythmia scenarios.</figcaption>
+              <img src="thesis/assets/benchmark-score-proxies.png" alt="Average stress score and arrhythmia probability per alert case">
+              <figcaption class="figure-caption">Figure: average predicted stress score and arrhythmia probability per four-case scenario.</figcaption>
             </figure>
           </div>
         </section>
@@ -574,67 +651,57 @@
         <section id="documents" class="section-card">
           <h2 class="gradient-text">Documents</h2>
           <p class="section-intro">
-            Conference paper, symposium poster, and full thesis. The ICHI paper DOI will be added upon publication.
+            Full M.S. thesis, CSUNposium poster, and CSUN ScholarWorks deposit.
           </p>
 
           <details class="doc-panel" open>
-            <summary>ICHI 2026 Paper (PDF)</summary>
+            <summary>M.S. Thesis (PDF)</summary>
             <div class="doc-actions">
-              <a class="custom-btn" href="thesis/papers/ichi-2026-paper.pdf" target="_blank" rel="noopener">Open in New Tab</a>
-              <a class="custom-btn" href="thesis/papers/ichi-2026-paper.pdf" download>Download</a>
+              <a class="custom-btn" href="thesis/papers/thesis.pdf" target="_blank" rel="noopener">Open in New Tab</a>
+              <a class="custom-btn" href="thesis/papers/thesis.pdf" download>Download</a>
+              <a class="custom-btn" href="https://scholarworks.calstate.edu/concern/theses/vt150v56b" target="_blank" rel="noopener">CSUN ScholarWorks</a>
             </div>
-            <iframe class="pdf-frame" src="thesis/papers/ichi-2026-paper.pdf" title="ICHI 2026 paper PDF"></iframe>
+            <iframe class="pdf-frame" src="thesis/papers/thesis.pdf" title="M.S. thesis PDF"></iframe>
           </details>
 
           <details class="doc-panel">
             <summary>CSUNposium Poster (PDF)</summary>
             <div class="doc-actions">
-              <a class="custom-btn" href="https://drive.google.com/file/d/1ioXXkbWJEXuhwQ9275mLR2xLEV0HVhHk/view?usp=sharing" target="_blank" rel="noopener">Open in Google Drive</a>
+              <a class="custom-btn" href="thesis/papers/poster.pdf" target="_blank" rel="noopener">Open in New Tab</a>
+              <a class="custom-btn" href="thesis/papers/poster.pdf" download>Download</a>
+              <a class="custom-btn" href="https://drive.google.com/file/d/1ioXXkbWJEXuhwQ9275mLR2xLEV0HVhHk/view?usp=sharing" target="_blank" rel="noopener">Google Drive</a>
             </div>
-            <iframe class="pdf-frame" src="https://drive.google.com/file/d/1ioXXkbWJEXuhwQ9275mLR2xLEV0HVhHk/preview" title="Thesis poster PDF"></iframe>
-          </details>
-
-          <details class="doc-panel">
-            <summary>M.S. Thesis (CSUN ScholarWorks)</summary>
-            <div class="doc-actions">
-              <a class="custom-btn" href="https://scholarworks.calstate.edu/concern/theses/vt150v56b" target="_blank" rel="noopener">View on ScholarWorks</a>
+            <div class="pdf-viewport pdf-viewport--poster">
+              <iframe class="pdf-frame" src="thesis/papers/poster.pdf#view=FitH&toolbar=0" title="CSUNposium thesis poster PDF"></iframe>
             </div>
-            <p class="section-intro" style="padding: 0 20px 20px; margin: 0;">
-              Full thesis:
-              <em>Hardware-Accelerated Deep Learning for Multimodal Biomedical Monitoring with On-Device Adaptive Learning on Resource-Constrained Edge Devices</em>.
-            </p>
           </details>
         </section>
 
         <section id="patent" class="section-card">
-          <h2 class="gradient-text">Patent Summary · EdgeGuard</h2>
-          <div class="patent-summary">
-            <div>
-              <p class="section-intro" style="margin-bottom: 12px;">
-                Provisional patent application for <strong>EdgeGuard</strong> — a system for safe on-device neural network
-                adaptation on resource-constrained edge hardware without GPU, cloud connectivity, or external ML frameworks.
-              </p>
-              <p style="margin: 0 0 12px; color: #444;">
-                <strong>Title:</strong> Safe On-Device Neural Network Adaptation on Resource-Constrained Edge Hardware
-                Without GPU or Cloud Dependency
-              </p>
-              <ul class="patent-points">
-                <li>Freezes a CNN+SE+Transformer backbone in read-only memory and adapts only lightweight classification heads on-device.</li>
-                <li>Uses feedback-driven backpropagation with zero-allocation, pre-allocated buffers suitable for bare-metal firmware.</li>
-                <li>Enforces hardware resource gating on memory, temperature, timing, and CPU load before any training step.</li>
-                <li>Maintains dual-slot model versioning with NVS flash persistence, A/B validation, rollback, and safety lockout.</li>
-                <li>Implements nine concentric safety mechanisms to prevent on-device adaptation from degrading below baseline accuracy.</li>
-                <li>Maps to MCU, SoC, and FPGA targets through a hardware abstraction layer; demonstrated on ESP32-S3 at sub-$10 BOM.</li>
-              </ul>
-              <div class="doc-actions" style="padding-left: 0;">
-                <a class="custom-btn" href="thesis/papers/edgeguard-provisional-patent.pdf" target="_blank" rel="noopener">Read Full Patent PDF</a>
-              </div>
-            </div>
-            <figure>
-              <img src="thesis/assets/patent-adaptive-architecture.png" alt="EdgeGuard on-device adaptive training architecture">
-              <figcaption class="figure-caption">EdgeGuard adaptive training architecture with frozen backbone and mutable task heads.</figcaption>
-            </figure>
-          </div>
+          <h2 class="gradient-text">EdgeGuard · On-Device Adaptation Concept</h2>
+          <p class="section-intro" style="margin-bottom: 12px;">
+            <strong>EdgeGuard</strong> is the overall idea behind safe on-device neural network adaptation on
+            resource-constrained edge hardware — without a GPU, cloud connectivity, or external ML frameworks.
+            This is a high-level summary of the approach explored in the thesis; full patent documentation is not published here.
+          </p>
+          <p style="margin: 0 0 12px; color: #444;">
+            <strong>Working title:</strong> Safe On-Device Neural Network Adaptation on Resource-Constrained Edge Hardware
+            Without GPU or Cloud Dependency
+          </p>
+          <ul class="patent-points">
+            <li>Freezes the 107,568-parameter CNN+SE+Transformer backbone and adapts only 4,984 classification-head parameters on-device.</li>
+            <li>Uses feedback-driven backpropagation with zero-allocation, pre-allocated buffers suitable for bare-metal firmware.</li>
+            <li>Enforces hardware resource gating on memory, temperature, timing, and CPU load before any training step.</li>
+            <li>Maintains dual-slot model versioning with NVS flash persistence, A/B validation, rollback, and safety lockout.</li>
+            <li>Implements nine concentric safety mechanisms to prevent on-device adaptation from degrading below baseline accuracy.</li>
+            <li>Training episodes complete in 10–24 ms (mean 16 ms) on ESP32-S3, adding only 8 KB flash overhead.</li>
+            <li>Maps to MCU, SoC, and FPGA targets through a hardware abstraction layer; demonstrated on ESP32-S3 at sub-$10 BOM.</li>
+          </ul>
+
+          <figure class="patent-diagram">
+            <img src="thesis/assets/edgeguard-architecture.png" alt="EdgeGuard system architecture: sensors through window buffer, frozen CNN backbone, mutable task heads, alerts, and adaptive training loop with validation and NVS persistence">
+            <figcaption class="figure-caption">EdgeGuard on-device adaptive training architecture — frozen backbone (107,568 params), mutable task heads (4,984 params), and safety-gated update loop.</figcaption>
+          </figure>
         </section>
       </div>
     </main>
