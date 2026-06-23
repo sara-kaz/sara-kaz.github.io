@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="M.S. Thesis — Hardware-Aware Edge Deep Learning for Multimodal Biomedical Monitoring">
+    <meta name="author" content="Sara Aly">
+    <title>Thesis · Sara Aly</title>
+    <style>
+      :root {
+        --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        --color-text: #2a2a32;
+        --color-text-muted: #5e5e6b;
+        --surface-subtle: #f6f5f9;
+        --shadow-card: 0 8px 28px rgba(18, 20, 30, 0.07);
+        --radius-md: 12px;
+        --btn-grad: linear-gradient(135deg, #8c64d0, #bb6eda);
+        --btn-grad-hover: linear-gradient(135deg, #9d74e0, #cb7eea);
+        --btn-shadow: 0 4px 16px rgba(140, 100, 208, 0.28);
+        --btn-shadow-hover: 0 6px 22px rgba(140, 100, 208, 0.36);
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: var(--font-sans);
+        background: #ffffff;
+        color: var(--color-text);
+        margin: 0;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      header {
+        position: relative;
+        background: url('Documents/Pink and Purple Gradient Technology Business LinkedIn Banner.png') center/cover;
+        color: #fff;
+        padding: 48px 24px 40px;
+        text-align: center;
+      }
+
+      header::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(18, 15, 35, 0.28) 0%, rgba(18, 15, 35, 0.58) 100%);
+        pointer-events: none;
+      }
+
+      header .header-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 920px;
+        margin: 0 auto;
+      }
+
+      header h1 {
+        margin: 0 0 12px;
+        font-size: clamp(1.5rem, 4vw, 2.35rem);
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        line-height: 1.25;
+      }
+
+      header p {
+        margin: 0 auto;
+        max-width: 760px;
+        font-size: 1.02rem;
+        opacity: 0.95;
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+      }
+
+      .badge--award {
+        background: rgba(255, 215, 120, 0.22);
+        border-color: rgba(255, 215, 120, 0.45);
+      }
+
+      nav {
+        background: rgba(12, 12, 18, 0.97);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(12px);
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      nav a {
+        display: inline-block;
+        padding: 16px 14px;
+        color: rgba(255, 255, 255, 0.92);
+        text-decoration: none;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        transition: color 0.2s ease;
+      }
+
+      nav a:hover { color: #ebc0fc; }
+
+      nav a.is-active { color: #ebc0fc; }
+
+      main {
+        background: linear-gradient(180deg, #f7f5fa 0%, #f0eef5 100%);
+        padding: 40px 20px 60px;
+      }
+
+      .page-wrap {
+        max-width: 920px;
+        margin: 0 auto;
+      }
+
+      .top-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 28px;
+      }
+
+      .gradient-text {
+        font-weight: 700;
+        background: linear-gradient(100deg, #7b56c4 0%, #9b6fd6 45%, #c9a3e8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .section-card {
+        background: #fff;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-card);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-left: 4px solid #8c64d0;
+        padding: 32px 36px;
+        margin-bottom: 24px;
+      }
+
+      .section-card h2 {
+        margin: 0 0 8px;
+        font-size: 1.65rem;
+      }
+
+      .section-intro {
+        color: var(--color-text-muted);
+        margin: 0 0 24px;
+        max-width: 760px;
+      }
+
+      .figure-block {
+        margin: 24px 0;
+      }
+
+      .figure-block img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        background: #fff;
+      }
+
+      .figure-caption {
+        margin: 10px 0 0;
+        font-size: 0.92rem;
+        color: var(--color-text-muted);
+        text-align: center;
+      }
+
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+      }
+
+      .photo-grid figure {
+        margin: 0;
+      }
+
+      .photo-grid img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .results-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 18px;
+        margin-top: 20px;
+      }
+
+      .metric-card {
+        background: linear-gradient(135deg, #fafbfc 0%, #f1f3f5 100%);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 10px;
+        padding: 18px 20px;
+      }
+
+      .metric-card h3 {
+        margin: 0 0 12px;
+        font-size: 1rem;
+        color: #8c64d0;
+      }
+
+      .metric-card ul {
+        margin: 0;
+        padding-left: 18px;
+        color: #444;
+      }
+
+      .metric-card li { margin: 6px 0; }
+
+      table.results-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-size: 0.95rem;
+      }
+
+      .results-table th,
+      .results-table td {
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        padding: 10px 12px;
+        text-align: left;
+      }
+
+      .results-table th {
+        background: #f3f0f8;
+        color: #5a3f96;
+      }
+
+      .results-table tr:nth-child(even) td {
+        background: #faf9fc;
+      }
+
+      .chart-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 18px;
+        margin-top: 20px;
+      }
+
+      .chart-grid img {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      details.doc-panel {
+        border: 1px solid rgba(140, 100, 208, 0.22);
+        border-radius: var(--radius-md);
+        background: #faf9fc;
+        margin: 16px 0;
+        overflow: hidden;
+      }
+
+      details.doc-panel summary {
+        cursor: pointer;
+        padding: 16px 20px;
+        font-weight: 600;
+        color: #5a3f96;
+        list-style: none;
+      }
+
+      details.doc-panel summary::-webkit-details-marker { display: none; }
+
+      details.doc-panel summary::after {
+        content: "▾";
+        float: right;
+        opacity: 0.7;
+      }
+
+      details.doc-panel[open] summary::after { content: "▴"; }
+
+      .doc-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0 20px 16px;
+      }
+
+      .pdf-frame {
+        width: 100%;
+        height: min(78vh, 860px);
+        border: none;
+        background: #fff;
+      }
+
+      .patent-summary {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .patent-points {
+        margin: 16px 0 0;
+        padding-left: 20px;
+        color: #444;
+      }
+
+      .patent-points li { margin: 8px 0; }
+
+      .custom-btn {
+        background: var(--btn-grad);
+        color: #fff;
+        padding: 11px 22px;
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        box-shadow: var(--btn-shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .custom-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--btn-shadow-hover);
+        background: var(--btn-grad-hover);
+      }
+
+      footer {
+        background: url('Documents/Pink and Purple Gradient Technology Business LinkedIn Banner.png') center/cover;
+        color: #fff;
+        text-align: center;
+        padding: 36px 20px;
+        position: relative;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.72);
+      }
+
+      footer p {
+        position: relative;
+        z-index: 1;
+        margin: 6px 0;
+      }
+
+      footer a {
+        color: #ebc0fc;
+        text-decoration: none;
+      }
+
+      footer a:hover { text-decoration: underline; }
+
+      @media (max-width: 768px) {
+        .section-card { padding: 24px 20px; }
+        .patent-summary { grid-template-columns: 1fr; }
+        .photo-grid img { height: 180px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <h1>Hardware-Aware Edge Deep Learning for Multimodal Biomedical Monitoring</h1>
+        <p>
+          M.S. thesis research on running a compact multimodal neural network entirely on an ESP32-S3 —
+          jointly predicting activity, stress, and arrhythmia from wrist sensors with no cloud connection.
+        </p>
+        <div class="badge-row">
+          <span class="badge">M.S. Thesis · CSUN 2026</span>
+          <span class="badge badge--award">IEEE ICHI 2026 Best Paper</span>
+          <span class="badge">Edge AI · ESP32-S3</span>
+        </div>
+      </div>
+    </header>
+
+    <nav aria-label="Thesis page sections">
+      <ul>
+        <li><a href="index.html">Portfolio</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#deployment">Deployment</a></li>
+        <li><a href="#benchmarks">Benchmarks</a></li>
+        <li><a href="#documents">Documents</a></li>
+        <li><a href="#patent">Patent</a></li>
+        <li><a href="https://github.com/sara-kaz/edge-biomedical-monitoring" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="page-wrap">
+        <div class="top-actions">
+          <a class="custom-btn" href="index.html#projects">← Back to Portfolio</a>
+          <a class="custom-btn" href="https://scholarworks.calstate.edu/concern/theses/vt150v56b" target="_blank" rel="noopener">CSUN ScholarWorks</a>
+          <a class="custom-btn" href="https://github.com/sara-kaz/edge-biomedical-monitoring" target="_blank" rel="noopener">View Code</a>
+        </div>
+
+        <section id="architecture" class="section-card">
+          <h2 class="gradient-text">Architecture</h2>
+          <p class="section-intro">
+            A single compact CNN backbone with squeeze-excitation blocks and lightweight task heads processes
+            10-second windows of 11-channel biosensor data at 100&nbsp;Hz. At deployment, the Transformer encoder
+            is bypassed, reducing the deployed model to 15,758 parameters (~61.6&nbsp;KB FP32) while preserving
+            multi-task inference on the microcontroller.
+          </p>
+
+          <div class="figure-block">
+            <img src="thesis/assets/model-arch-overall.png" alt="Overall model architecture pipeline from sensors to task heads">
+            <p class="figure-caption">End-to-end pipeline: multimodal sensor input → multi-scale temporal CNN → residual SE blocks → three parallel task heads.</p>
+          </div>
+
+          <div class="figure-block">
+            <img src="thesis/assets/model-arch-details.png" alt="Detailed model architecture components">
+            <p class="figure-caption">Architecture components: multi-scale temporal convolution, RCB-SE blocks, and improved task-specific MLP heads.</p>
+          </div>
+
+          <div class="figure-block">
+            <img src="https://raw.githubusercontent.com/sara-kaz/edge-biomedical-monitoring/main/figures/hardware_wiring_diagram.png" alt="Hardware wiring diagram for ESP32-S3 and sensors">
+            <p class="figure-caption">Hardware wiring: AD8232 ECG, MAX30102 PPG, MPU6050 accelerometer, and Grove GSR connected to ESP32-S3 over ADC and I²C.</p>
+          </div>
+        </section>
+
+        <section id="deployment" class="section-card">
+          <h2 class="gradient-text">ESP32 Deployment</h2>
+          <p class="section-intro">
+            The system was built and validated on an ESP32-S3 development board with four wearable sensors.
+            Firmware handles acquisition, filtering, sliding-window buffering, on-device inference, and a
+            motion-aware alert layer that suppresses false stress alerts during exercise.
+          </p>
+
+          <div class="photo-grid">
+            <figure>
+              <img src="thesis/assets/esp32-sensors-connected.png" alt="ESP32 prototype with biomedical sensors connected">
+              <figcaption class="figure-caption">Prototype with all sensors connected for live acquisition.</figcaption>
+            </figure>
+            <figure>
+              <img src="thesis/assets/esp32-deployment-310.png" alt="ESP32 deployment board setup">
+              <figcaption class="figure-caption">On-device deployment setup used for inference benchmarking.</figcaption>
+            </figure>
+          </div>
+
+          <div class="results-grid" style="margin-top: 24px;">
+            <div class="metric-card">
+              <h3>On-Device Performance</h3>
+              <ul>
+                <li>Deployed parameters: 15,758 (~61.6 KB FP32)</li>
+                <li>Inference time: 298 ms / 10 s window</li>
+                <li>Duty cycle: 3%</li>
+                <li>Power draw: 0.53 W (5.23 V @ 0.1 A)</li>
+                <li>Flash footprint: 370 KB sketch</li>
+                <li>Heap free: 315 KB · PSRAM free: 8.18 MB</li>
+              </ul>
+            </div>
+            <div class="metric-card">
+              <h3>Sensor Stack</h3>
+              <ul>
+                <li>AD8232 — ECG (ADC, ch 0)</li>
+                <li>MAX30102 — PPG (I²C 0x57, ch 1)</li>
+                <li>MPU6050 — Accelerometer X/Y/Z (I²C 0x68, ch 2–4)</li>
+                <li>Grove GSR v1.2 — EDA (ADC, ch 5)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="benchmarks" class="section-card">
+          <h2 class="gradient-text">Benchmark Results</h2>
+          <p class="section-intro">
+            Models were evaluated with 5-fold subject-wise cross-validation and on a held-out test set of
+            13 unseen subjects (3,803 windows). Results below summarize the primary classification and
+            alert-benchmark performance reported in the thesis and ICHI paper.
+          </p>
+
+          <h3 style="margin-top: 0; color: #5a3f96;">5-Fold Subject-Wise Cross-Validation</h3>
+          <table class="results-table" aria-label="Cross-validation results">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Accuracy</th>
+                <th>F1 Macro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Activity (8-class)</td><td>52.3% ± 1.8%</td><td>31.1% ± 2.0%</td></tr>
+              <tr><td>Stress (4-class)</td><td>69.4% ± 4.2%</td><td>49.9% ± 4.5%</td></tr>
+              <tr><td>Arrhythmia (2-class)</td><td><strong>75.0% ± 6.6%</strong></td><td><strong>74.7% ± 6.4%</strong></td></tr>
+            </tbody>
+          </table>
+          <p class="section-intro" style="margin-bottom: 0;">
+            Arrhythmia AUC-ROC: <strong>0.843 ± 0.077</strong> · Sensitivity: 70.3% · Specificity: 80.1%
+          </p>
+
+          <h3 style="color: #5a3f96;">Held-Out Test Set (13 unseen subjects)</h3>
+          <table class="results-table" aria-label="Held-out test set results">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Samples</th>
+                <th>Accuracy</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Activity (8-class)</td><td>2,672</td><td>55.9%</td><td>34.3%</td><td>36.1%</td><td>34.8%</td></tr>
+              <tr><td>Stress (4-class)</td><td>254</td><td>73.2%</td><td>56.4%</td><td>36.0%</td><td>40.4%</td></tr>
+              <tr><td>Arrhythmia (2-class)</td><td>877</td><td>72.3%</td><td>62.0%</td><td>59.1%</td><td>59.7%</td></tr>
+            </tbody>
+          </table>
+
+          <h3 style="color: #5a3f96;">Motion-Aware Alert Benchmark</h3>
+          <table class="results-table" aria-label="Alert benchmark results">
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Stress Acc.</th>
+                <th>Arr. Acc.</th>
+                <th>Alert Acc.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Stress + Sedentary</td><td>85%</td><td>99%</td><td><strong>85%</strong></td></tr>
+              <tr><td>Stress + Exercise</td><td>82%</td><td>88%</td><td>Suppressed (12% false alerts)</td></tr>
+              <tr><td>Arrhythmia + Sedentary</td><td>57%</td><td>94%</td><td><strong>94%</strong></td></tr>
+              <tr><td>Arrhythmia + High Motion</td><td>72%</td><td>95%</td><td><strong>95%</strong></td></tr>
+            </tbody>
+          </table>
+
+          <div class="chart-grid">
+            <figure>
+              <img src="thesis/assets/benchmark-model-efficiency.png" alt="Model efficiency benchmark chart">
+              <figcaption class="figure-caption">Model size, latency, and resource efficiency on ESP32-S3.</figcaption>
+            </figure>
+            <figure>
+              <img src="thesis/assets/benchmark-alert-metrics.png" alt="Motion-aware alert benchmark metrics">
+              <figcaption class="figure-caption">Alert accuracy across synthetic stress and arrhythmia scenarios.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="documents" class="section-card">
+          <h2 class="gradient-text">Documents</h2>
+          <p class="section-intro">
+            Conference paper, symposium poster, and full thesis. The ICHI paper DOI will be added upon publication.
+          </p>
+
+          <details class="doc-panel" open>
+            <summary>ICHI 2026 Paper (PDF)</summary>
+            <div class="doc-actions">
+              <a class="custom-btn" href="thesis/papers/ichi-2026-paper.pdf" target="_blank" rel="noopener">Open in New Tab</a>
+              <a class="custom-btn" href="thesis/papers/ichi-2026-paper.pdf" download>Download</a>
+            </div>
+            <iframe class="pdf-frame" src="thesis/papers/ichi-2026-paper.pdf" title="ICHI 2026 paper PDF"></iframe>
+          </details>
+
+          <details class="doc-panel">
+            <summary>CSUNposium Poster (PDF)</summary>
+            <div class="doc-actions">
+              <a class="custom-btn" href="https://drive.google.com/file/d/1ioXXkbWJEXuhwQ9275mLR2xLEV0HVhHk/view?usp=sharing" target="_blank" rel="noopener">Open in Google Drive</a>
+            </div>
+            <iframe class="pdf-frame" src="https://drive.google.com/file/d/1ioXXkbWJEXuhwQ9275mLR2xLEV0HVhHk/preview" title="Thesis poster PDF"></iframe>
+          </details>
+
+          <details class="doc-panel">
+            <summary>M.S. Thesis (CSUN ScholarWorks)</summary>
+            <div class="doc-actions">
+              <a class="custom-btn" href="https://scholarworks.calstate.edu/concern/theses/vt150v56b" target="_blank" rel="noopener">View on ScholarWorks</a>
+            </div>
+            <p class="section-intro" style="padding: 0 20px 20px; margin: 0;">
+              Full thesis:
+              <em>Hardware-Accelerated Deep Learning for Multimodal Biomedical Monitoring with On-Device Adaptive Learning on Resource-Constrained Edge Devices</em>.
+            </p>
+          </details>
+        </section>
+
+        <section id="patent" class="section-card">
+          <h2 class="gradient-text">Patent Summary · EdgeGuard</h2>
+          <div class="patent-summary">
+            <div>
+              <p class="section-intro" style="margin-bottom: 12px;">
+                Provisional patent application for <strong>EdgeGuard</strong> — a system for safe on-device neural network
+                adaptation on resource-constrained edge hardware without GPU, cloud connectivity, or external ML frameworks.
+              </p>
+              <p style="margin: 0 0 12px; color: #444;">
+                <strong>Title:</strong> Safe On-Device Neural Network Adaptation on Resource-Constrained Edge Hardware
+                Without GPU or Cloud Dependency
+              </p>
+              <ul class="patent-points">
+                <li>Freezes a CNN+SE+Transformer backbone in read-only memory and adapts only lightweight classification heads on-device.</li>
+                <li>Uses feedback-driven backpropagation with zero-allocation, pre-allocated buffers suitable for bare-metal firmware.</li>
+                <li>Enforces hardware resource gating on memory, temperature, timing, and CPU load before any training step.</li>
+                <li>Maintains dual-slot model versioning with NVS flash persistence, A/B validation, rollback, and safety lockout.</li>
+                <li>Implements nine concentric safety mechanisms to prevent on-device adaptation from degrading below baseline accuracy.</li>
+                <li>Maps to MCU, SoC, and FPGA targets through a hardware abstraction layer; demonstrated on ESP32-S3 at sub-$10 BOM.</li>
+              </ul>
+              <div class="doc-actions" style="padding-left: 0;">
+                <a class="custom-btn" href="thesis/papers/edgeguard-provisional-patent.pdf" target="_blank" rel="noopener">Read Full Patent PDF</a>
+              </div>
+            </div>
+            <figure>
+              <img src="thesis/assets/patent-adaptive-architecture.png" alt="EdgeGuard on-device adaptive training architecture">
+              <figcaption class="figure-caption">EdgeGuard adaptive training architecture with frozen backbone and mutable task heads.</figcaption>
+            </figure>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p><a href="index.html">← Return to Portfolio</a></p>
+      <p>&copy; 2026 Sara Aly · California State University, Northridge</p>
+    </footer>
+  </body>
+</html>
